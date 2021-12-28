@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "chota",
+      "password": "test123",
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "username": "jyothi",
+      "password": "test123",
+      "isAdmin": true
+    },
+    {
+      "username": "kranthi",
+      "password": "fsd123",
+      "isAdmin": false,
+      "id": 3
+    },
+    {
+      "username": "srujan",
+      "password": "fsd123",
+      "isAdmin": false,
+      "id": 4
+    },
+    {
+      "username": "tarun",
+      "password": "fsd2123",
+      "isAdmin": true,
+      "id": 5
+    }
+  ]
+}
