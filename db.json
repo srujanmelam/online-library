@@ -30,5 +30,49 @@
       "isAdmin": true,
       "id": 5
     }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "A Monster Calls by Patrick Ness",
+      "author": "jyothi",
+      "ISBN": "978-4-16-148410-0",
+      "publication": "2000"
+    },
+    {
+      "id": 2,
+      "title": "Skulduggery Pleasant by Derek Landy",
+      "author": "chota",
+      "ISBN": "978-3-19-148410-0",
+      "publication": "2001"
+    },
+    {
+      "id": 3,
+      "title": "Refugee Boy by Benjamin Zephaniah",
+      "author": "srujan",
+      "ISBN": "978-3-16-148421-0",
+      "publication": "2002"
+    },
+    {
+      "id": 4,
+      "title": "How I Live Now by Meg Rosoff",
+      "author": "kranthi",
+      "ISBN": "978-3-16-148410-5",
+      "publication": "2003"
+    },
+    {
+      "id": 5,
+      "title": "The Handmaid's Tale by Margaret Atwood",
+      "author": "manoj",
+      "ISBN": "978-3-12-248421-7",
+      "publication": "2004"
+    },
+    {
+      "title": "New Town Soul by Dermot Bolger",
+      "author": "Tarun",
+      "ISBN": "978-3-19-148410-5",
+      "publication": "2005",
+      "id": 6
+    }
   ]
 }
