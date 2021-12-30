@@ -1,6 +1,6 @@
 let initialState = {
   loginSuccess: false,
-  user: "",
+  user: {},
 };
 
 function LoginReducer(state = initialState, action) {
@@ -20,7 +20,7 @@ function LoginReducer(state = initialState, action) {
       return {
         ...state,
         loginSuccess: false,
-        user: ""
+        user: {}
       };
     default:
       return state;

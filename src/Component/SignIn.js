@@ -24,7 +24,11 @@ function SignIn() {
   const LoginUser = ()=>{
     axios.get(`http://localhost:3000/users?username=${username1}&password=${password1}`).then( res =>{
       if (res.data.length!==0){
-        store.dispatch({type:"loginSuccess",payload:res.data[0].username}); 
+        const user = {
+          "username" : res.data[0].username,
+          "isAdmin" : res.data[0].isAdmin
+        }
+        store.dispatch({type:"loginSuccess",payload:user}); 
         console.log("Login Success")  
         history("/home");
       }  
