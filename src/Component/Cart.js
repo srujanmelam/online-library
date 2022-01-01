@@ -10,23 +10,22 @@ function Cart({cart,user}) {
   const history = useNavigate();
 
   const placeOrder= ()=>{
-    let orders = [];
+
     cart.forEach(item => {
       const order ={
         "date" : new Date().toUTCString(),
         "username": user,
         "bookId" : item.id
       }
-      orders.push(order)
-    });
-    axios.post(`http://localhost:3000/orders`,orders).then((res)=>{
-      console.log("Order placed successfully");
-      store.dispatch({type: actionTypes.RESET_CART});
-      console.log("Cart Reset");
-      history("/orders");
-    }).catch((err)=>{
+      axios.post(`http://localhost:3000/orders`,order).then((res)=>{
+        console.log("book"+item.id+" added to orders table");
+      }).catch((err)=>{
         console.log(err);
-    })
+      });
+    });
+    store.dispatch({type: actionTypes.RESET_CART});
+    console.log("Cart Reset");
+    history("/orders");
   }
 
   return(

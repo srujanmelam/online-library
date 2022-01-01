@@ -11,7 +11,7 @@ function Orders({username}) {
       await axios.get(`http://localhost:3000/orders?username=${username}&_expand=book`)
         .then((res) => {
           setOrders(res.data)
-          console.log(username+" orders retrieved successfully");
+          console.log("Your orders retrieved successfully");
         })
         .catch((err) => {
           console.log(err);
@@ -25,7 +25,7 @@ function Orders({username}) {
       <NavBar/>
       <h4>Orders</h4>
       {orders.map((order,i)=>{
-        return (<p key={i}> {order.book.title} {order.book.author} {order.book.ISBN} {order.book.publication}</p>);
+        return (<p key={i}> {order.date} {order.book.title} {order.book.author} {order.book.ISBN} {order.book.publication}</p>);
       })}
     </div>
   );
