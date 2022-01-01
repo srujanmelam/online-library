@@ -66,7 +66,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "8%",
+              width: "10%",
             }}
           >
             {extra}
@@ -76,7 +76,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "8%",
+              width: "10%",
             }}
           >
             <Link
@@ -95,7 +95,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "8%",
+              width: "10%",
               padding: "5px 0px",
             }}
           >
