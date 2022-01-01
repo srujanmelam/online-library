@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function CartCounter({cart}) {
@@ -9,7 +10,7 @@ function CartCounter({cart}) {
 
   return (
     <div>
-      <p>Cart: {cartCount}</p>
+      <Link to="/cart" >Cart: {cartCount}</Link>
     </div>
   );
 
