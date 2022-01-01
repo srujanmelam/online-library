@@ -1,5 +1,6 @@
 import store from "./store";
-
+import { Card, CardHeader, CardContent, IconButton, Typography } from '@material-ui/core';
+import { Add, AddOutlined, DeleteOutlined, PlusOneRounded } from "@material-ui/icons";
 function Product(props) {
 
   const book = props.book
@@ -11,10 +12,24 @@ function Product(props) {
 
   return(
     <div>
-      <h6>{book.id} - {book.title}</h6>
-      <h6>{book.author}</h6>
-      <h6>{book.ISBN} {book.publication}</h6>
-      <button onClick={()=>addToCart(book)}>add to cart</button>
+      <Card>
+        <CardHeader 
+        action={
+          <IconButton
+          onClick={()=>addToCart(book)}>
+            <AddOutlined />
+          </IconButton>
+        }
+        title={book.title}
+        subheader= {"- "+book.author}
+        
+      /><CardContent>
+        <Typography variant="body2">PUBLICATION - {book.publication}</Typography>
+        <Typography variant="body2">ISBN - {book.ISBN}</Typography>
+      </CardContent>
+      </Card>
+      
+      
     </div>
   );
 }

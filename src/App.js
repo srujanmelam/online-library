@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './Component/Home';
+import Cart from './Component/Cart'
 import SignUp from './Component/SignUp';
 import SignIn from './Component/SignIn';
 import Orders from "./Component/Orders";
@@ -17,6 +18,7 @@ function App() {
           <Route exact path='/home' element={< Home />}></Route>
           <Route exact path='/addbook' element={< AddBooks />}></Route>
           <Route exact path='/orders' element={< Orders />}></Route>
+          <Route exact path='/cart' element={< Cart />}></Route>
         </Routes>
       </Router>
     </div>

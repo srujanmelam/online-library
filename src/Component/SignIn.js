@@ -8,7 +8,7 @@ import {
   Button,
   InputAdornment,
   Checkbox,
-  Typography,
+  Typography,makeStyles,
 } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 
@@ -17,7 +17,7 @@ function SignIn() {
   const [password1, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useNavigate();
-
+ 
   const LoginUser = () => {
     axios
       .get(
@@ -44,6 +44,8 @@ function SignIn() {
         console.log(err);
       });
   };
+  
+
 
   return (
     <div>
@@ -54,7 +56,7 @@ function SignIn() {
       >
         <Grid item xs={12} md={7} lg={7}>
           <img
-            src="https://c4.wallpaperflare.com/wallpaper/417/445/320/anime-original-book-chair-library-hd-wallpaper-preview.jpg"
+            src="https://images.squarespace-cdn.com/content/v1/5475f6eae4b0821160f6ac3e/1570638927688-1XI0VGYD2404X06L0MC4/bigstock-Library-Background-Bookshelve-314188303.jpg"
             style={{ width: "100%", height: "100%", objectfits: "cover" }}
             alt="brand"
           />
@@ -71,7 +73,7 @@ function SignIn() {
           style={{
             color: "white",
             padding: 10,
-            backgroundImage: `url('https://images.unsplash.com/photo-1615799998586-54a1591888bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBwYXBlcnxlbnwwfHwwfHw%3D&w=1000&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
           <div />
@@ -95,10 +97,14 @@ function SignIn() {
             <TextField
               type="text"
               label="Username"
+              InputLabelProps={{
+                style:{color:'white'}
+              }}
               margin="normal"
               onChange={(e) => setUsername(e.target.value)}
               required
-              InputProps={{
+              InputProps={{               
+                style:{color:'white'},
                 startAdornment: (
                   <InputAdornment position="start">
                     <AccountCircle />
@@ -112,7 +118,11 @@ function SignIn() {
               margin="normal"
               onChange={(e) => setPassword(e.target.value)}
               required
+              InputLabelProps={{
+                style:{color:'white'}
+              }}
               InputProps={{
+                style:{color:'white'},
                 startAdornment: (
                   <InputAdornment position="start">
                     <LockRounded />
@@ -125,9 +135,10 @@ function SignIn() {
                 <Typography htmlFor="rememberMe">
                   Remember me
                   <Checkbox
+                   
                     type="checkbox"
                     defaultChecked
-                    color="default"
+                    color="primary"
                     value="lsRememberMe"
                   ></Checkbox>
                 </Typography>
@@ -151,7 +162,7 @@ function SignIn() {
               <Grid item>
                 <Link
                   to="/signup"
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{ textDecoration: "none", color: "yellow" }}
                 >
                   Sign Up
                 </Link>

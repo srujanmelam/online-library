@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Box } from "@material-ui/core";
-
+import { Grid,Box } from "@material-ui/core";
 function Home() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
@@ -83,6 +82,7 @@ function Home() {
             <option value="desc">descending</option>
           </select>
           <CartCounter />
+          <Grid container spacing={3}>
           {books
             .sort((a, b) => {
               const ord = order === "asc" ? 1 : -1;
@@ -95,8 +95,13 @@ function Home() {
               return 0;
             })
             .map((book, i) => (
-              <Product key={i} book={book} />
+              <Grid item key={book.id} xs={12} md={6} lg={4}>
+              
+              <Product book={book} /></Grid>
             ))}
+
+          </Grid>
+         
         </Box>
       </div>
     </div>

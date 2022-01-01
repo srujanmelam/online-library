@@ -61,7 +61,7 @@ function SignUp() {
       >
         <Grid item xs={12} md={7} lg={7}>
           <img
-            src="https://c1.wallpaperflare.com/preview/542/360/877/library-books-montessori-school.jpg"
+            src="https://media.istockphoto.com/vectors/library-vector-id165640961?b=1&k=20&m=165640961&s=612x612&w=0&h=ZWMF08lRmY3cdOS0VNL-8qh17XOCcKL7mAeAZXwEC2A="
             style={{ width: "100%", height: "100%", objectfits: "cover" }}
             alt="brand"
           />
@@ -78,7 +78,7 @@ function SignUp() {
           style={{
             padding: 10,
 
-            backgroundImage: `url('https://images.unsplash.com/photo-1615799998586-54a1591888bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBwYXBlcnxlbnwwfHwwfHw%3D&w=1000&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
           <div />
@@ -89,7 +89,7 @@ function SignUp() {
               maxWidth: 400,
               minwidth: 300,
               color: "white",
-              backgroundImage: `url('https://images.unsplash.com/photo-1615799998586-54a1591888bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBwYXBlcnxlbnwwfHwwfHw%3D&w=1000&q=80')`,
+              
             }}
           >
             <Grid container justifyContent="center">
@@ -105,9 +105,14 @@ function SignUp() {
               label="Username"
               margin="normal"
               onChange={(e) => setUsername(e.target.value)}
+              InputLabelProps={{
+                style:{color:'white'}
+              }}
               required
               InputProps={{
+                style:{color:'white'},
                 startAdornment: (
+                 
                   <InputAdornment position="start">
                     <AccountCircle />
                   </InputAdornment>
@@ -118,9 +123,13 @@ function SignUp() {
               type="password"
               label="Password"
               margin="normal"
+              InputLabelProps={{
+                style:{color:'white'}
+              }}
               onChange={(e) => setPassword(e.target.value)}
               required
               InputProps={{
+                style:{color:'white'},
                 startAdornment: (
                   <InputAdornment position="start">
                     <LockRounded />
@@ -158,7 +167,7 @@ function SignUp() {
                 <Typography>Already have an account ?</Typography>
               </Grid>
               <Grid item>
-                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                <Link to="/" style={{ textDecoration: "none", color: "yellow" }}>
                   Sign in
                 </Link>
               </Grid>
