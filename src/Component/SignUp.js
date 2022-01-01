@@ -55,7 +55,7 @@ function SignUp() {
         container
         style={{
           border: "solid",
-          minWidth: "100%",
+          minwidth: "100%",
           height: "100vh",
         }}
       >
@@ -74,7 +74,7 @@ function SignUp() {
           lg={5}
           alignItems="center"
           direction="column"
-          justify="space-between"
+          justifyContent="space-between"
           style={{
             padding: 10,
 
@@ -87,12 +87,12 @@ function SignUp() {
               display: "flex",
               flexDirection: "column",
               maxWidth: 400,
-              minWidth: 300,
+              minwidth: 300,
               color: "white",
               backgroundImage: `url('https://images.unsplash.com/photo-1615799998586-54a1591888bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBwYXBlcnxlbnwwfHwwfHw%3D&w=1000&q=80')`,
             }}
           >
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               <img
                 src="https://cdn5.vectorstock.com/i/thumb-large/75/49/panda-book-read-newspaper-negative-space-logo-icon-vector-39827549.jpg"
                 width={200}
@@ -108,7 +108,7 @@ function SignUp() {
               required
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <AccountCircle />
                   </InputAdornment>
                 ),
@@ -122,13 +122,13 @@ function SignUp() {
               required
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <LockRounded />
                   </InputAdornment>
                 ),
               }}
             ></TextField>
-            <Grid container justify="center" spacing={2}>
+            <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography>
                   Admin
@@ -147,25 +147,21 @@ function SignUp() {
             <Button
               type="submit"
               onClick={SignUpUser}
-              color="white"
+              color="default"
               variant="contained"
             >
               SignUp
             </Button>
             <div style={{ height: 20 }} />
-            <Grid container justify="center" spacing={2}>
+            <Grid container justifyContent="center" spacing={2}>
               <Grid item>
-                <Typography>
-                  Already have an account ?
-                  <Link
-                    to="/"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    Sign in
-                  </Link>
-                </Typography>
+                <Typography>Already have an account ?</Typography>
               </Grid>
-              <Grid item> </Grid>
+              <Grid item>
+                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                  Sign in
+                </Link>
+              </Grid>
             </Grid>
           </div>
 

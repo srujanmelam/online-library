@@ -10,7 +10,6 @@ import {
   Checkbox,
   Typography,
 } from "@material-ui/core";
-
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 
 function SignIn() {
@@ -26,10 +25,11 @@ function SignIn() {
       )
       .then((res) => {
         if (res.data.length !== 0) {
-          store.dispatch({
-            type: "loginSuccess",
-            payload: res.data[0].username,
-          });
+          const user = {
+            username: res.data[0].username,
+            isAdmin: res.data[0].isAdmin,
+          };
+          store.dispatch({ type: "loginSuccess", payload: user });
           console.log("Login Success");
           history("/home");
         } else {
@@ -49,8 +49,8 @@ function SignIn() {
     <div>
       <Grid
         container
-        minWidth="100vh"
-        style={{ border: "solid", minWidth: "100%", height: "100vh" }}
+        minwidth="100vh"
+        style={{ border: "solid", minwidth: "100%", height: "100vh" }}
       >
         <Grid item xs={12} md={7} lg={7}>
           <img
@@ -67,7 +67,7 @@ function SignIn() {
           lg={5}
           alignItems="center"
           direction="column"
-          justify="space-between"
+          justifyContent="space-between"
           style={{
             color: "white",
             padding: 10,
@@ -81,10 +81,10 @@ function SignIn() {
               display: "flex",
               flexDirection: "column",
               maxWidth: 400,
-              minWidth: 300,
+              minwidth: 300,
             }}
           >
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               <img
                 src="https://cdn5.vectorstock.com/i/thumb-large/75/49/panda-book-read-newspaper-negative-space-logo-icon-vector-39827549.jpg"
                 width={200}
@@ -96,12 +96,11 @@ function SignIn() {
               type="text"
               label="Username"
               margin="normal"
-              color="white"
               onChange={(e) => setUsername(e.target.value)}
               required
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <AccountCircle />
                   </InputAdornment>
                 ),
@@ -115,19 +114,20 @@ function SignIn() {
               required
               InputProps={{
                 startAdornment: (
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <LockRounded />
                   </InputAdornment>
                 ),
               }}
             ></TextField>
-            <Grid container justify="center" spacing={2}>
+            <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography htmlFor="rememberMe">
                   Remember me
                   <Checkbox
                     type="checkbox"
-                    color="brown"
+                    defaultChecked
+                    color="default"
                     value="lsRememberMe"
                   ></Checkbox>
                 </Typography>
@@ -138,13 +138,13 @@ function SignIn() {
             <Button
               type="submit"
               onClick={LoginUser}
-              color="4E342E"
+              color="default"
               variant="contained"
             >
               Sign In
             </Button>
             <div style={{ height: 20 }} />
-            <Grid container justify="center" spacing={2}>
+            <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography> Don 't have an account?</Typography>
               </Grid>
