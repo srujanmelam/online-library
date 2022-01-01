@@ -27,15 +27,6 @@ function NavBar({ user }) {
         Add a Book
       </Link>
     );
-  } else {
-    extra = (
-      <Link
-        to="/orders"
-        style={{ fontSize: "1.17em", textDecoration: "none", color: "white" }}
-      >
-        Your Orders
-      </Link>
-    );
   }
 
   return (
@@ -70,7 +61,6 @@ function NavBar({ user }) {
               </Link>
             </IconButton>
           </Box>
-
           <Box
             sx={{
               display: "flex",
@@ -81,7 +71,25 @@ function NavBar({ user }) {
           >
             {extra}
           </Box>
-
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "8%",
+            }}
+          >
+            <Link
+              to="/orders"
+              style={{
+                fontSize: "1.17em",
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              Your Orders
+            </Link>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -93,7 +101,6 @@ function NavBar({ user }) {
           >
             <Typography variant="h6">Hi {user.username}</Typography>
           </Box>
-
           <Box>
             <Button variant="contained">
               <Link
