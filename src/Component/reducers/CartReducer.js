@@ -5,6 +5,7 @@ const initialState = {
 export const actionTypes = {
   ADD_TO_CART: "ADD_TO_CART",
   DELETE_FROM_CART: "DELETE_FROM_CART",
+  RESET_CART: "RESET_CART"
 }
 
 const CartReducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ const CartReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter((i) => i.id !== action.payload.item.id)
       }
+    
+    case actionTypes.RESET_CART:
+      return{
+        ...state,
+        cart: [],
+      }  
 
     default:
       return state;

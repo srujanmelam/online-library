@@ -74,5 +74,18 @@
       "publication": "2005",
       "id": 6
     }
-  ]
+  ],
+  "orders": 
+    [
+      {
+        "date": "Sat, 01 Jan 2022 11:45:43 GMT",
+        "username": "srujan",
+        "bookId": 1
+      },
+      {
+        "date": "Sat, 01 Jan 2022 11:45:43 GMT",
+        "username": "srujan",
+        "bookId": 3
+      }
+    ]
 }

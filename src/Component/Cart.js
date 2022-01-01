@@ -1,8 +1,33 @@
+import axios from "axios";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import store from "./store";
 import CartProduct from "./CartProduct";
+import { actionTypes } from "./reducers/CartReducer";
 
-function Cart({cart}) {
+function Cart({cart,user}) {
+
+  const history = useNavigate();
+
+  const placeOrder= ()=>{
+    let orders = [];
+    cart.forEach(item => {
+      const order ={
+        "date" : new Date().toUTCString(),
+        "username": user,
+        "bookId" : item.id
+      }
+      orders.push(order)
+    });
+    axios.post(`http://localhost:3000/orders`,orders).then((res)=>{
+      console.log("Order placed successfully");
+      store.dispatch({type: actionTypes.RESET_CART});
+      console.log("Cart Reset");
+      history("/orders");
+    }).catch((err)=>{
+        console.log(err);
+    })
+  }
 
   return(
     <div>
@@ -12,7 +37,7 @@ function Cart({cart}) {
             return (<CartProduct item={item} key={id}/>);
           })
         }
-        <button>CheckOut</button>
+        <button onClick={placeOrder}>CheckOut</button>
     </div>
   );
 
@@ -21,6 +46,7 @@ function Cart({cart}) {
 const mapStateToProps = (state) => {
   return {
     cart: state.cartReducer.cart,
+    user: state.loginReducer.user.username
   };
 };
 
