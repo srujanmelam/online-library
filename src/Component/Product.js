@@ -1,6 +1,6 @@
 import store from "./store";
 import { Card, CardHeader, CardContent, IconButton, Typography } from '@material-ui/core';
-import { Add, AddOutlined, DeleteOutlined, PlusOneRounded } from "@material-ui/icons";
+import { AddOutlined } from "@material-ui/icons";
 function Product(props) {
 
   const book = props.book

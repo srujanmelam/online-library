@@ -2,15 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-import {
-  Grid,
-  TextField,
-  Button,
-  InputAdornment,
-  Checkbox,
-  Typography,
-  Paper,
-} from "@material-ui/core";
+import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
 import {
   AccountCircle,
   TitleRounded,
@@ -64,7 +56,6 @@ function AddBooks() {
             padding: 10,
           }}
         ></Grid>
-
         <Grid
           container
           item
@@ -104,7 +95,6 @@ function AddBooks() {
               ),
             }}
           ></TextField>
-
           <TextField
             type="text"
             label="Author"
@@ -120,7 +110,6 @@ function AddBooks() {
               ),
             }}
           ></TextField>
-
           <TextField
             type="text"
             label="ISBN"
@@ -136,7 +125,6 @@ function AddBooks() {
               ),
             }}
           ></TextField>
-
           <TextField
             type="number"
             label="Publication"
@@ -152,7 +140,6 @@ function AddBooks() {
               ),
             }}
           ></TextField>
-
           <Button
             type="submit"
             onClick={addBook}
@@ -165,7 +152,6 @@ function AddBooks() {
           <div />
           <div />
         </Grid>
-
         <Grid
           item
           xs={12}

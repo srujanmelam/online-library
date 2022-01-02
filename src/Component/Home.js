@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Grid,Box, TextField, Button, IconButton, Typography, Select } from "@material-ui/core";
+import { Grid,Box } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
+
 
 
 function Home() {
@@ -118,9 +119,7 @@ function Home() {
               
               <Product book={book} /></Grid>
             ))}
-
           </Grid>
-         
         </Box>
       </div>
     </div>
