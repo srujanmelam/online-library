@@ -1,4 +1,4 @@
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ShoppingCartIconRounded from "@material-ui/icons/ShoppingCart";
@@ -10,18 +10,14 @@ function CartCounter({cart}) {
 
   return (
     <div>
-      <Link to="/cart" style={{textDecoration:"none",color:"white"}}> <div style={{width:"50px",height:"50px",backgroundColor:"black",WebkitBorderRadius:"50%",textAlign:"center",float:"right"}}>
-      <ShoppingCartIconRounded fontSize="medium" style={{marginTop:"10px"}}/>
-        <span className="cart-items" style={{color:"white"}}>{cartCount}</span>
-      </div></Link>
-     
-
-     
-     
-     
+      <Link to="/cart" style={{textDecoration:"none",color:"white"}}> 
+        <div style={{width:"50px",height:"50px",backgroundColor:"black",WebkitBorderRadius:"50%",textAlign:"center",float:"right"}}>
+          <ShoppingCartIconRounded fontSize="medium" style={{marginTop:"10px"}}/>
+          <span className="cart-items" style={{color:"white"}}>{cartCount}</span>
+        </div>
+      </Link>
     </div>
   );
-
 }
 
 const mapStateToProps = (state) => {

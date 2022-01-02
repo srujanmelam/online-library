@@ -10,9 +10,8 @@ function Cart({cart,user}) {
   const history = useNavigate();
 
   const placeOrder= ()=>{
-
     cart.forEach(item => {
-      const order ={
+      let order ={
         "date" : new Date().toUTCString(),
         "username": user,
         "bookId" : item.id
@@ -22,6 +21,8 @@ function Cart({cart,user}) {
       }).catch((err)=>{
         console.log(err);
       });
+      order["book"]=item;
+      store.dispatch({type:"ADD_ORDERS",payload:{order:order}})
     });
     store.dispatch({type: actionTypes.RESET_CART});
     console.log("Cart Reset");
@@ -39,7 +40,6 @@ function Cart({cart,user}) {
         <button onClick={placeOrder}>CheckOut</button>
     </div>
   );
-
 }
 
 const mapStateToProps = (state) => {

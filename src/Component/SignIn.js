@@ -8,7 +8,7 @@ import {
   Button,
   InputAdornment,
   Checkbox,
-  Typography,makeStyles,
+  Typography,
 } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 
@@ -45,8 +45,6 @@ function SignIn() {
       });
   };
   
-
-
   return (
     <div>
       <Grid

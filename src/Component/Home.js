@@ -4,6 +4,7 @@ import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
 import { Grid,Box } from "@material-ui/core";
+
 function Home() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
@@ -99,9 +100,7 @@ function Home() {
               
               <Product book={book} /></Grid>
             ))}
-
           </Grid>
-         
         </Box>
       </div>
     </div>
