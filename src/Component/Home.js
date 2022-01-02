@@ -3,7 +3,17 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Grid, Box, TextField, IconButton, Select } from "@material-ui/core";
+import {
+  Grid,
+  Box,
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Typography,
+} from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
 
 function Home() {
@@ -43,47 +53,96 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 30 }}>
+      <div style={{ marginTop: 60 }}>
         <Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginLeft: "250px",
+              marginLeft: "150px",
             }}
           >
-            <TextField
-              type="text"
-              placeholder={"search anything..." + search}
-              onChange={(e) => setSearch(e.target.value)}
-            ></TextField>
             <label htmlFor="search"> </label>
-            <Select
-              id="search"
-              value={attribute}
-              onChange={(e) => setAttribute(e.target.value)}
+            <Box
+              sx={{
+                minWidth: 100,
+                marginRight: "75px",
+              }}
             >
-              <option value="title">title</option>
-              <option value="author">author</option>
-              <option value="publication">publication</option>
-            </Select>
+              <FormControl fullWidth size="small">
+                <Select
+                  id="search"
+                  variant="outlined"
+                  value={attribute}
+                  onChange={(e) => setAttribute(e.target.value)}
+                >
+                  <MenuItem value="title">title</MenuItem>
+                  <MenuItem value="author">author</MenuItem>
+                  <MenuItem value="publication">publication</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-            <IconButton type="submit" onClick={searchData} color="primary">
-              <SearchRounded />
-            </IconButton>
-
-            <label htmlFor="sort">Sort :</label>
-            <select
-              id="sort"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+            <Box
+              sx={{
+                width: 500,
+                maxWidth: "100%",
+                marginRight: "75px",
+              }}
             >
-              <option value="id">id</option>
-              <option value="title">title</option>
-              <option value="author">author</option>
-              <option value="publication">publication</option>
-            </select>
+              <TextField
+                size="small"
+                fullWidth
+                label="search anything..."
+                variant="outlined"
+                type="text"
+                label={"search anything..." + search}
+                onChange={(e) => setSearch(e.target.value)}
+              ></TextField>
+            </Box>
+
+            <Box
+              sx={{
+                marginRight: "50px",
+              }}
+            >
+              <Button
+                size="medium"
+                variant="contained"
+                type="submit"
+                onClick={searchData}
+                color="primary"
+                startIcon={<SearchRounded />}
+              >
+                Search
+              </Button>
+            </Box>
+
+            <label htmlFor="sort">
+              <Typography variant="h5">Sort By:</Typography>{" "}
+            </label>
+            <Box
+              sx={{
+                minWidth: 100,
+                marginLeft: "10px",
+              }}
+            >
+              <FormControl fullWidth size="small">
+                <Select
+                  id="sort"
+                  variant="outlined"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <MenuItem value="id">id</MenuItem>
+                  <MenuItem value="title">title</MenuItem>
+                  <MenuItem value="author">author</MenuItem>
+                  <MenuItem value="publication">publication</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+
             <label htmlFor="Asc">Order :</label>
             <select
               id="order"
