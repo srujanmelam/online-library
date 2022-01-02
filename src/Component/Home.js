@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Grid,Box } from "@material-ui/core";
+import { Grid,Box, TextField, Button } from "@material-ui/core";
+import { SearchRounded } from "@material-ui/icons";
+
 function Home() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
@@ -43,44 +45,55 @@ function Home() {
       <NavBar />
       <div style={{ marginTop: 30 }}>
         <Box>
-          <input
-            type="text"
-            placeholder={"search anything..." + search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <label htmlFor="search">Search from : </label>
-          <select
-            id="search"
-            value={attribute}
-            onChange={(e) => setAttribute(e.target.value)}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: "250px",
+            }}
           >
-            <option value="title">title</option>
-            <option value="author">author</option>
-            <option value="publication">publication</option>
-          </select>
-          <button type="submit" onClick={searchData}>
-            Search
-          </button>
-          <label htmlFor="sort">Sort :</label>
-          <select
-            id="sort"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="id">id</option>
-            <option value="title">title</option>
-            <option value="author">author</option>
-            <option value="publication">publication</option>
-          </select>
-          <label htmlFor="Asc">Order :</label>
-          <select
-            id="order"
-            value={order}
-            onChange={(e) => setOrder(e.target.value)}
-          >
-            <option value="asc">ascending</option>
-            <option value="desc">descending</option>
-          </select>
+            <input
+              type="text"
+              placeholder={"search anything..." + search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <label htmlFor="search"> </label>
+            <select
+              id="search"
+              value={attribute}
+              onChange={(e) => setAttribute(e.target.value)}
+            >
+              <option value="title">title</option>
+              <option value="author">author</option>
+              <option value="publication">publication</option>
+            </select>
+            <Button type="submit" onClick={searchData}>
+              Search
+            </Button>
+
+            <label htmlFor="sort">Sort :</label>
+            <select
+              id="sort"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="id">id</option>
+              <option value="title">title</option>
+              <option value="author">author</option>
+              <option value="publication">publication</option>
+            </select>
+            <label htmlFor="Asc">Order :</label>
+            <select
+              id="order"
+              value={order}
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="asc">ascending</option>
+              <option value="desc">descending</option>
+            </select>
+             
+          </Box>
           <CartCounter />
           <Grid container spacing={3}>
           {books
