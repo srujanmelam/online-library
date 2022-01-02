@@ -11,7 +11,6 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   Typography,
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
