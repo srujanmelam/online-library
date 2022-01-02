@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Grid,Box, TextField, Button } from "@material-ui/core";
+import { Grid,Box, TextField, Button, IconButton, Typography, Select } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
+
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -53,13 +54,13 @@ function Home() {
               marginLeft: "250px",
             }}
           >
-            <input
+            <TextField
               type="text"
               placeholder={"search anything..." + search}
               onChange={(e) => setSearch(e.target.value)}
-            />
+            ></TextField>
             <label htmlFor="search"> </label>
-            <select
+            <Select
               id="search"
               value={attribute}
               onChange={(e) => setAttribute(e.target.value)}
@@ -67,10 +68,15 @@ function Home() {
               <option value="title">title</option>
               <option value="author">author</option>
               <option value="publication">publication</option>
-            </select>
-            <Button type="submit" onClick={searchData}>
-              Search
-            </Button>
+            </Select>             
+
+            <IconButton 
+              type="submit" 
+              onClick={searchData}
+              color="primary"
+            >
+              <SearchRounded />
+            </IconButton>
 
             <label htmlFor="sort">Sort :</label>
             <select
