@@ -3,10 +3,8 @@ import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
-import { Grid,Box } from "@material-ui/core";
+import { Grid, Box, TextField, IconButton, Select } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
-
-
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -69,13 +67,9 @@ function Home() {
               <option value="title">title</option>
               <option value="author">author</option>
               <option value="publication">publication</option>
-            </Select>             
+            </Select>
 
-            <IconButton 
-              type="submit" 
-              onClick={searchData}
-              color="primary"
-            >
+            <IconButton type="submit" onClick={searchData} color="primary">
               <SearchRounded />
             </IconButton>
 
@@ -99,26 +93,25 @@ function Home() {
               <option value="asc">ascending</option>
               <option value="desc">descending</option>
             </select>
-             
           </Box>
           <CartCounter />
           <Grid container spacing={3}>
-          {books
-            .sort((a, b) => {
-              const ord = order === "asc" ? 1 : -1;
-              if (a[sortBy] > b[sortBy]) {
-                return 1 * ord;
-              }
-              if (a[sortBy] < b[sortBy]) {
-                return -1 * ord;
-              }
-              return 0;
-            })
-            .map((book, i) => (
-              <Grid item key={book.id} xs={12} md={6} lg={4}>
-              
-              <Product book={book} /></Grid>
-            ))}
+            {books
+              .sort((a, b) => {
+                const ord = order === "asc" ? 1 : -1;
+                if (a[sortBy] > b[sortBy]) {
+                  return 1 * ord;
+                }
+                if (a[sortBy] < b[sortBy]) {
+                  return -1 * ord;
+                }
+                return 0;
+              })
+              .map((book, i) => (
+                <Grid item key={book.id} xs={12} md={6} lg={4}>
+                  <Product book={book} />
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </div>
