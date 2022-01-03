@@ -12,6 +12,7 @@ import {
   MenuItem,
   FormControl,
   Typography,
+  InputLabel
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
 
@@ -52,13 +53,13 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 60 }}>
+      <div style={{ marginTop: 30 }}>
         <Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              alignItems: "center",
+              
               marginLeft: "150px",
             }}
           >
@@ -66,7 +67,7 @@ function Home() {
             <Box
               sx={{
                 minWidth: 100,
-                marginRight: "75px",
+                marginRight: "20px",
               }}
             >
               <FormControl fullWidth size="small">
@@ -87,7 +88,7 @@ function Home() {
               sx={{
                 width: 500,
                 maxWidth: "100%",
-                marginRight: "75px",
+                marginRight: "10px",
               }}
             >
               <TextField
@@ -103,7 +104,7 @@ function Home() {
 
             <Box
               sx={{
-                marginRight: "50px",
+                marginRight: "10px",
               }}
             >
               <Button
@@ -119,14 +120,16 @@ function Home() {
             </Box>
 
             <label htmlFor="sort">
-              <Typography variant="h5">Sort By:</Typography>{" "}
+              <Typography variant="h6">Sort By:</Typography>{" "}
             </label>
             <Box
               sx={{
                 minWidth: 100,
                 marginLeft: "10px",
+                marginRight: "10px",
               }}
             >
+              
               <FormControl fullWidth size="small">
                 <Select
                   id="sort"
@@ -141,16 +144,29 @@ function Home() {
                 </Select>
               </FormControl>
             </Box>
-
-            <label htmlFor="Asc">Order :</label>
-            <select
-              id="order"
-              value={order}
-              onChange={(e) => setOrder(e.target.value)}
+            <label htmlFor="order">
+              <Typography variant="h6">Order:</Typography>
+            </label>
+            <Box
+              sx={{
+                minWidth: 100,
+                marginLeft: "10px",
+              }}
             >
-              <option value="asc">ascending</option>
-              <option value="desc">descending</option>
-            </select>
+            <FormControl size="small">
+                <Select
+                  id="order"
+                  variant="outlined"
+                  value={order}
+                  onChange={(e) => setOrder(e.target.value)}
+                >
+                  <MenuItem value="asc">ascending</MenuItem>
+                  <MenuItem value="desc">descending</MenuItem>
+                  
+                </Select>
+              </FormControl></Box>
+           
+         
           </Box>
           <CartCounter />
           <Grid container spacing={3}>
