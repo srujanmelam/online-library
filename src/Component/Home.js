@@ -12,7 +12,6 @@ import {
   MenuItem,
   FormControl,
   Typography,
-  InputLabel
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
 
@@ -59,7 +58,7 @@ function Home() {
             sx={{
               display: "flex",
               flexDirection: "row",
-              
+
               marginLeft: "150px",
             }}
           >
@@ -83,7 +82,6 @@ function Home() {
                 </Select>
               </FormControl>
             </Box>
-
             <Box
               sx={{
                 width: 500,
@@ -94,14 +92,12 @@ function Home() {
               <TextField
                 size="small"
                 fullWidth
-                label="search anything..."
                 variant="outlined"
                 type="text"
                 label={"search anything..." + search}
                 onChange={(e) => setSearch(e.target.value)}
               ></TextField>
             </Box>
-
             <Box
               sx={{
                 marginRight: "10px",
@@ -118,10 +114,10 @@ function Home() {
                 Search
               </Button>
             </Box>
-
-            <label htmlFor="sort">
-              <Typography variant="h6">Sort By:</Typography>{" "}
-            </label>
+          </Box>
+          <CartCounter />
+          <br/><br/>
+          <Box>
             <Box
               sx={{
                 minWidth: 100,
@@ -129,8 +125,8 @@ function Home() {
                 marginRight: "10px",
               }}
             >
-              
-              <FormControl fullWidth size="small">
+              <Typography variant="h6">Sort By:</Typography>
+              <FormControl size="small">
                 <Select
                   id="sort"
                   variant="outlined"
@@ -144,16 +140,14 @@ function Home() {
                 </Select>
               </FormControl>
             </Box>
-            <label htmlFor="order">
-              <Typography variant="h6">Order:</Typography>
-            </label>
             <Box
               sx={{
                 minWidth: 100,
                 marginLeft: "10px",
               }}
             >
-            <FormControl size="small">
+              <Typography variant="h6">Order:</Typography>
+              <FormControl size="small">
                 <Select
                   id="order"
                   variant="outlined"
@@ -162,13 +156,10 @@ function Home() {
                 >
                   <MenuItem value="asc">ascending</MenuItem>
                   <MenuItem value="desc">descending</MenuItem>
-                  
                 </Select>
-              </FormControl></Box>
-           
-         
+              </FormControl>
+            </Box>
           </Box>
-          <CartCounter />
           <Grid container spacing={3}>
             {books
               .sort((a, b) => {

@@ -29,9 +29,11 @@ function Cart({ cart, user }) {
       order["book"] = item;
       store.dispatch({ type: "ADD_ORDERS", payload: { order: order } });
     });
-    store.dispatch({ type: actionTypes.RESET_CART });
-    console.log("Cart Reset");
-    history("/orders");
+    setTimeout(() => {
+      store.dispatch({type: actionTypes.RESET_CART});
+      console.log("Cart Reset");
+      history("/orders");
+    }, 1000);
   };
 
   return (
