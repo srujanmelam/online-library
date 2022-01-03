@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import Pagination from "@material-ui/lab/Pagination"
 
 const Paginate = ({ items, Component }) => {
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
   const itemsPerPage = 5;
   const pagesVisited = (pageNumber-1) * itemsPerPage;
   const displayItems = items.slice(pagesVisited, pagesVisited + itemsPerPage);
