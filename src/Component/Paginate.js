@@ -5,12 +5,12 @@ import Pagination from "@material-ui/lab/Pagination"
 const Paginate = ({ items, Component }) => {
   const [pageNumber, setPageNumber] = useState(0);
   const itemsPerPage = 5;
-  const pagesVisited = pageNumber * itemsPerPage;
+  const pagesVisited = (pageNumber-1) * itemsPerPage;
   const displayItems = items.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   const changePage = (event,val) => {
-    setPageNumber(val-1);
+    setPageNumber(val);
   };
 
   return (
