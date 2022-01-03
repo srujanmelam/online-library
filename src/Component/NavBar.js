@@ -90,6 +90,25 @@ function NavBar({ user }) {
             }}
           >
             <Link
+              to="/status"
+              style={{
+                fontSize: "1.17em",
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              Status
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "10%",
+            }}
+          >
+            <Link
               to="/orders"
               style={{
                 fontSize: "1.17em",

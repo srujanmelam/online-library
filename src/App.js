@@ -5,6 +5,7 @@ import Cart from './Component/Cart'
 import SignUp from './Component/SignUp';
 import SignIn from './Component/SignIn';
 import Orders from "./Component/Orders";
+import Status from "./Component/Status";
 import AddBooks from './Component/AddBooks';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route exact path='/addbook' element={< AddBooks />}></Route>
           <Route exact path='/orders' element={< Orders />}></Route>
           <Route exact path='/cart' element={< Cart />}></Route>
+          <Route exact path='/status' element={< Status />}></Route>
         </Routes>
       </Router>
     </div>

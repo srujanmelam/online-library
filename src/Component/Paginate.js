@@ -16,7 +16,7 @@ const Paginate = ({ items, Component }) => {
   return (
     <div>
       {displayItems.map((item, i) => (
-        <Box
+        <Box key={i}
           sx={{
             display: "flex",
             alignItems: "center",

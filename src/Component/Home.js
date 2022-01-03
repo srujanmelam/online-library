@@ -4,14 +4,13 @@ import Product from "./Product";
 import NavBar from "./NavBar";
 import CartCounter from "./CartCounter";
 import {
-  Grid,
   Box,
   TextField,
   Button,
   Select,
   MenuItem,
   FormControl,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
 import Paginate from "./Paginate";
@@ -53,7 +52,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 50}}>
+      <div style={{ marginTop: 50 }}>
         <Box>
           <Box
             sx={{
@@ -153,7 +152,7 @@ function Home() {
               </FormControl>
             </Box>
 
-            <Typography variant="h6">Order:</Typography>    
+            <Typography variant="h6">Order:</Typography>
             <Box
               sx={{
                 minWidth: 100,
@@ -174,18 +173,18 @@ function Home() {
             </Box>
           </Box>
         </Box>
-
-          <Paginate items={ books.sort((a, b) => {
+        <Paginate
+          items={books.sort((a, b) => {
             const ord = order === "asc" ? 1 : -1;
-            if (a[sortBy] > b[sortBy]){
+            if (a[sortBy] > b[sortBy]) {
               return 1 * ord;
-            }
-            else if(a[sortBy] < b[sortBy]) {
-                return -1 * ord;
+            } else if (a[sortBy] < b[sortBy]) {
+              return -1 * ord;
             }
             return 0;
-          })} Component={Product} />
-
+          })}
+          Component={Product}
+        />
       </div>
     </div>
   );

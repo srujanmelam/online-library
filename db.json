@@ -79,12 +79,14 @@
     {
       "date": "Sat, 01 Jan 2022 11:45:43 GMT",
       "username": "srujan",
+      "return": false,
       "bookId": 1,
       "id": 1
     },
     {
       "date": "Sat, 01 Jan 2022 11:45:43 GMT",
       "username": "srujan",
+      "return": false,
       "bookId": 3,
       "id": 2
     },
@@ -92,17 +94,20 @@
       "date": "Sat, 01 Jan 2022 12:10:17 GMT",
       "username": "jyothi",
       "bookId": 1,
+      "return": false,
       "id": 3
     },
     {
       "date": "Sat, 01 Jan 2022 12:10:17 GMT",
       "username": "jyothi",
       "bookId": 4,
+      "return": false,
       "id": 4
     },
     {
       "date": "Mon, 03 Jan 2022 09:49:54 GMT",
       "username": "srujan",
+      "return": false,
       "bookId": 1,
       "id": 5
     }

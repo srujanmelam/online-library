@@ -44,7 +44,7 @@ function Orders({ username }) {
         <Grid container spacing={3} alignItems="center">
           {orders.map((order, i) => {
             return (
-              <Grid item xs={10} md={10} lg={10}>
+              <Grid item key={i} xs={10} md={10} lg={10}>
                 <Card key={i}>
                   <CardContent>
                     &nbsp;
