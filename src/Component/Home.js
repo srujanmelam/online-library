@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
+import Paginate from "./Paginate";
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -76,9 +77,9 @@ function Home() {
                   value={attribute}
                   onChange={(e) => setAttribute(e.target.value)}
                 >
-                  <MenuItem value="title">title</MenuItem>
-                  <MenuItem value="author">author</MenuItem>
-                  <MenuItem value="publication">publication</MenuItem>
+                  <MenuItem value="title">Title</MenuItem>
+                  <MenuItem value="author">Author</MenuItem>
+                  <MenuItem value="publication">Publication</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -94,7 +95,7 @@ function Home() {
                 fullWidth
                 variant="outlined"
                 type="text"
-                label={"search anything..." + search}
+                label="search anything..."
                 onChange={(e) => setSearch(e.target.value)}
               ></TextField>
             </Box>
@@ -161,22 +162,16 @@ function Home() {
             </Box>
           </Box>
           <Grid container spacing={3}>
-            {books
-              .sort((a, b) => {
+            <Paginate items={ books.sort((a, b) => {
                 const ord = order === "asc" ? 1 : -1;
-                if (a[sortBy] > b[sortBy]) {
+                if (a[sortBy] > b[sortBy]){
                   return 1 * ord;
                 }
-                if (a[sortBy] < b[sortBy]) {
+                else if(a[sortBy] < b[sortBy]) {
                   return -1 * ord;
                 }
                 return 0;
-              })
-              .map((book, i) => (
-                <Grid item key={book.id} xs={12} md={6} lg={4}>
-                  <Product book={book} />
-                </Grid>
-              ))}
+              })} Component={Product} />
           </Grid>
         </Box>
       </div>
