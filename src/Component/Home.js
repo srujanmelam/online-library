@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
+import Paginate from "./Paginate";
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -52,14 +53,15 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 60 }}>
+      <div style={{ marginTop: 50}}>
         <Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              marginLeft: "150px",
+              marginLeft: "300px",
+              marginBottom: "50px",
             }}
           >
             <label htmlFor="search"> </label>
@@ -76,9 +78,9 @@ function Home() {
                   value={attribute}
                   onChange={(e) => setAttribute(e.target.value)}
                 >
-                  <MenuItem value="title">title</MenuItem>
-                  <MenuItem value="author">author</MenuItem>
-                  <MenuItem value="publication">publication</MenuItem>
+                  <MenuItem value="title">Title</MenuItem>
+                  <MenuItem value="author">Author</MenuItem>
+                  <MenuItem value="publication">Publication</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -87,23 +89,22 @@ function Home() {
               sx={{
                 width: 500,
                 maxWidth: "100%",
-                marginRight: "75px",
+                marginRight: "30px",
               }}
             >
               <TextField
                 size="small"
                 fullWidth
-                label="search anything..."
                 variant="outlined"
                 type="text"
-                label={"search anything..." + search}
+                label="search anything..."
                 onChange={(e) => setSearch(e.target.value)}
               ></TextField>
             </Box>
 
             <Box
               sx={{
-                marginRight: "50px",
+                marginRight: "300px",
               }}
             >
               <Button
@@ -117,14 +118,24 @@ function Home() {
                 Search
               </Button>
             </Box>
+            <CartCounter />
+          </Box>
 
-            <label htmlFor="sort">
-              <Typography variant="h5">Sort By:</Typography>{" "}
-            </label>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: "500px",
+              marginBottom: "50px",
+            }}
+          >
+            <Typography variant="h6">Sort By:</Typography>
             <Box
               sx={{
                 minWidth: 100,
                 marginLeft: "10px",
+                marginRight: "75px",
               }}
             >
               <FormControl fullWidth size="small">
@@ -142,36 +153,39 @@ function Home() {
               </FormControl>
             </Box>
 
-            <label htmlFor="Asc">Order :</label>
-            <select
-              id="order"
-              value={order}
-              onChange={(e) => setOrder(e.target.value)}
+            <Typography variant="h6">Order:</Typography>    
+            <Box
+              sx={{
+                minWidth: 100,
+                marginLeft: "10px",
+              }}
             >
-              <option value="asc">ascending</option>
-              <option value="desc">descending</option>
-            </select>
+              <FormControl fullWidth size="small">
+                <Select
+                  id="order"
+                  variant="outlined"
+                  value={order}
+                  onChange={(e) => setOrder(e.target.value)}
+                >
+                  <MenuItem value="asc">ascending</MenuItem>
+                  <MenuItem value="desc">descending</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
           </Box>
-          <CartCounter />
-          <Grid container spacing={3}>
-            {books
-              .sort((a, b) => {
-                const ord = order === "asc" ? 1 : -1;
-                if (a[sortBy] > b[sortBy]) {
-                  return 1 * ord;
-                }
-                if (a[sortBy] < b[sortBy]) {
-                  return -1 * ord;
-                }
-                return 0;
-              })
-              .map((book, i) => (
-                <Grid item key={book.id} xs={12} md={6} lg={4}>
-                  <Product book={book} />
-                </Grid>
-              ))}
-          </Grid>
         </Box>
+
+          <Paginate items={ books.sort((a, b) => {
+            const ord = order === "asc" ? 1 : -1;
+            if (a[sortBy] > b[sortBy]){
+              return 1 * ord;
+            }
+            else if(a[sortBy] < b[sortBy]) {
+                return -1 * ord;
+            }
+            return 0;
+          })} Component={Product} />
+
       </div>
     </div>
   );

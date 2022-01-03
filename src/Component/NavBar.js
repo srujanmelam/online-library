@@ -46,7 +46,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "70%",
+              width: "7%",
             }}
           >
             <IconButton>
@@ -60,6 +60,16 @@ function NavBar({ user }) {
                 <MenuBookRounded fontSize="large" />
               </Link>
             </IconButton>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "60%",
+            }}
+          >
+            <Typography variant="h4">e-Library</Typography>
           </Box>
           <Box
             sx={{
