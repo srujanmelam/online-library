@@ -22,14 +22,11 @@ function Product(props) {
         }
         title={book.title}
         subheader= {"- "+book.author}
-        
       /><CardContent>
         <Typography variant="body2">PUBLICATION - {book.publication}</Typography>
         <Typography variant="body2">ISBN - {book.ISBN}</Typography>
       </CardContent>
-      </Card>
-      
-      
+      </Card> 
     </div>
   );
 }
