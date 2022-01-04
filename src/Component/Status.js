@@ -14,8 +14,9 @@ import {
 
 const Status = ({ username }) => {
   const [orders, setOrders] = useState([]);
-  const [dueDates, setDueDates] = useState([]);
   const [fines, setFines] = useState([]);
+  const [dueDates, setDueDates] = useState([]);
+  const [totalFine, setTotalFine] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +26,7 @@ const Status = ({ username }) => {
         )
         .then((res) => {
           setOrders(res.data);
-          console.log("Your orders retrieved successfully");
+          console.log("Your pending returns retrieved successfully");
         })
         .catch((err) => {
           console.log(err);
@@ -47,17 +48,20 @@ const Status = ({ username }) => {
 
   useEffect(() => {
     let fine = [];
+    let total = 0;
     orders.forEach((order) => {
       const date = new Date(order.date).getDate();
       const currentDate = new Date().getDate();
       if (currentDate - date >= 7) {
         const f = (currentDate - date) * 10;
         fine.push(f);
+        total+=f;
       } else {
         fine.push(0);
       }
     });
     setFines(fine);
+    setTotalFine(total);
   }, [orders]);
 
   const returnBooks = (item) => {
@@ -86,7 +90,7 @@ const Status = ({ username }) => {
         <AssessmentRounded fontSize="large" />
         &nbsp; Status
       </Typography>
-      <div style={{ marginTop: 40 }}></div>
+      <div style={{ marginTop: 40 }}>Total Fine - {totalFine}</div>
       <Box
         sx={{
           display: "flex",
@@ -109,7 +113,7 @@ const Status = ({ username }) => {
                       <img
                         src="https://edit.org/images/cat/book-covers-big-2019101610.jpg"
                         style={{ width: "45%", height: "75%" }}
-                        alt="book image"
+                        alt="bookImage"
                       />
                     </Box>
                     <Box

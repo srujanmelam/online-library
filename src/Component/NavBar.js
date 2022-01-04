@@ -17,9 +17,10 @@ function NavBar({ user }) {
     console.log("Successfully logged out");
   };
 
-  let extra = <></>;
+  let addBook = <></>;
+  let manage = <></>;
   if (user.isAdmin) {
-    extra = (
+    addBook = (
       <Link
         to="/addbook"
         style={{ fontSize: "1.17em", textDecoration: "none", color: "white" }}
@@ -27,7 +28,16 @@ function NavBar({ user }) {
         Add a Book
       </Link>
     );
+    manage = (
+      <Link
+        to="/manage"
+        style={{ fontSize: "1.17em", textDecoration: "none", color: "white" }}
+      >
+        Manage Orders
+      </Link>
+    );
   }
+
 
   return (
     <AppBar position="static">
@@ -79,7 +89,17 @@ function NavBar({ user }) {
               width: "12%",
             }}
           >
-            {extra}
+            {addBook}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "12%",
+            }}
+          >
+            {manage}
           </Box>
           <Box
             sx={{
