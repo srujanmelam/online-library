@@ -2,6 +2,15 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import { AssessmentRounded, LibraryBooksRounded } from "@material-ui/icons";
+import {
+  Typography,
+  Box,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+} from "@material-ui/core";
 
 const Status = ({ username }) => {
   const [orders, setOrders] = useState([]);
@@ -72,20 +81,86 @@ const Status = ({ username }) => {
   return (
     <div>
       <NavBar />
-      {orders.map((order, i) => (
-        <div key={i}>
-          <h4>Book</h4>
-          <p>
-            {order.book.title} {order.book.author}
-          </p>
-          <p>
-            {order.book.ISBN} {order.book.publication}
-          </p>
-          <button onClick={() => returnBooks(order)}>Return Book</button>
-          <p>Due Date: {dueDates[i]}</p>
-          <p>Fine {fines[i]} Rupees</p>
-        </div>
-      ))}
+      <div style={{ marginTop: 40 }}></div>
+      <Typography variant="h3">
+        <AssessmentRounded fontSize="large" />
+        &nbsp; Status
+      </Typography>
+      <div style={{ marginTop: 40 }}></div>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          marginLeft: "175px",
+          marginRight: "50px",
+        }}
+      >
+        <Grid container spacing={5} alignItems="center">
+          {orders.map((order, i) => (
+            <Grid item key={i} xs={11} md={11} lg={11}>
+              <Card key={i}>
+                <CardContent>
+                  <Box display="flex" flexDirection="row">
+                    <Box
+                      sx={{
+                        marginTop: "75px",
+                      }}
+                    >
+                      <img
+                        src="https://edit.org/images/cat/book-covers-big-2019101610.jpg"
+                        style={{ width: "45%", height: "75%" }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        marginTop: "65px",
+                        marginLeft: "40px",
+                        marginRight: "60px",
+                      }}
+                    >
+                      <Typography variant="h6" align="left">
+                        Book Title - {order.book.title}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book ISBN - {order.book.ISBN}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book Publication - {order.book.publication}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book Author - {order.book.author}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Due Date: {dueDates[i]}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Fine: {fines[i]} Rupees
+                      </Typography>
+                      &nbsp;
+                      <Typography align="right">
+                        <Button
+                          color="secondary"
+                          variant="contained"
+                          onClick={() => returnBooks(order)}
+                          endIcon={<LibraryBooksRounded fontSize="large" />}
+                        >
+                          Return Book
+                        </Button>
+                      </Typography>
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+      <div style={{ marginTop: 40 }}></div>
     </div>
   );
 };

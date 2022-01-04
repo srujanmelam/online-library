@@ -66,7 +66,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "60%",
+              width: "75%",
             }}
           >
             <Typography variant="h4">e-Library</Typography>
@@ -76,7 +76,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "10%",
+              width: "12%",
             }}
           >
             {extra}
@@ -86,7 +86,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "10%",
+              width: "8%",
             }}
           >
             <Link
@@ -105,7 +105,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "10%",
+              width: "12%",
             }}
           >
             <Link
