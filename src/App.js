@@ -7,7 +7,10 @@ import SignIn from './Component/SignIn';
 import Orders from "./Component/Orders";
 import Status from "./Component/Status";
 import Manage from "./Component/Manage";
+import Profile from './Component/Profile';
 import AddBooks from './Component/AddBooks';
+import ManageBooks from './Component/ManageBooks';
+import UpdateBooks from "./Component/UpdateBooks"
 
 function App() {
 
@@ -18,11 +21,14 @@ function App() {
           <Route exact path='/' element={< SignIn />}></Route>
           <Route exact path='/signup' element={< SignUp />}></Route>
           <Route exact path='/home' element={< Home />}></Route>
+          <Route exact path='/profile' element={< Profile />}></Route>
           <Route exact path='/addbook' element={< AddBooks />}></Route>
           <Route exact path='/orders' element={< Orders />}></Route>
           <Route exact path='/cart' element={< Cart />}></Route>
           <Route exact path='/status' element={< Status />}></Route>
           <Route exact path='/manage' element={< Manage />}></Route>
+          <Route exact path='/books' element={< ManageBooks />}></Route>
+          <Route exact path='/update' element={< UpdateBooks />}></Route>
         </Routes>
       </Router>
     </div>

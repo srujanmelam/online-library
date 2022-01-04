@@ -26,7 +26,7 @@ const Paginate = ({ items, Component }) => {
         >
           <Grid container spacing={5} alignItems="center">
             {displayItems.map((item, i) => (
-              <Grid item key={i} key={item.id} xs={10} md={9} lg={9}>
+              <Grid item key={i} xs={10} md={9} lg={9}>
                 <Component book={item} key={i}/>
               </Grid>        
             ))}

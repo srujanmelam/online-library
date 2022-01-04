@@ -19,6 +19,7 @@ function NavBar({ user }) {
 
   let addBook = <></>;
   let manage = <></>;
+  let update = <></>;
   if (user.isAdmin) {
     addBook = (
       <Link
@@ -34,6 +35,14 @@ function NavBar({ user }) {
         style={{ fontSize: "1.17em", textDecoration: "none", color: "white" }}
       >
         Manage Orders
+      </Link>
+    );
+    update = (
+      <Link
+        to="/books"
+        style={{ fontSize: "1.17em", textDecoration: "none", color: "white" }}
+      >
+        Manage Books
       </Link>
     );
   }
@@ -96,6 +105,16 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              width: "12%",
+            }}
+          >
+            {update}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
               width: "15%",
             }}
           >
@@ -148,7 +167,16 @@ function NavBar({ user }) {
               padding: "5px 0px",
             }}
           >
-            <Typography variant="h6">Hi {user.username}</Typography>
+            <Link
+              to="/profile"
+              style={{
+                fontSize: "1.17em",
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              Hi {user.username}
+            </Link>
           </Box>
           <Box>
             <Button variant="contained">

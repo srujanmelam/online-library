@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
@@ -11,7 +12,7 @@ import {
   InsertLink
 } from "@material-ui/icons";
 
-function AddBooks() {
+function AddBooks({username}) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setISBN] = useState("");
@@ -26,6 +27,7 @@ function AddBooks() {
       ISBN: isbn,
       publication: publication,
       link: link,
+      addedBy : username,
     };
     axios
       .post(`http://localhost:3000/books`, book)
@@ -184,4 +186,10 @@ function AddBooks() {
   );
 }
 
-export default AddBooks;
+const mapStateToProps = (state) => {
+  return {
+    username: state.loginReducer.user.username,
+  };
+};
+
+export default connect(mapStateToProps)(AddBooks);
