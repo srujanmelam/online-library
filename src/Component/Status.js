@@ -109,6 +109,7 @@ const Status = ({ username }) => {
                       <img
                         src="https://edit.org/images/cat/book-covers-big-2019101610.jpg"
                         style={{ width: "45%", height: "75%" }}
+                        alt="book image"
                       />
                     </Box>
                     <Box
