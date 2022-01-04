@@ -34,7 +34,7 @@ const CartProduct = ({ item }) => {
           marginRight: "50px",
         }}
       >
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={5} alignItems="center">
           <Grid item xs={10} md={10} lg={10}>
             <Card>
               <CardHeader
@@ -46,21 +46,43 @@ const CartProduct = ({ item }) => {
                 title={"Your Product ID -  " + item.id}
               />
               <CardContent>
-                <Typography variant="h6" align="left">
-                  Book Title - {item.title}
-                </Typography>
-                &nbsp;
-                <Typography variant="h6" align="left">
-                  Book ISBN - {item.ISBN}
-                </Typography>
-                &nbsp;
-                <Typography variant="h6" align="left">
-                  Book Publication - {item.publication}
-                </Typography>
-                &nbsp;
-                <Typography variant="h6" align="left">
-                  Book Author - {item.author}
-                </Typography>
+                <Box display="flex" flexDirection="row">
+                  <Box
+                    sx={{
+                      marginLeft: "75px",
+                      marginBottom: "50px",
+                    }}
+                  >
+                    <img
+                      src={item.link}
+                      style={{ width: 200, height: 300 }}
+                      alt="bookImage"
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      marginTop: "30px",
+                      marginLeft: "100px",
+                      marginRight: "60px",
+                    }}
+                  >
+                    <Typography variant="h6" align="left">
+                      Book Title - {item.title}
+                    </Typography>
+                    &nbsp;
+                    <Typography variant="h6" align="left">
+                      Book ISBN - {item.ISBN}
+                    </Typography>
+                    &nbsp;
+                    <Typography variant="h6" align="left">
+                      Book Publication - {item.publication}
+                    </Typography>
+                    &nbsp;
+                    <Typography variant="h6" align="left">
+                      Book Author - {item.author}
+                    </Typography>                    
+                  </Box>
+                </Box>
               </CardContent>
             </Card>
           </Grid>

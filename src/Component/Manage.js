@@ -1,3 +1,4 @@
+import { Box, Card, CardHeader, CardContent, Grid, Paper, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
@@ -52,14 +53,71 @@ const Manage = () => {
   return (
     <div>
       <NavBar/>
-      {returns.map((r,i)=>(
-        <div key={i}>
-          <h6>{r.user} Orders:{r.count} TotalFine :{r.fine}</h6>
-          {r.books.map((book,i)=>(
-          <p key={i}> {book.title} {book.author} {book.ISBN} {book.publication} </p>
+      <div style={{ marginTop: 50 }}></div>
+      <Box
+        sx={{
+          marginLeft: "75px",
+          marginRight: "75px",
+        }}
+      >
+        <Grid container spacing={5}>
+          {returns.map((r,i)=>(
+            <Grid item key={i} xs={12} md={12} lg={12}>
+              <Paper elevation={3}>
+              &nbsp;
+                <Box>
+                  &nbsp;
+                  <Typography variant="h5" align="center">
+                    User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp; TotalFine : {r.fine}
+                  </Typography>
+                </Box>
+                <Box key={i}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: "30px",
+                  }}
+                >
+                  {r.books.map((book,i)=>(
+                    <Box key={i}
+                      sx={{
+                        marginLeft: "30px",
+                        marginBottom: "30px",
+                      }}
+                    >
+                      <Card>
+                        <CardHeader
+                          title={book.title}
+                          subheader= {" - "+book.author} 
+                        />
+                        <CardContent>
+                          <img
+                            src={book.link}
+                            style={{ width: 100, height: 120 }}
+                            alt="bookImage"
+                          />
+                          <Box
+                            sx={{
+                              display: "flex",
+                              flexDirection: "column",
+                              marginTop: "30px",
+                            }}
+                          >
+                            <Typography variant="h7" align="center">PUBLICATION - {book.publication}</Typography>
+                            &nbsp;
+                            <Typography variant="h7" align="center">ISBN - {book.ISBN}</Typography>
+                          </Box>          
+                        </CardContent>
+                      </Card>
+                    </Box>
+                  ))}
+                </Box>  
+              </Paper>
+            </Grid>
           ))}
-        </div>
-      ))}
+        </Grid>
+      </Box>
+      <div style={{ marginTop: 40 }}></div>
     </div>
   );
 }

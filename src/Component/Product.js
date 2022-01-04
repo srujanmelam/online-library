@@ -1,5 +1,5 @@
 import store from "./store";
-import { Card, CardHeader, CardContent, IconButton, Typography } from '@material-ui/core';
+import { Card, CardHeader, CardContent, IconButton, Typography, Box } from '@material-ui/core';
 import { AddOutlined } from "@material-ui/icons";
 function Product(props) {
 
@@ -14,18 +14,32 @@ function Product(props) {
     <div>
       <Card>
         <CardHeader 
-        action={
-          <IconButton
-          onClick={()=>addToCart(book)}>
-            <AddOutlined />
-          </IconButton>
-        }
-        title={book.title}
-        subheader= {"- "+book.author}
-      /><CardContent>
-        <Typography variant="body2">PUBLICATION - {book.publication}</Typography>
-        <Typography variant="body2">ISBN - {book.ISBN}</Typography>
-      </CardContent>
+          action={
+            <IconButton
+              onClick={()=>addToCart(book)}>
+              <AddOutlined />
+            </IconButton>
+          }
+          title={book.title}
+          subheader= {"- "+book.author}
+        />
+        <CardContent>
+          <img
+            src={book.link}
+            style={{ width: 250, height: 350 }}
+            alt="bookImage"
+          />
+          <Box
+            sx={{
+              marginTop: "30px",
+              marginBottom: "30px",
+            }}
+          >
+            <Typography variant="h5" align="center">PUBLICATION - {book.publication}</Typography>
+            &nbsp;
+            <Typography variant="h5" align="center">ISBN - {book.ISBN}</Typography>
+          </Box>          
+        </CardContent>
       </Card> 
     </div>
   );

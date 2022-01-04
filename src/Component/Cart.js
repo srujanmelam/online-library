@@ -52,6 +52,7 @@ function Cart({ cart, user }) {
       <Button color="secondary" variant="contained" onClick={placeOrder}>
         Check Out
       </Button>
+      <div style={{ marginTop: 30 }}></div>
     </div>
   );
 }

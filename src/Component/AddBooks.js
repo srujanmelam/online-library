@@ -8,6 +8,7 @@ import {
   TitleRounded,
   DialpadRounded,
   DateRangeRounded,
+  InsertLink
 } from "@material-ui/icons";
 
 function AddBooks() {
@@ -15,6 +16,7 @@ function AddBooks() {
   const [author, setAuthor] = useState("");
   const [isbn, setISBN] = useState("");
   const [publication, setPublication] = useState("");
+  const [link, setLink] = useState("");
   const history = useNavigate();
 
   const addBook = () => {
@@ -23,6 +25,7 @@ function AddBooks() {
       author: author,
       ISBN: isbn,
       publication: publication,
+      link: link,
     };
     axios
       .post(`http://localhost:3000/books`, book)
@@ -140,6 +143,21 @@ function AddBooks() {
               ),
             }}
           ></TextField>
+          <TextField
+            type="text"
+            label="Image Link"
+            margin="normal"
+            onChange={(e) => setLink(e.target.value)}
+            required
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <InsertLink />
+                </InputAdornment>
+              ),
+            }}
+          ></TextField>
+          <div style={{ marginTop: 25 }}></div>
           <Button
             type="submit"
             onClick={addBook}

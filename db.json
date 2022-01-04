@@ -37,42 +37,48 @@
       "title": "A Monster Calls by Patrick Ness",
       "author": "jyothi",
       "ISBN": "978-4-16-148410-0",
-      "publication": "2000"
+      "publication": "2000",
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg"
     },
     {
       "id": 2,
       "title": "Skulduggery Pleasant by Derek Landy",
       "author": "chota",
       "ISBN": "978-3-19-148410-0",
-      "publication": "2001"
+      "publication": "2001",
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg"
     },
     {
       "id": 3,
       "title": "Refugee Boy by Benjamin Zephaniah",
       "author": "srujan",
       "ISBN": "978-3-16-148421-0",
-      "publication": "2002"
+      "publication": "2002",
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg"
     },
     {
       "id": 4,
       "title": "How I Live Now by Meg Rosoff",
       "author": "kranthi",
       "ISBN": "978-3-16-148410-5",
-      "publication": "2003"
+      "publication": "2003",
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg"
     },
     {
       "id": 5,
       "title": "The Handmaid's Tale by Margaret Atwood",
       "author": "manoj",
       "ISBN": "978-3-12-248421-7",
-      "publication": "2004"
+      "publication": "2004",
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg"
     },
     {
       "title": "New Town Soul by Dermot Bolger",
       "author": "Tarun",
       "ISBN": "978-3-19-148410-5",
       "publication": "2005",
-      "id": 6
+      "link": "https://m.media-amazon.com/images/I/51d2e+67u1L.jpg",
+      "id": 6      
     }
   ],
   "orders": [

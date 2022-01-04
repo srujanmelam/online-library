@@ -26,8 +26,8 @@ function Orders({ username }) {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 30 }}></div>
-      <Typography variant="h3">
+      <div style={{ marginTop: 50 }}></div>
+      <Typography variant="h3" align="center">
         <ShoppingBasketRounded fontSize="large" />
         &nbsp; Orders
       </Typography>
@@ -41,33 +41,56 @@ function Orders({ username }) {
           marginRight: "50px",
         }}
       >
-        <Grid container spacing={3} alignItems="center">
+        <Grid container spacing={5} alignItems="center">
           {orders.map((order, i) => {
             return (
               <Grid item key={i} xs={10} md={10} lg={10}>
                 <Card key={i}>
                   <CardContent>
-                    &nbsp;
-                    <Typography variant="h6" align="left">
-                      Order Date - {order.date}
-                    </Typography>
-                    &nbsp;
-                    <Typography variant="h6" align="left">
-                      Book Title - {order.book.title}
-                    </Typography>
-                    &nbsp;
-                    <Typography variant="h6" align="left">
-                      Book ISBN - {order.book.ISBN}
-                    </Typography>
-                    &nbsp;
-                    <Typography variant="h6" align="left">
-                      Book Publication - {order.book.publication}
-                    </Typography>
-                    &nbsp;
-                    <Typography variant="h6" align="left">
-                      Book Author - {order.book.author}
-                    </Typography>
-                    &nbsp;
+                    <Box display="flex" flexDirection="row">
+                      <Box
+                        sx={{
+                          marginTop: "50px",
+                          marginLeft: "75px",
+                          marginBottom: "45px",
+                        }}
+                      >
+                        <img
+                          src={order.book.link}
+                          style={{ width: 250, height: 350 }}
+                          alt="bookImage"
+                        />
+                      </Box>
+                      <Box
+                        sx={{
+                          marginTop: "60px",
+                          marginLeft: "100px",
+                          marginRight: "60px",
+                        }}
+                      >
+                         &nbsp;
+                        <Typography variant="h6" align="left">
+                          Order Date - {order.date}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book Title - {order.book.title}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book ISBN - {order.book.ISBN}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book Publication - {order.book.publication}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book Author - {order.book.author}
+                        </Typography>
+                        &nbsp; 
+                      </Box>
+                    </Box>
                   </CardContent>
                 </Card>
               </Grid>
@@ -75,6 +98,7 @@ function Orders({ username }) {
           })}
         </Grid>
       </Box>
+      <div style={{ marginTop: 30 }}></div>
     </div>
   );
 }

@@ -86,11 +86,15 @@ const Status = ({ username }) => {
     <div>
       <NavBar />
       <div style={{ marginTop: 40 }}></div>
-      <Typography variant="h3">
+      <Typography variant="h3" align="center">
         <AssessmentRounded fontSize="large" />
         &nbsp; Status
       </Typography>
-      <div style={{ marginTop: 40 }}>Total Fine - {totalFine}</div>
+      <div style={{ marginTop: 40 }}></div>
+      <Typography variant="h4" align="center">
+        Total Fine - {totalFine}
+      </Typography>
+      <div style={{ marginTop: 40 }}></div>
       <Box
         sx={{
           display: "flex",
@@ -107,20 +111,22 @@ const Status = ({ username }) => {
                   <Box display="flex" flexDirection="row">
                     <Box
                       sx={{
-                        marginTop: "75px",
+                        marginTop: "50px",
+                        marginLeft: "100px",
                       }}
                     >
                       <img
-                        src="https://edit.org/images/cat/book-covers-big-2019101610.jpg"
-                        style={{ width: "45%", height: "75%" }}
+                        src={order.book.link}
+                        style={{ width: 250, height: 350 }}
                         alt="bookImage"
                       />
                     </Box>
                     <Box
                       sx={{
-                        marginTop: "65px",
-                        marginLeft: "40px",
+                        marginTop: "45px",
+                        marginLeft: "200px",
                         marginRight: "60px",
+                        marginBottom: "45px",
                       }}
                     >
                       <Typography variant="h6" align="left">

@@ -15,23 +15,23 @@ const Paginate = ({ items, Component }) => {
 
   return (
     <div>
-      {displayItems.map((item, i) => (
-        <Box key={i}
+      <Box 
           sx={{
             display: "flex",
             alignItems: "center",
             padding: "10px 10px 10px 10px",
-            marginLeft: "350px",
+            marginLeft: "285px",
             marginRight: "50px",
           }}
         >
           <Grid container spacing={5} alignItems="center">
-            <Grid item key={item.id} xs={10} md={8} lg={8}>
+            {displayItems.map((item, i) => (
+              <Grid item key={i} key={item.id} xs={10} md={9} lg={9}>
                 <Component book={item} key={i}/>
-            </Grid>
+              </Grid>        
+            ))}
           </Grid>
         </Box>
-      ))}
       <div style={{ marginTop: 30}}></div>
       <Box
         sx={{
