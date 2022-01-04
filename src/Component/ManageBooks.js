@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
-
+import { Button,Card, CardHeader, CardContent, IconButton, Typography, Box } from "@material-ui/core"
+import { DeleteRounded,AddRounded} from "@material-ui/icons";
 const ManageBooks = ({ username }) => {
   const [books, setBooks] = useState([]);
 
@@ -36,24 +37,64 @@ const ManageBooks = ({ username }) => {
     records = records.filter((book) => book.id !== id);
     setBooks(records);
   };
-
+  var cardStyle = {
+    marginLeft:"26%",
+    display:"block",
+    width: '50vw',
+    transitionDuration: '0.3s',
+    height: '55vw'
+}
   return (
     <div>
-      <NavBar />
+      <NavBar /><br></br>
+    
       {books.map((book, i) => (
-        <div key={i}>
-          <img alt="BookImage" src={book.link} />
-          <h6>{book.title}</h6>
-          <h6>{book.author}</h6>
-          <h6>{book.ISBN}</h6>
-          <h6>{book.publication}</h6>
-          <Link to="/update" state={{ book: book, username: username }}>
+        <div><br></br>
+        <Card key={i} style={cardStyle} spacing={10} justify="center">
+        <CardHeader 
+          action={
+            <IconButton
+              onClick={()=>deleteBook(book.id)}>
+              <DeleteRounded />
+            </IconButton>
+           
+          }
+          title={book.title}
+          subheader= {"- "+book.author}
+        />
+        <CardContent>
+          <img
+            src={book.link}
+            style={{ width: 250, height: 350 }}
+            alt="bookImage"
+          />
+          <Box
+            sx={{
+              marginTop: "30px",
+              marginBottom: "30px",
+            }}
+          >
+            <Typography variant="h5" align="center">PUBLICATION - {book.publication}</Typography>
+            &nbsp;
+            <Typography variant="h5" align="center">ISBN - {book.ISBN}</Typography>
+            <br></br><br></br><br></br>
+            <Button
+            color="primary"
+            variant="contained"
+            >
+            <Link to="/update" style={{ textDecoration:"none",color:"white"}}state={{ book: book, username: username }}>
             Update
           </Link>
-          <button onClick={() => deleteBook(book.id)}>Delete</button>
-          <br />
-          <br />
+            </Button>
+            
+          </Box>          
+        </CardContent> 
+      </Card> 
+
         </div>
+     
+      
+
       ))}
     </div>
   );

@@ -2,14 +2,21 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
-
+import {Card,CardContent,Typography} from "@material-ui/core";
+var cardStyle = {
+  marginLeft:"36%",
+  display:"block",
+  width: '30vw',
+  transitionDuration: '0.3s',
+  height: '15vw'
+}
 const Profile = ({user}) => {
   const [orders,setOrders] = useState(0); 
   const [pending,setPending] = useState(0);
   const [books,setBooks] = useState(0);
 
   const type = user.isAdmin ? "Admin" : "Student";
-  const added = user.isAdmin ? <h4>Books Added{books}</h4> : <></>;
+  const added = user.isAdmin ? <p>books Added - {books}</p> : <></>;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,12 +62,27 @@ const Profile = ({user}) => {
 
   return (
     <div>
-      <NavBar/>
-      <h4>{user.username}</h4>
-      <h4>{type}</h4>
-      <h4>Orders - {orders}</h4>
-      <h4>Pending - {pending}</h4>
-      {added}
+      <NavBar/><br></br>
+      <Card sx={{ minWidth: 275 }} style={cardStyle}>
+        <CardContent>
+          <Typography variant="h4" align="left">
+          User: {user.username}
+          </Typography>
+          <Typography align="left">
+          Type: {type}
+          </Typography>
+          <Typography align="left">
+          Orders: {orders}
+          </Typography>
+          <Typography align="left">
+          Pending: {pending}
+          </Typography>
+          <Typography align="left">
+            {added}
+          </Typography>
+         
+        </CardContent>
+      </Card>
     </div>
   )
 }
