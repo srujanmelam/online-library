@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Grid, Box } from "@material-ui/core";
-import Pagination from "@material-ui/lab/Pagination"
+import Pagination from "@material-ui/lab/Pagination";
 
 const Paginate = ({ items, Component }) => {
   const [pageNumber, setPageNumber] = useState(1);

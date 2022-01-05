@@ -2,12 +2,29 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
-import { Box, Card, CardContent, Grid, Typography, Button } from "@material-ui/core";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  Button,
+} from "@material-ui/core";
 import { ShoppingBasketRounded } from "@material-ui/icons";
+import Pagination from "@material-ui/lab/Pagination";
 
 function Orders({ username }) {
   const [orders, setOrders] = useState([]);
   const [name, setName] = useState("Recent Orders");
+  const [pageNumber, setPageNumber] = useState(1);
+  const itemsPerPage = 5;
+  const pagesVisited = (pageNumber - 1) * itemsPerPage;
+  const displayItems = orders.slice(pagesVisited, pagesVisited + itemsPerPage);
+  const pageCount = Math.ceil(orders.length / itemsPerPage);
+
+  const changePage = (event, val) => {
+    setPageNumber(val);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,15 +41,14 @@ function Orders({ username }) {
     fetchData();
   }, [username]);
 
-  const changeOrders = ()=>{
+  const changeOrders = () => {
     setOrders(orders.reverse());
-    if (name === "Recent Orders"){
+    if (name === "Recent Orders") {
       setName("Earlier Orders");
-    }
-    else{
+    } else {
       setName("Recent Orders");
     }
-  }
+  };
 
   return (
     <div>
@@ -45,9 +61,9 @@ function Orders({ username }) {
       <div style={{ marginTop: 30 }}></div>
       <Button
         color="primary"
-        variant="contained" 
+        variant="contained"
         size="large"
-        onClick={()=>changeOrders()}
+        onClick={() => changeOrders()}
       >
         {name}
       </Button>
@@ -62,7 +78,7 @@ function Orders({ username }) {
         }}
       >
         <Grid container spacing={5} alignItems="center">
-          {orders.map((order, i) => {
+          {displayItems.map((order, i) => {
             return (
               <Grid item key={i} xs={10} md={10} lg={10}>
                 <Card key={i} elevation={3}>
@@ -88,7 +104,7 @@ function Orders({ username }) {
                           marginRight: "60px",
                         }}
                       >
-                         &nbsp;
+                        &nbsp;
                         <Typography variant="h6" align="left">
                           Order Date - {order.date}
                         </Typography>
@@ -108,7 +124,7 @@ function Orders({ username }) {
                         <Typography variant="h6" align="left">
                           Book Author - {order.book.author}
                         </Typography>
-                        &nbsp; 
+                        &nbsp;
                       </Box>
                     </Box>
                   </CardContent>
@@ -117,6 +133,16 @@ function Orders({ username }) {
             );
           })}
         </Grid>
+      </Box>
+      <Box>
+        <Pagination
+          color="primary"
+          variant="outlined"
+          shape="rounded"
+          count={pageCount}
+          page={pageNumber}
+          onChange={changePage}
+        />
       </Box>
       <div style={{ marginTop: 30 }}></div>
     </div>

@@ -14,8 +14,20 @@ import {
   Grid,
 } from "@material-ui/core";
 import { DeleteRounded } from "@material-ui/icons";
+import Pagination from "@material-ui/lab/Pagination";
+
 const ManageBooks = ({ username }) => {
   const [books, setBooks] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [name, setName] = useState("Recently Added");
+  const itemsPerPage = 5;
+  const pagesVisited = (pageNumber - 1) * itemsPerPage;
+  const displayItems = books.slice(pagesVisited, pagesVisited + itemsPerPage);
+  const pageCount = Math.ceil(books.length / itemsPerPage);
+
+  const changePage = (event, val) => {
+    setPageNumber(val);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +45,15 @@ const ManageBooks = ({ username }) => {
     fetchData();
   }, [username]);
 
+  const changeOrder = () => {
+    setBooks(books.reverse());
+    if (name === "Recently Added") {
+      setName("Long Ago Added");
+    } else {
+      setName("Recently Added");
+    }
+  };
+
   const deleteBook = (id) => {
     let records = books;
     axios
@@ -46,13 +67,7 @@ const ManageBooks = ({ username }) => {
     records = records.filter((book) => book.id !== id);
     setBooks(records);
   };
-  var cardStyle = {
-    marginLeft: "26%",
-    display: "block",
-    width: "50vw",
-    transitionDuration: "0.3s",
-    height: "55vw",
-  };
+
   return (
     <div>
       <NavBar />
@@ -61,6 +76,14 @@ const ManageBooks = ({ username }) => {
         Your Books
       </Typography>
       <div style={{ marginTop: 40 }}></div>
+      <Button
+        color="primary"
+        variant="contained"
+        size="large"
+        onClick={() => changeOrder()}
+      >
+        {name}
+      </Button>
       <Button color="primary" variant="contained" size="large">
         <Link
           to="/addbook"
@@ -83,7 +106,7 @@ const ManageBooks = ({ username }) => {
         }}
       >
         <Grid container spacing={5} alignItems="center">
-          {books.map((book, i) => (
+          {displayItems.map((book, i) => (
             <Grid item key={i} xs={11} md={11} lg={11}>
               <Card elevation={3}>
                 <CardHeader
@@ -156,6 +179,20 @@ const ManageBooks = ({ username }) => {
             </Grid>
           ))}
         </Grid>
+      </Box>
+      <Box
+        sx={{
+          marginLeft: "650px",
+        }}
+      >
+        <Pagination
+          color="primary"
+          variant="outlined"
+          shape="rounded"
+          count={pageCount}
+          page={pageNumber}
+          onChange={changePage}
+        />
       </Box>
     </div>
   );
