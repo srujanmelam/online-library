@@ -1,15 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import NavBar from "./NavBar";
 import {
   AccountCircle,
   TitleRounded,
   DialpadRounded,
   DateRangeRounded,
-  InsertLink
+  InsertLink,
 } from "@material-ui/icons";
-import { Grid, TextField, Button, InputAdornment, Typography } from "@material-ui/core";
+import {
+  Grid,
+  TextField,
+  Button,
+  InputAdornment,
+  Typography,
+} from "@material-ui/core";
+
 const UpdateBooks = () => {
   const location = useLocation();
   const { book } = location.state;
@@ -43,9 +50,10 @@ const UpdateBooks = () => {
 
   return (
     <div
-    style={{
-      backgroundColor:"black",
-    }}>
+      style={{
+        backgroundColor: "black",
+      }}
+    >
       <NavBar />
       <br></br>
       <Typography>Update Book {book.id}</Typography>
@@ -75,7 +83,7 @@ const UpdateBooks = () => {
           style={{
             color: "white",
             padding: 10,
-            borderRadius:"5%",
+            borderRadius: "5%",
             backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
@@ -89,18 +97,17 @@ const UpdateBooks = () => {
             />
           </Grid>
           <TextField
-             type="text"
-             placeholder={title}
-             onChange={(e) => setTitle(e.target.value)}
-             required
-             pattern="[A-Za-z0-9]+"
+            type="text"
+            placeholder={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+            pattern="[A-Za-z0-9]+"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
-           
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <TitleRounded />
@@ -109,18 +116,17 @@ const UpdateBooks = () => {
             }}
           ></TextField>
           <TextField
-              type="text"
-              placeholder={author}
-              onChange={(e) => setAuthor(e.target.value)}
-              required
-              pattern="[A-Za-z0-9]+"
+            type="text"
+            placeholder={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            required
+            pattern="[A-Za-z0-9]+"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
-            
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <AccountCircle />
@@ -136,10 +142,10 @@ const UpdateBooks = () => {
             pattern="[0-9]{3}-[0-9]-[0-9]{2}-[0-9]{6}-[0-9]"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <DialpadRounded />
@@ -155,10 +161,10 @@ const UpdateBooks = () => {
             pattern="[0-9]{4}"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <DateRangeRounded />
@@ -173,10 +179,10 @@ const UpdateBooks = () => {
             required
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <InsertLink />
@@ -207,8 +213,6 @@ const UpdateBooks = () => {
           }}
         ></Grid>
       </Grid>
-
-      
     </div>
   );
 };

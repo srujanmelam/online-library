@@ -7,6 +7,7 @@ import { ShoppingBasketRounded } from "@material-ui/icons";
 
 function Orders({ username }) {
   const [orders, setOrders] = useState([]);
+  const [name, setName] = useState("Recent Orders");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,16 @@ function Orders({ username }) {
     fetchData();
   }, [username]);
 
+  const changeOrders = ()=>{
+    setOrders(orders.reverse());
+    if (name === "Recent Orders"){
+      setName("Earlier Orders");
+    }
+    else{
+      setName("Recent Orders");
+    }
+  }
+
   return (
     <div>
       <NavBar />
@@ -32,6 +43,7 @@ function Orders({ username }) {
         &nbsp; Orders
       </Typography>
       <div style={{ marginTop: 30 }}></div>
+      <button onClick={()=>changeOrders()}>{name}</button>
       <Box
         sx={{
           display: "flex",
