@@ -10,7 +10,15 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+const Expand = () => {
+  let x = document.getElementById("panel");
 
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+};
 const Manage = () => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
@@ -81,60 +89,64 @@ const Manage = () => {
                 &nbsp;
                 <Box>
                   &nbsp;
-                  <Typography variant="h5" align="center">
+                  <Typography variant="h5" align="center"
+                   onClick={ Expand }>
+                   
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
                   </Typography>
                 </Box>
-                <Box
-                  key={i}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginTop: "30px",
-                    marginLeft: "50px",
-                  }}
-                >
-                  {r.books.map((book, i) => (
-                    <Box
-                      key={i}
-                      sx={{
-                        marginLeft: "30px",
-                        marginRight: "30px",
-                        marginBottom: "30px",
-                      }}
-                    >
-                      <Card elevation={3}>
-                        <CardHeader
-                          title={book.title}
-                          subheader={" - " + book.author}
-                        />
-                        <CardContent>
-                          <img
-                            src={book.link}
-                            style={{ width: 100, height: 120 }}
-                            alt="bookImage"
+                <div id="panel" style={{display:"none"}}>
+                  <Box
+                    key={i}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginTop: "30px",
+                      marginLeft: "50px",
+                    }}
+                  >
+                    {r.books.map((book, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          marginLeft: "30px",
+                          marginRight: "30px",
+                          marginBottom: "30px",
+                        }}
+                      >
+                        <Card elevation={3}>
+                          <CardHeader
+                            title={book.title}
+                            subheader={" - " + book.author}
                           />
-                          <Box
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              marginTop: "30px",
-                            }}
-                          >
-                            <Typography variant="h6" align="center">
-                              PUBLICATION - {book.publication}
-                            </Typography>
-                            &nbsp;
-                            <Typography variant="h6" align="center">
-                              ISBN - {book.ISBN}
-                            </Typography>
-                          </Box>
-                        </CardContent>
-                      </Card>
-                    </Box>
-                  ))}
-                </Box>
+                          <CardContent>
+                            <img
+                              src={book.link}
+                              style={{ width: 100, height: 120 }}
+                              alt="bookImage"
+                            />
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                marginTop: "30px",
+                              }}
+                            >
+                              <Typography variant="h6" align="center">
+                                PUBLICATION - {book.publication}
+                              </Typography>
+                              &nbsp;
+                              <Typography variant="h6" align="center">
+                                ISBN - {book.ISBN}
+                              </Typography>
+                            </Box>
+                          </CardContent>
+                        </Card>
+                      </Box>
+                    ))}
+                  </Box>
+                </div>
               </Paper>
             </Grid>
           ))}

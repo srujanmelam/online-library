@@ -52,7 +52,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 50 }}>
+      <div style={{ marginTop: 50 }} >
         <Box>
           <Box
             sx={{

@@ -2,14 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
-import { Card, CardContent, Typography } from "@material-ui/core";
-var cardStyle = {
-  marginLeft: "36%",
-  display: "block",
-  width: "30vw",
-  transitionDuration: "0.3s",
-  height: "15vw",
-};
+import '../Component/Card.css'
+import { Typography } from "@material-ui/core";
+
 const Profile = ({ user }) => {
   const [orders, setOrders] = useState(0);
   const [pending, setPending] = useState(0);
@@ -66,17 +61,28 @@ const Profile = ({ user }) => {
     <div>
       <NavBar />
       <br></br>
-      <Card sx={{ minWidth: 275 }} style={cardStyle}>
-        <CardContent>
-          <Typography variant="h4" align="left">
-            User: {user.username}
-          </Typography>
-          <Typography align="left">Type: {type}</Typography>
-          <Typography align="left">Orders: {orders}</Typography>
-          <Typography align="left">Pending: {pending}</Typography>
-          <Typography align="left">{added}</Typography>
-        </CardContent>
-      </Card>
+      <div className='Cards'>
+            <div className='upper-container'>
+                <div className='image-container'>
+                    <img className="q" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsw40RqD54BYg7g04mBOm0f2k24h2hhn8-gg&usqp=CAU" alt="" height="100px" width="100px" />
+                </div>
+
+            </div>
+            <div className='lower-container'>
+                <h5>{type}</h5>
+                <h4><b>{user.username}</b></h4><br></br>
+                <div style={{marginLeft:"20%"}}>
+                <Typography variant="h3" align="left">Total Orders - {orders}</Typography><br />
+                <Typography variant="h3"  align="left">Pending Fee - {pending}</Typography><br />
+                <Typography variant="h3"  align="left">{added}</Typography>
+
+
+                </div>
+              
+
+            </div>
+        </div>
+
     </div>
   );
 };
