@@ -103,9 +103,9 @@ const Manage = () => {
                               marginTop: "30px",
                             }}
                           >
-                            <Typography variant="h7" align="center">PUBLICATION - {book.publication}</Typography>
+                            <Typography variant="h6" align="center">PUBLICATION - {book.publication}</Typography>
                             &nbsp;
-                            <Typography variant="h7" align="center">ISBN - {book.ISBN}</Typography>
+                            <Typography variant="h6" align="center">ISBN - {book.ISBN}</Typography>
                           </Box>          
                         </CardContent>
                       </Card>
