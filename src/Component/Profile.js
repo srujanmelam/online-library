@@ -16,7 +16,7 @@ const Profile = ({ user }) => {
   const [books, setBooks] = useState(0);
 
   const type = user.isAdmin ? "Admin" : "Student";
-  const added = user.isAdmin ? <p>books Added - {books}</p> : <></>;
+  const added = user.isAdmin ? `books Added - ${books}` : "";
 
   useEffect(() => {
     const fetchData = async () => {
