@@ -35,7 +35,6 @@ const ManageBooks = ({ username }) => {
         .get(`http://localhost:3000/books?addedBy=${username}`)
         .then((res) => {
           setBooks(res.data);
-          console.log(username);
           console.log("Added Books retrieved successfully");
         })
         .catch((err) => {
