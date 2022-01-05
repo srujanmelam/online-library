@@ -10,8 +10,9 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
-const Expand = () => {
-  let x = document.getElementById("panel");
+
+const Expand = (id) => {
+  let x = document.getElementById(id);
 
   if (x.style.display === "none") {
     x.style.display = "block";
@@ -19,6 +20,7 @@ const Expand = () => {
     x.style.display = "none";
   }
 };
+
 const Manage = () => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
@@ -90,13 +92,12 @@ const Manage = () => {
                 <Box>
                   &nbsp;
                   <Typography variant="h5" align="center"
-                   onClick={ Expand }>
-                   
+                   onClick={()=>Expand(i)}>
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
                   </Typography>
                 </Box>
-                <div id="panel" style={{display:"none"}}>
+                <div id={i} style={{display:"none"}}>
                   <Box
                     key={i}
                     sx={{
