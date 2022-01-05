@@ -2,7 +2,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
-import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { Box, Card, CardContent, Grid, Typography, Button } from "@material-ui/core";
 import { ShoppingBasketRounded } from "@material-ui/icons";
 
 function Orders({ username }) {
@@ -43,7 +43,15 @@ function Orders({ username }) {
         &nbsp; Orders
       </Typography>
       <div style={{ marginTop: 30 }}></div>
-      <button onClick={()=>changeOrders()}>{name}</button>
+      <Button
+        color="primary"
+        variant="contained" 
+        size="large"
+        onClick={()=>changeOrders()}
+      >
+        {name}
+      </Button>
+      <div style={{ marginTop: 30 }}></div>
       <Box
         sx={{
           display: "flex",
@@ -57,7 +65,7 @@ function Orders({ username }) {
           {orders.map((order, i) => {
             return (
               <Grid item key={i} xs={10} md={10} lg={10}>
-                <Card key={i}>
+                <Card key={i} elevation={3}>
                   <CardContent>
                     <Box display="flex" flexDirection="row">
                       <Box

@@ -1,46 +1,72 @@
 import store from "./store";
-import { Card, CardHeader, CardContent, IconButton, Typography, Box } from '@material-ui/core';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  IconButton,
+  Typography,
+  Box,
+} from "@material-ui/core";
 import { AddOutlined } from "@material-ui/icons";
 function Product(props) {
+  const book = props.book;
 
-  const book = props.book
+  const addToCart = (item) => {
+    store.dispatch({ type: "ADD_TO_CART", payload: { item: item } });
+    console.log("book id :" + item.id + " is added to cart");
+  };
 
-  const addToCart= (item)=>{
-    store.dispatch({type:'ADD_TO_CART',payload:{item:item}})
-    console.log("book id :"+item.id+" is added to cart")
-  }
-
-  return(
+  return (
     <div>
-      <Card>
-        <CardHeader 
+      <Card elevation={4}>
+        <CardHeader
           action={
-            <IconButton
-              onClick={()=>addToCart(book)}>
-              <AddOutlined />
+            <IconButton color="primary" onClick={() => addToCart(book)}>
+              <AddOutlined fontSize="large" />
             </IconButton>
           }
-          title={book.title}
-          subheader= {"- "+book.author}
         />
         <CardContent>
-          <img
-            src={book.link}
-            style={{ width: 250, height: 350 }}
-            alt="bookImage"
-          />
-          <Box
-            sx={{
-              marginTop: "30px",
-              marginBottom: "30px",
-            }}
-          >
-            <Typography variant="h5" align="center">PUBLICATION - {book.publication}</Typography>
-            &nbsp;
-            <Typography variant="h5" align="center">ISBN - {book.ISBN}</Typography>
-          </Box>          
+          <Box display="flex" flexDirection="row">
+            <Box
+              sx={{
+                marginLeft: "75px",
+                marginBottom: "45px",
+              }}
+            >
+              <img
+                src={book.link}
+                style={{ width: 250, height: 350 }}
+                alt="bookImage"
+              />
+            </Box>
+            <Box
+              sx={{
+                marginTop: "60px",
+                marginLeft: "100px",
+                marginRight: "60px",
+                marginBottom: "45px",
+              }}
+            >
+              <Typography variant="h6" align="left">
+                Book Title - {book.title}
+              </Typography>
+              &nbsp;
+              <Typography variant="h6" align="left">
+                Book ISBN - {book.ISBN}
+              </Typography>
+              &nbsp;
+              <Typography variant="h6" align="left">
+                Book Publication - {book.publication}
+              </Typography>
+              &nbsp;
+              <Typography variant="h6" align="left">
+                Book Author - {book.author}
+              </Typography>
+            </Box>
+          </Box>
         </CardContent>
-      </Card> 
+      </Card>
     </div>
   );
 }

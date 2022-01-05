@@ -56,8 +56,8 @@ const Manage = () => {
       <div style={{ marginTop: 50 }}></div>
       <Box
         sx={{
-          marginLeft: "75px",
-          marginRight: "75px",
+          marginLeft: "30px",
+          marginRight: "30px",
         }}
       >
         <Grid container spacing={5}>
@@ -85,7 +85,7 @@ const Manage = () => {
                         marginBottom: "30px",
                       }}
                     >
-                      <Card>
+                      <Card elevation={3}>
                         <CardHeader
                           title={book.title}
                           subheader= {" - "+book.author} 

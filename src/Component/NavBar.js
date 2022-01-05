@@ -75,7 +75,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "65%",
+              width: "60%",
             }}
           >
             <Typography variant="h4">e-Library</Typography>
@@ -85,7 +85,7 @@ function NavBar({ user }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: "12%",
+              width: "15%",
             }}
           >
             {update}

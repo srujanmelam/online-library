@@ -11,6 +11,7 @@ import {
   IconButton,
   Typography,
   Box,
+  Grid,
 } from "@material-ui/core";
 import { DeleteRounded } from "@material-ui/icons";
 const ManageBooks = ({ username }) => {
@@ -55,58 +56,107 @@ const ManageBooks = ({ username }) => {
   return (
     <div>
       <NavBar />
-      <br></br>
-      <h1>Your Books</h1>
-      <Link to="/addbook">Add a Book</Link>
-      {books.map((book, i) => (
-        <div key={i}>
-          <br></br>
-          <Card style={cardStyle} spacing={10} justify="center">
-            <CardHeader
-              action={
-                <IconButton onClick={() => deleteBook(book.id)}>
-                  <DeleteRounded />
-                </IconButton>
-              }
-              title={book.title}
-              subheader={"- " + book.author}
-            />
-            <CardContent>
-              <img
-                src={book.link}
-                style={{ width: 250, height: 350 }}
-                alt="bookImage"
-              />
-              <Box
-                sx={{
-                  marginTop: "30px",
-                  marginBottom: "30px",
-                }}
-              >
-                <Typography variant="h5" align="center">
-                  PUBLICATION - {book.publication}
-                </Typography>
-                &nbsp;
-                <Typography variant="h5" align="center">
-                  ISBN - {book.ISBN}
-                </Typography>
-                <br></br>
-                <br></br>
-                <br></br>
-                <Button color="primary" variant="contained">
-                  <Link
-                    to="/update"
-                    style={{ textDecoration: "none", color: "white" }}
-                    state={{ book: book, username: username }}
-                  >
-                    Update
-                  </Link>
-                </Button>
-              </Box>
-            </CardContent>
-          </Card>
-        </div>
-      ))}
+      <div style={{ marginTop: 50 }}></div>
+      <Typography variant="h3" align="center">
+        Your Books
+      </Typography>
+      <div style={{ marginTop: 40 }}></div>
+      <Button color="primary" variant="contained" size="large">
+        <Link
+          to="/addbook"
+          style={{
+            fontSize: "1.17em",
+            textDecoration: "none",
+            color: "white",
+          }}
+        >
+          Add a Book
+        </Link>
+      </Button>
+      <div style={{ marginTop: 40 }}></div>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          marginLeft: "225px",
+          marginRight: "50px",
+        }}
+      >
+        <Grid container spacing={5} alignItems="center">
+          {books.map((book, i) => (
+            <Grid item key={i} xs={11} md={11} lg={11}>
+              <Card elevation={3}>
+                <CardHeader
+                  action={
+                    <IconButton
+                      color="primary"
+                      onClick={() => deleteBook(book.id)}
+                    >
+                      <DeleteRounded fontSize="large" />
+                    </IconButton>
+                  }
+                />
+                <CardContent>
+                  <Box display="flex" flexDirection="row">
+                    <Box
+                      sx={{
+                        marginLeft: "100px",
+                        marginBottom: "45px",
+                      }}
+                    >
+                      <img
+                        src={book.link}
+                        style={{ width: 250, height: 350 }}
+                        alt="bookImage"
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        marginTop: "60px",
+                        marginLeft: "150px",
+                        marginRight: "60px",
+                        marginBottom: "45px",
+                      }}
+                    >
+                      <Typography variant="h6" align="left">
+                        Book Title - {book.title}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book ISBN - {book.ISBN}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book Publication - {book.publication}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="left">
+                        Book Author - {book.author}
+                      </Typography>
+                      &nbsp;
+                      <Typography variant="h6" align="right">
+                        <Button
+                          color="primary"
+                          variant="contained"
+                          size="large"
+                        >
+                          <Link
+                            to="/update"
+                            style={{ textDecoration: "none", color: "white" }}
+                            state={{ book: book, username: username }}
+                          >
+                            Update
+                          </Link>
+                        </Button>
+                      </Typography>
+                    </Box>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </div>
   );
 };

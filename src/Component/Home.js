@@ -60,7 +60,7 @@ function Home() {
               flexDirection: "row",
               alignItems: "center",
               marginLeft: "300px",
-              marginBottom: "50px",
+              marginBottom: "40px",
             }}
           >
             <label htmlFor="search"> </label>
@@ -126,7 +126,7 @@ function Home() {
               flexDirection: "row",
               alignItems: "center",
               marginLeft: "500px",
-              marginBottom: "50px",
+              marginBottom: "40px",
             }}
           >
             <Typography variant="h6">Sort By:</Typography>

@@ -106,7 +106,7 @@ const Status = ({ username }) => {
         <Grid container spacing={5} alignItems="center">
           {orders.map((order, i) => (
             <Grid item key={i} xs={11} md={11} lg={11}>
-              <Card key={i}>
+              <Card key={i} elevation={3}>
                 <CardContent>
                   <Box display="flex" flexDirection="row">
                     <Box
