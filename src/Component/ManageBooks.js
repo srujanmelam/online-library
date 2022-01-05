@@ -72,7 +72,7 @@ const ManageBooks = ({ username }) => {
       <NavBar />
       <div style={{ marginTop: 50 }}></div>
       <Typography variant="h3" align="center">
-        Your Books
+        &nbsp;Your Books
       </Typography>
       <div style={{ marginTop: 40 }}></div>
       <Box
@@ -81,7 +81,7 @@ const ManageBooks = ({ username }) => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "50%",
-          marginLeft: "375px",
+          marginLeft: "325px",
         }}
       >
         <Button
@@ -110,7 +110,7 @@ const ManageBooks = ({ username }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          marginLeft: "225px",
+          marginLeft: "180px",
           marginRight: "50px",
         }}
       >

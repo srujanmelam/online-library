@@ -12,7 +12,7 @@
     background: linear-gradient(to left,#0275d8,#ff029f);
 }
 
-.image-container,.q{
+.image-container .q{
     margin-right: 60%;
     background: white;
     width: 100px;

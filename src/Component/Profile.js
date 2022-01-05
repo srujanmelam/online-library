@@ -74,21 +74,21 @@ const Profile = ({ user }) => {
           </div>
         </div>
         <div className="lower-container">
-          <h5>{type}</h5>
+          <h5>&nbsp;{type}</h5>
           <h4>
-            <b>{user.username}</b>
+            <b>{user.username.toUpperCase()}</b>
           </h4>
           <br></br>
-          <div style={{ marginLeft: "20%" }}>
-            <Typography variant="h3" align="left">
+          <div>
+            <Typography variant="h3" align="center">
               Total Orders - {orders}
             </Typography>
             <br />
-            <Typography variant="h3" align="left">
+            <Typography variant="h3" align="center">
               Pending Orders - {pending}
             </Typography>
             <br />
-            <Typography variant="h3" align="left">
+            <Typography variant="h3" align="center">
               {added}
             </Typography>
           </div>

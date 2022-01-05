@@ -88,16 +88,19 @@ const Manage = () => {
           {returns.map((r, i) => (
             <Grid item key={i} xs={12} md={12} lg={12}>
               <Paper elevation={3}>
-                &nbsp;
                 <Box>
                   &nbsp;
-                  <Typography variant="h5" align="center"
-                   onClick={()=>Expand(i)}>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    onClick={() => Expand(i)}
+                  >
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
-                  </Typography>
+                  </Typography>{" "}
+                  &nbsp;
                 </Box>
-                <div id={i} style={{display:"none"}}>
+                <div id={i} style={{ display: "none" }}>
                   <Box
                     key={i}
                     sx={{
