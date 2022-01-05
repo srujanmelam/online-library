@@ -80,7 +80,7 @@ const CartProduct = ({ item }) => {
                     &nbsp;
                     <Typography variant="h6" align="left">
                       Book Author - {item.author}
-                    </Typography>                    
+                    </Typography>
                   </Box>
                 </Box>
               </CardContent>

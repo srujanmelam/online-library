@@ -1,19 +1,19 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
-import {Card,CardContent,Typography} from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 var cardStyle = {
-  marginLeft:"36%",
-  display:"block",
-  width: '30vw',
-  transitionDuration: '0.3s',
-  height: '15vw'
-}
-const Profile = ({user}) => {
-  const [orders,setOrders] = useState(0); 
-  const [pending,setPending] = useState(0);
-  const [books,setBooks] = useState(0);
+  marginLeft: "36%",
+  display: "block",
+  width: "30vw",
+  transitionDuration: "0.3s",
+  height: "15vw",
+};
+const Profile = ({ user }) => {
+  const [orders, setOrders] = useState(0);
+  const [pending, setPending] = useState(0);
+  const [books, setBooks] = useState(0);
 
   const type = user.isAdmin ? "Admin" : "Student";
   const added = user.isAdmin ? <p>books Added - {books}</p> : <></>;
@@ -35,7 +35,9 @@ const Profile = ({user}) => {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(`http://localhost:3000/orders?username=${user.username}&return=false`)
+        .get(
+          `http://localhost:3000/orders?username=${user.username}&return=false`
+        )
         .then((res) => {
           setPending(res.data.length);
         })
@@ -62,30 +64,22 @@ const Profile = ({user}) => {
 
   return (
     <div>
-      <NavBar/><br></br>
+      <NavBar />
+      <br></br>
       <Card sx={{ minWidth: 275 }} style={cardStyle}>
         <CardContent>
           <Typography variant="h4" align="left">
-          User: {user.username}
+            User: {user.username}
           </Typography>
-          <Typography align="left">
-          Type: {type}
-          </Typography>
-          <Typography align="left">
-          Orders: {orders}
-          </Typography>
-          <Typography align="left">
-          Pending: {pending}
-          </Typography>
-          <Typography align="left">
-            {added}
-          </Typography>
-         
+          <Typography align="left">Type: {type}</Typography>
+          <Typography align="left">Orders: {orders}</Typography>
+          <Typography align="left">Pending: {pending}</Typography>
+          <Typography align="left">{added}</Typography>
         </CardContent>
       </Card>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

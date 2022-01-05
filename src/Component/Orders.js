@@ -134,7 +134,13 @@ function Orders({ username }) {
           })}
         </Grid>
       </Box>
-      <Box>
+      <Box
+        sx={{
+          marginLeft: "700px",
+          marginTop: "50px",
+          marginBottom: "50px",
+        }}
+      >
         <Pagination
           color="primary"
           variant="outlined"

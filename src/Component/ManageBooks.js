@@ -75,27 +75,37 @@ const ManageBooks = ({ username }) => {
         Your Books
       </Typography>
       <div style={{ marginTop: 40 }}></div>
-      <Button
-        color="primary"
-        variant="contained"
-        size="large"
-        onClick={() => changeOrder()}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "50%",
+          marginLeft: "375px",
+        }}
       >
-        {name}
-      </Button>
-      <Button color="primary" variant="contained" size="large">
-        <Link
-          to="/addbook"
-          style={{
-            fontSize: "1.17em",
-            textDecoration: "none",
-            color: "white",
-          }}
+        <Button
+          color="primary"
+          variant="contained"
+          size="large"
+          onClick={() => changeOrder()}
         >
-          Add a Book
-        </Link>
-      </Button>
-      <div style={{ marginTop: 40 }}></div>
+          {name}
+        </Button>
+        <Button color="primary" variant="contained" size="medium">
+          <Link
+            to="/addbook"
+            style={{
+              fontSize: "1.17em",
+              textDecoration: "none",
+              color: "white",
+            }}
+          >
+            Add a Book
+          </Link>
+        </Button>
+      </Box>
+      <div style={{ marginTop: 50 }}></div>
       <Box
         sx={{
           display: "flex",
@@ -181,7 +191,9 @@ const ManageBooks = ({ username }) => {
       </Box>
       <Box
         sx={{
+          marginTop: "50px",
           marginLeft: "650px",
+          marginBottom: "50px",
         }}
       >
         <Pagination

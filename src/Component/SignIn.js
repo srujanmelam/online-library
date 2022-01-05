@@ -17,7 +17,7 @@ function SignIn() {
   const [password1, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useNavigate();
- 
+
   const LoginUser = () => {
     axios
       .get(
@@ -44,7 +44,7 @@ function SignIn() {
         console.log(err);
       });
   };
-  
+
   return (
     <div>
       <Grid
@@ -96,13 +96,13 @@ function SignIn() {
               type="text"
               label="Username"
               InputLabelProps={{
-                style:{color:'white'}
+                style: { color: "white" },
               }}
               margin="normal"
               onChange={(e) => setUsername(e.target.value)}
               required
-              InputProps={{               
-                style:{color:'white'},
+              InputProps={{
+                style: { color: "white" },
                 startAdornment: (
                   <InputAdornment position="start">
                     <AccountCircle />
@@ -117,10 +117,10 @@ function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
               InputLabelProps={{
-                style:{color:'white'}
+                style: { color: "white" },
               }}
               InputProps={{
-                style:{color:'white'},
+                style: { color: "white" },
                 startAdornment: (
                   <InputAdornment position="start">
                     <LockRounded />
@@ -133,7 +133,6 @@ function SignIn() {
                 <Typography htmlFor="rememberMe">
                   Remember me
                   <Checkbox
-                   
                     type="checkbox"
                     defaultChecked
                     color="primary"

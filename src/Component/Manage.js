@@ -1,18 +1,24 @@
-import { Box, Card, CardHeader, CardContent, Grid, Paper, Typography } from "@material-ui/core";
+import {
+  Box,
+  Card,
+  CardHeader,
+  CardContent,
+  Grid,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 
 const Manage = () => {
   const [orders, setOrders] = useState([]);
-  const [returns,setReturns] = useState([]);
+  const [returns, setReturns] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .get(
-          `http://localhost:3000/orders?return=false&_expand=book`
-        )
+        .get(`http://localhost:3000/orders?return=false&_expand=book`)
         .then((res) => {
           setOrders(res.data);
           console.log("Pending returns retrieved successfully");
@@ -40,10 +46,18 @@ const Manage = () => {
           pre !== undefined
             ? records.map((record) =>
                 record.user === order.username
-                  ? { ...record, fine: record.fine+fine, count: record.count+1, books: [...record.books,book] }
+                  ? {
+                      ...record,
+                      fine: record.fine + fine,
+                      count: record.count + 1,
+                      books: [...record.books, book],
+                    }
                   : record
               )
-            : [...records, {user: order.username, fine: fine, count:1, books: [book]}];
+            : [
+                ...records,
+                { user: order.username, fine: fine, count: 1, books: [book] },
+              ];
       });
       setReturns(records);
     };
@@ -52,7 +66,7 @@ const Manage = () => {
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div style={{ marginTop: 50 }}></div>
       <Box
         sx={{
@@ -61,34 +75,39 @@ const Manage = () => {
         }}
       >
         <Grid container spacing={5}>
-          {returns.map((r,i)=>(
+          {returns.map((r, i) => (
             <Grid item key={i} xs={12} md={12} lg={12}>
               <Paper elevation={3}>
-              &nbsp;
+                &nbsp;
                 <Box>
                   &nbsp;
                   <Typography variant="h5" align="center">
-                    User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp; TotalFine : {r.fine}
+                    User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
+                    TotalFine : {r.fine}
                   </Typography>
                 </Box>
-                <Box key={i}
+                <Box
+                  key={i}
                   sx={{
                     display: "flex",
                     flexDirection: "row",
                     marginTop: "30px",
+                    marginLeft: "50px",
                   }}
                 >
-                  {r.books.map((book,i)=>(
-                    <Box key={i}
+                  {r.books.map((book, i) => (
+                    <Box
+                      key={i}
                       sx={{
                         marginLeft: "30px",
+                        marginRight: "30px",
                         marginBottom: "30px",
                       }}
                     >
                       <Card elevation={3}>
                         <CardHeader
                           title={book.title}
-                          subheader= {" - "+book.author} 
+                          subheader={" - " + book.author}
                         />
                         <CardContent>
                           <img
@@ -103,15 +122,19 @@ const Manage = () => {
                               marginTop: "30px",
                             }}
                           >
-                            <Typography variant="h6" align="center">PUBLICATION - {book.publication}</Typography>
+                            <Typography variant="h6" align="center">
+                              PUBLICATION - {book.publication}
+                            </Typography>
                             &nbsp;
-                            <Typography variant="h6" align="center">ISBN - {book.ISBN}</Typography>
-                          </Box>          
+                            <Typography variant="h6" align="center">
+                              ISBN - {book.ISBN}
+                            </Typography>
+                          </Box>
                         </CardContent>
                       </Card>
                     </Box>
                   ))}
-                </Box>  
+                </Box>
               </Paper>
             </Grid>
           ))}
@@ -120,6 +143,6 @@ const Manage = () => {
       <div style={{ marginTop: 40 }}></div>
     </div>
   );
-}
+};
 
 export default Manage;

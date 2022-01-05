@@ -9,7 +9,7 @@ function LoginReducer(state = initialState, action) {
       return {
         ...state,
         loginSuccess: true,
-        user: action.payload
+        user: action.payload,
       };
     case "loginFail":
       return {
@@ -20,7 +20,7 @@ function LoginReducer(state = initialState, action) {
       return {
         ...state,
         loginSuccess: false,
-        user: {}
+        user: {},
       };
     default:
       return state;

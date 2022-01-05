@@ -55,7 +55,7 @@ const Status = ({ username }) => {
       if (currentDate - date >= 7) {
         const f = (currentDate - date) * 10;
         fine.push(f);
-        total+=f;
+        total += f;
       } else {
         fine.push(0);
       }

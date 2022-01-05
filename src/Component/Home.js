@@ -10,7 +10,7 @@ import {
   Select,
   MenuItem,
   FormControl,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { SearchRounded } from "@material-ui/icons";
 import Paginate from "./Paginate";

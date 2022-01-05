@@ -9,10 +9,10 @@ import {
   TitleRounded,
   DialpadRounded,
   DateRangeRounded,
-  InsertLink
+  InsertLink,
 } from "@material-ui/icons";
 
-function AddBooks({username}) {
+function AddBooks({ username }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setISBN] = useState("");
@@ -27,7 +27,7 @@ function AddBooks({username}) {
       ISBN: isbn,
       publication: publication,
       link: link,
-      addedBy : username,
+      addedBy: username,
     };
     axios
       .post(`http://localhost:3000/books`, book)
@@ -43,10 +43,11 @@ function AddBooks({username}) {
   return (
     <div
       style={{
-        backgroundColor:"black",
+        backgroundColor: "black",
       }}
     >
-      <NavBar /><br></br>
+      <NavBar />
+      <br></br>
       <Grid
         container
         minwidth="100vh"
@@ -73,7 +74,7 @@ function AddBooks({username}) {
           style={{
             color: "white",
             padding: 10,
-            borderRadius:"5%",
+            borderRadius: "5%",
             backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
@@ -91,13 +92,13 @@ function AddBooks({username}) {
             label="Title"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             onChange={(e) => setTitle(e.target.value)}
             required
             pattern="[A-Za-z0-9]+"
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <TitleRounded />
@@ -110,13 +111,13 @@ function AddBooks({username}) {
             label="Author"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             onChange={(e) => setAuthor(e.target.value)}
             required
             pattern="[A-Za-z0-9]+"
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <AccountCircle />
@@ -129,13 +130,13 @@ function AddBooks({username}) {
             label="ISBN"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             onChange={(e) => setISBN(e.target.value)}
             required
             pattern="[0-9]{3}-[0-9]-[0-9]{2}-[0-9]{6}-[0-9]"
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <DialpadRounded />
@@ -148,13 +149,13 @@ function AddBooks({username}) {
             label="Publication"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             onChange={(e) => setPublication(e.target.value)}
             required
             pattern="[0-9]{4}"
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <DateRangeRounded />
@@ -167,12 +168,12 @@ function AddBooks({username}) {
             label="Image Link"
             margin="normal"
             InputLabelProps={{
-              style:{color:'white'}
+              style: { color: "white" },
             }}
             onChange={(e) => setLink(e.target.value)}
             required
             InputProps={{
-              style:{color:'white'},
+              style: { color: "white" },
               startAdornment: (
                 <InputAdornment position="start">
                   <InsertLink />

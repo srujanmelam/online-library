@@ -89,7 +89,6 @@ function SignUp() {
               maxWidth: 400,
               minwidth: 300,
               color: "white",
-              
             }}
           >
             <Grid container justifyContent="center">
@@ -106,13 +105,12 @@ function SignUp() {
               margin="normal"
               onChange={(e) => setUsername(e.target.value)}
               InputLabelProps={{
-                style:{color:'white'}
+                style: { color: "white" },
               }}
               required
               InputProps={{
-                style:{color:'white'},
+                style: { color: "white" },
                 startAdornment: (
-                 
                   <InputAdornment position="start">
                     <AccountCircle />
                   </InputAdornment>
@@ -124,12 +122,12 @@ function SignUp() {
               label="Password"
               margin="normal"
               InputLabelProps={{
-                style:{color:'white'}
+                style: { color: "white" },
               }}
               onChange={(e) => setPassword(e.target.value)}
               required
               InputProps={{
-                style:{color:'white'},
+                style: { color: "white" },
                 startAdornment: (
                   <InputAdornment position="start">
                     <LockRounded />
@@ -167,7 +165,10 @@ function SignUp() {
                 <Typography>Already have an account ?</Typography>
               </Grid>
               <Grid item>
-                <Link to="/" style={{ textDecoration: "none", color: "yellow" }}>
+                <Link
+                  to="/"
+                  style={{ textDecoration: "none", color: "yellow" }}
+                >
                   Sign in
                 </Link>
               </Grid>

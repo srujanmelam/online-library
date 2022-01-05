@@ -31,7 +31,7 @@ function Cart({ cart, user }) {
       store.dispatch({ type: "ADD_ORDERS", payload: { order: order } });
     });
     setTimeout(() => {
-      store.dispatch({type: actionTypes.RESET_CART});
+      store.dispatch({ type: actionTypes.RESET_CART });
       console.log("Cart Reset");
       history("/orders");
     }, 1000);
