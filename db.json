@@ -7,10 +7,10 @@
       "isAdmin": false
     },
     {
-      "id": 2,
       "username": "jyothi",
       "password": "test123",
-      "isAdmin": true
+      "isAdmin": true,
+      "id": 2
     },
     {
       "username": "kranthi",

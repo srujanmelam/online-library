@@ -26,6 +26,7 @@ function SignIn() {
       .then((res) => {
         if (res.data.length !== 0) {
           const user = {
+            userId : res.data[0].id,
             username: res.data[0].username,
             isAdmin: res.data[0].isAdmin,
           };
@@ -166,7 +167,6 @@ function SignIn() {
               </Grid>
             </Grid>
           </div>
-
           <div />
         </Grid>
       </Grid>
