@@ -103,12 +103,12 @@ const Manage = () => {
                 >
                   &nbsp;
                   <Typography variant="h5" align="center">
-                    User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
-                    TotalFine : {r.fine}
+                    User : {r.user.toUpperCase()} &nbsp; No Of Orders : {r.count} &nbsp;
+                    TotalFine : {r.fine} Rs
                   </Typography>
                 </Box>
                 <div id={i}>
-                  <Button 
+                  <Button
                     color="primary"
                     variant="contained"
                     size="small"
@@ -119,53 +119,46 @@ const Manage = () => {
                   <div style={{ marginTop: 10 }}></div>
                   <div style={{ display: "none" }}>
                     <Box
-                      key={i}
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
+                        marginLeft: "30px",
+                        marginRight: "30px",
                         marginTop: "30px",
-                        marginLeft: "50px",
                       }}
                     >
-                      {r.books.map((book, i) => (
-                        <Box
-                          key={i}
-                          sx={{
-                            marginLeft: "30px",
-                            marginRight: "30px",
-                            marginBottom: "50px",
-                          }}
-                        >
-                          <Card elevation={3}>
-                            <CardHeader
-                              title={book.title}
-                              subheader={" - " + book.author}
-                            />
-                            <CardContent>
-                              <img
-                                src={book.link}
-                                style={{ width: 100, height: 120 }}
-                                alt="bookImage"
+                      <Grid container spacing={3} key={i}>
+                        {r.books.map((book, i) => (
+                          <Grid item key={i} xs={4} md={4} lg={4}>
+                            <Card elevation={3}>
+                              <CardHeader
+                                title={book.title}
+                                subheader={" - " + book.author}
                               />
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  marginTop: "30px",
-                                }}
-                              >
-                                <Typography variant="h6" align="center">
-                                  PUBLICATION - {book.publication}
-                                </Typography>
-                                &nbsp;
-                                <Typography variant="h6" align="center">
-                                  ISBN - {book.ISBN}
-                                </Typography>
-                              </Box>
-                            </CardContent>
-                          </Card>
-                        </Box>
-                      ))}
+                              <CardContent>
+                                <img
+                                  src={book.link}
+                                  style={{ width: 160, height: 200 }}
+                                  alt="bookImage"
+                                />
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    marginTop: "30px",
+                                  }}
+                                >
+                                  <Typography variant="h6" align="center">
+                                    PUBLICATION - {book.publication}
+                                  </Typography>
+                                  &nbsp;
+                                  <Typography variant="h6" align="center">
+                                    ISBN - {book.ISBN}
+                                  </Typography>
+                                </Box>
+                              </CardContent>
+                            </Card>
+                          </Grid>
+                        ))}
+                      </Grid>
                     </Box>
                   </div>
                   &nbsp;
