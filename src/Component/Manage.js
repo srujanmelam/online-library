@@ -6,24 +6,35 @@ import {
   Grid,
   Paper,
   Typography,
+  IconButton,
 } from "@material-ui/core";
+import { ExpandLessRounded, ExpandMoreRounded } from "@material-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 
-const Expand = (id) => {
-  let x = document.getElementById(id);
-
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-};
-
 const Manage = () => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
+  const a = <ExpandMoreRounded fontSize="large"/>;
+  const b = <ExpandLessRounded fontSize="large"/>;
+  const [name, setName] = useState(a);
+
+  const Expand = (id) => {
+    let x = document.getElementById(id);
+  
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+
+    if (name === a) {
+      setName(b);
+    } else {
+      setName(a);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,16 +99,37 @@ const Manage = () => {
           {returns.map((r, i) => (
             <Grid item key={i} xs={12} md={12} lg={12}>
               <Paper elevation={3}>
-                <Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "500px",
+                  }}
+                >
                   &nbsp;
                   <Typography
                     variant="h5"
                     align="center"
-                    onClick={() => Expand(i)}
                   >
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
                   </Typography>{" "}
+                  <Box 
+                    sx={{ 
+                      marginLeft: "400px",
+                      marginTop: "10px",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <IconButton
+                      color="primary"
+                      onClick={() => Expand(i)}
+                    >
+                      {name}
+                    </IconButton>
+                  </Box>
                   &nbsp;
                 </Box>
                 <div id={i} style={{ display: "none" }}>
@@ -116,7 +148,7 @@ const Manage = () => {
                         sx={{
                           marginLeft: "30px",
                           marginRight: "30px",
-                          marginBottom: "30px",
+                          marginBottom: "50px",
                         }}
                       >
                         <Card elevation={3}>
