@@ -2,18 +2,17 @@ import axios from "axios";
 import store from "./store";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import "../Component/Card.css";
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography, TextField, Box } from "@material-ui/core";
 
 const Profile = ({ user }) => {
   const [orders, setOrders] = useState(0);
   const [pending, setPending] = useState(0);
   const [books, setBooks] = useState(0);
-  const [password,setPassword] = useState("");
-  const [confirm,setConfirm] = useState("");
-  const history = useNavigate();
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
 
   const type = user.isAdmin ? "Admin" : "Student";
   const added = user.isAdmin ? `Books Added - ${books}` : "";
@@ -64,14 +63,16 @@ const Profile = ({ user }) => {
 
   const expand = () => {
     let x = document.getElementById("change");
-
+    let y = document.getElementsByClassName("Cards")[0];
     if (x.style.display === "none") {
       x.style.display = "block";
+      y.style.height = "650px";
     } else {
       x.style.display = "none";
+      y.style.height = "500px";
     }
   };
-  
+
   const changePassword = () => {
     if ((password !== "") & (password === confirm)) {
       const update = {
@@ -84,7 +85,6 @@ const Profile = ({ user }) => {
         .then((res) => {
           console.log("changed password successfully");
           store.dispatch({ type: "logOut" });
-          history("/");
         })
         .catch((err) => {
           console.log(err);
@@ -126,15 +126,56 @@ const Profile = ({ user }) => {
             <Typography variant="h3" align="center">
               {added}
             </Typography>
-            <Button color="primary" onClick={()=>expand()}>Change Password</Button>
-            <div id="change" style={{display:"none"}}>
-              <input type="password" placeholder="New password" onChange={(e)=>setPassword(e.target.value)} />
-              <input type="password" placeholder="Confirm new password" onChange={(e)=>setConfirm(e.target.value)} />
-              <Link to="/" onClick={()=>changePassword()}>Confirm</Link>
+            <div style={{ marginTop: 20 }}></div>
+            <Button color="primary" onClick={() => expand()}>
+              Change Password
+            </Button>
+            <div style={{ marginTop: 20 }}></div>
+            <div id="change" style={{ display: "none" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  marginLeft: "75px",
+                  marginRight: "75px",
+                }}
+              >
+                <TextField
+                  variant="outlined"
+                  type="text"
+                  label="New password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                ></TextField>
+                &nbsp;
+                <TextField
+                  variant="outlined"
+                  type="text"
+                  label="Confirm new password"
+                  onChange={(e) => setConfirm(e.target.value)}
+                  required
+                ></TextField>
+                &nbsp;
+                <Link
+                  to="/"
+                  onClick={() => changePassword()}
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                  }}
+                >
+                  <Button color="primary" variant="contained">
+                    Confirm
+                  </Button>
+                </Link>
+              </Box>
+              <div style={{ marginTop: 30 }}></div>
             </div>
           </div>
         </div>
       </div>
+      <div style={{ marginTop: 30 }}></div>
     </div>
   );
 };

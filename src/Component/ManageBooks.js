@@ -92,18 +92,18 @@ const ManageBooks = ({ username }) => {
         >
           {name}
         </Button>
-        <Button color="primary" variant="contained" size="medium">
-          <Link
-            to="/addbook"
-            style={{
-              fontSize: "1.17em",
-              textDecoration: "none",
-              color: "white",
-            }}
-          >
+        <Link
+          to="/addbook"
+          style={{
+            fontSize: "1.17em",
+            textDecoration: "none",
+            color: "white",
+          }}
+        >
+          <Button color="primary" variant="contained" size="large">
             Add a Book
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </Box>
       <div style={{ marginTop: 50 }}></div>
       <Box

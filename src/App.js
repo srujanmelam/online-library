@@ -10,7 +10,7 @@ import Manage from "./Component/Manage";
 import Profile from './Component/Profile';
 import AddBooks from './Component/AddBooks';
 import ManageBooks from './Component/ManageBooks';
-import UpdateBooks from "./Component/UpdateBooks"
+import UpdateBooks from "./Component/UpdateBooks";
 
 function App() {
 

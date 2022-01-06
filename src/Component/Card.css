@@ -1,6 +1,6 @@
 .Cards{
-    width:300px;
-    height:480px;
+    width:400px;
+    height:500px;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 1px 10px 1px black;
@@ -13,7 +13,7 @@
 }
 
 .image-container .q{
-    margin-right: 60%;
+    margin-right: 48%;
     background: white;
     width: 100px;
     height: 100px;
