@@ -6,9 +6,8 @@ import {
   Grid,
   Paper,
   Typography,
-  IconButton,
+  Button,
 } from "@material-ui/core";
-import { ExpandLessRounded, ExpandMoreRounded } from "@material-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
@@ -16,23 +15,16 @@ import NavBar from "./NavBar";
 const Manage = () => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
-  const a = <ExpandMoreRounded fontSize="large"/>;
-  const b = <ExpandLessRounded fontSize="large"/>;
-  const [name, setName] = useState(a);
 
   const Expand = (id) => {
     let x = document.getElementById(id);
-  
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
 
-    if (name === a) {
-      setName(b);
+    if (x.lastElementChild.style.display === "none") {
+      x.lastElementChild.style.display = "block";
+      x.firstElementChild.innerHTML = "Show Less";
     } else {
-      setName(a);
+      x.lastElementChild.style.display = "none";
+      x.firstElementChild.innerHTML = "Show More";
     }
   };
 
@@ -109,79 +101,65 @@ const Manage = () => {
                   }}
                 >
                   &nbsp;
-                  <Typography
-                    variant="h5"
-                    align="center"
-                  >
+                  <Typography variant="h5" align="center">
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
                   </Typography>{" "}
-                  <Box 
-                    sx={{ 
-                      marginLeft: "400px",
-                      marginTop: "10px",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    <IconButton
-                      color="primary"
-                      onClick={() => Expand(i)}
-                    >
-                      {name}
-                    </IconButton>
-                  </Box>
-                  &nbsp;
                 </Box>
-                <div id={i} style={{ display: "none" }}>
-                  <Box
-                    key={i}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginTop: "30px",
-                      marginLeft: "50px",
-                    }}
-                  >
-                    {r.books.map((book, i) => (
-                      <Box
-                        key={i}
-                        sx={{
-                          marginLeft: "30px",
-                          marginRight: "30px",
-                          marginBottom: "50px",
-                        }}
-                      >
-                        <Card elevation={3}>
-                          <CardHeader
-                            title={book.title}
-                            subheader={" - " + book.author}
-                          />
-                          <CardContent>
-                            <img
-                              src={book.link}
-                              style={{ width: 100, height: 120 }}
-                              alt="bookImage"
+                <div id={i}>
+                  <Button onClick={() => Expand(i)}>Show More</Button>
+                  <div style={{ display: "none" }}>
+                    <Box
+                      key={i}
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginTop: "30px",
+                        marginLeft: "50px",
+                      }}
+                    >
+                      {r.books.map((book, i) => (
+                        <Box
+                          key={i}
+                          sx={{
+                            marginLeft: "30px",
+                            marginRight: "30px",
+                            marginBottom: "50px",
+                          }}
+                        >
+                          <Card elevation={3}>
+                            <CardHeader
+                              title={book.title}
+                              subheader={" - " + book.author}
                             />
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                marginTop: "30px",
-                              }}
-                            >
-                              <Typography variant="h6" align="center">
-                                PUBLICATION - {book.publication}
-                              </Typography>
-                              &nbsp;
-                              <Typography variant="h6" align="center">
-                                ISBN - {book.ISBN}
-                              </Typography>
-                            </Box>
-                          </CardContent>
-                        </Card>
-                      </Box>
-                    ))}
-                  </Box>
+                            <CardContent>
+                              <img
+                                src={book.link}
+                                style={{ width: 100, height: 120 }}
+                                alt="bookImage"
+                              />
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  marginTop: "30px",
+                                }}
+                              >
+                                <Typography variant="h6" align="center">
+                                  PUBLICATION - {book.publication}
+                                </Typography>
+                                &nbsp;
+                                <Typography variant="h6" align="center">
+                                  ISBN - {book.ISBN}
+                                </Typography>
+                              </Box>
+                            </CardContent>
+                          </Card>
+                        </Box>
+                      ))}
+                    </Box>
+                  </div>
+                  &nbsp;
                 </div>
               </Paper>
             </Grid>
