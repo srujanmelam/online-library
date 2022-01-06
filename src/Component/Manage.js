@@ -21,10 +21,10 @@ const Manage = () => {
 
     if (x.lastElementChild.style.display === "none") {
       x.lastElementChild.style.display = "block";
-      x.firstElementChild.innerHTML = "Show Less";
+      x.firstElementChild.innerHTML = "View Less";
     } else {
       x.lastElementChild.style.display = "none";
-      x.firstElementChild.innerHTML = "Show More";
+      x.firstElementChild.innerHTML = "View More";
     }
   };
 
@@ -91,23 +91,32 @@ const Manage = () => {
           {returns.map((r, i) => (
             <Grid item key={i} xs={12} md={12} lg={12}>
               <Paper elevation={3}>
+                &nbsp;
                 <Box
                   sx={{
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginLeft: "500px",
+                    marginBottom: "15px",
                   }}
                 >
                   &nbsp;
                   <Typography variant="h5" align="center">
                     User : {r.user} &nbsp; No. Of Orders : {r.count} &nbsp;
                     TotalFine : {r.fine}
-                  </Typography>{" "}
+                  </Typography>
                 </Box>
                 <div id={i}>
-                  <Button onClick={() => Expand(i)}>Show More</Button>
+                  <Button 
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    onClick={() => Expand(i)}
+                  >
+                    View More
+                  </Button>
+                  <div style={{ marginTop: 10 }}></div>
                   <div style={{ display: "none" }}>
                     <Box
                       key={i}
