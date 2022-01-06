@@ -83,8 +83,8 @@ const Manage = () => {
       <div style={{ marginTop: 50 }}></div>
       <Box
         sx={{
-          marginLeft: "30px",
-          marginRight: "30px",
+          marginLeft: "75px",
+          marginRight: "75px",
         }}
       >
         <Grid container spacing={5}>

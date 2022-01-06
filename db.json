@@ -33,8 +33,8 @@
   ],
   "books": [
     {
-      "title": "A Monster Calls by Patrick Ness",
-      "author": "jyothi",
+      "title": "A Monster Calls",
+      "author": "Patrick Ness",
       "ISBN": "978-4-16-148410-0",
       "publication": "2000",
       "link": "https://images-na.ssl-images-amazon.com/images/I/91hs2ugOjVL.jpg",
@@ -43,8 +43,8 @@
     },
     {
       "id": 2,
-      "title": "Skulduggery Pleasant by Derek Landy",
-      "author": "chota",
+      "title": "Skulduggery Pleasant",
+      "author": "Derek Landy",
       "ISBN": "978-3-19-148410-0",
       "publication": "2001",
       "link": "https://i.pinimg.com/474x/a4/1e/89/a41e8922a8c95a1a0d1bd03d22706fb7.jpg",
@@ -52,8 +52,8 @@
     },
     {
       "id": 3,
-      "title": "Refugee Boy by Benjamin Zephaniah",
-      "author": "srujan",
+      "title": "Refugee Boy",
+      "author": "Benjamin Zephaniah",
       "ISBN": "978-3-16-148421-0",
       "publication": "2002",
       "link": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4088/9781408894996.jpg",
@@ -61,8 +61,8 @@
     },
     {
       "id": 4,
-      "title": "How I Live Now by Meg Rosoff",
-      "author": "kranthi",
+      "title": "How I Live Now",
+      "author": "Meg Rosoff",
       "ISBN": "978-3-16-148410-5",
       "publication": "2003",
       "link": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327870252l/161426.jpg",
@@ -70,16 +70,16 @@
     },
     {
       "id": 5,
-      "title": "The Handmaid's Tale by Margaret Atwood",
-      "author": "manoj",
+      "title": "The Handmaid's Tale",
+      "author": "Margaret Atwood",
       "ISBN": "978-3-12-248421-7",
       "publication": "2004",
       "link": "https://images-na.ssl-images-amazon.com/images/I/612pGrmXKtL.jpg",
       "addedBy": "jyothi"
     },
     {
-      "title": "New Town Soul by Dermot Bolger",
-      "author": "Tarun",
+      "title": "New Town Soul",
+      "author": "Dermot Bolger",
       "ISBN": "978-3-19-148410-5",
       "publication": "2005",
       "link": "https://m.media-amazon.com/images/I/41sMoviJoYL.jpg",
