@@ -29,6 +29,6 @@ Run the following commands
 
 * Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 * terminal -> json-server --watch db.json - to run json server. json server runs at 3000 port
-* new terminal -> npm start - to run react app. since json runs on port 3000. It asks whether to change the port.press Y. App runs at 3001 port
+* new terminal -> npm start - to run react app. since json runs on port 3000. It asks whether to change the port.press Y. App runs at 3001 port.
 
 http://localhost:3001/ - copy and paste this in browser to view the app.
