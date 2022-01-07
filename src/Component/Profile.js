@@ -14,6 +14,7 @@ const Profile = ({ user }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
+  const [val, setVal] = useState(false);
   const [message, setMessage] = useState("");
 
   const type = user.isAdmin ? "Admin" : "Student";
@@ -79,12 +80,16 @@ const Profile = ({ user }) => {
     setPassword(val);
     if (val.length === 0) {
       setError("Password cannot be empty");
+      setVal(true);
     } else if (val.length < 6) {
       setError("Password should contain minimum 6 characters");
+      setVal(true);
     } else if (val.length > 20) {
       setError("Password should not exceed 20 characters");
+      setVal(true);
     } else if (val.match(/^.{6,20}$/)) {
       setError("");
+      setVal(false);
     }
   };
 
@@ -172,7 +177,7 @@ const Profile = ({ user }) => {
                   onChange={(e) => checkPassword(e.target.value)}
                   required
                   helperText={error}
-                  error={error}
+                  error={val}
                 ></TextField>
                 &nbsp;
                 <TextField

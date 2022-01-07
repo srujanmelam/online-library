@@ -195,7 +195,7 @@ const ManageBooks = ({ username }) => {
       <Box
         sx={{
           marginTop: "50px",
-          marginLeft: "650px",
+          marginLeft: "675px",
           marginBottom: "50px",
         }}
       >

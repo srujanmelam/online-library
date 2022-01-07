@@ -14,8 +14,10 @@ import { AccountCircle, LockRounded } from "@material-ui/icons";
 function SignUp() {
   const [username1, setUsername] = useState("");
   const [error1, setError1] = useState("");
+  const [val1, setVal1] = useState(false);
   const [password1, setPassword] = useState("");
   const [error2, setError2] = useState("");
+  const [val2, setVal2] = useState(false);
   const [isAdmin1, setisAdmin] = useState(false);
   const [message, setMessage] = useState("");
   const history = useNavigate();
@@ -24,14 +26,19 @@ function SignUp() {
     setUsername(val);
     if (val.length === 0) {
       setError1("Username cannot be empty");
+      setVal1(true);
     } else if (!val.match(/^[a-zA-Z0-9]+$/)) {
       setError1("Username should contain letters and numbers");
+      setVal1(true);
     } else if (val.length < 5) {
       setError1("Username should contain minimum 5 characters");
+      setVal1(true);
     } else if (val.length > 15) {
       setError1("Username should not exceed 15 characters");
+      setVal1(true);
     } else if (val.match(/^[a-zA-Z0-9]{5,15}$/)) {
       setError1("");
+      setVal1(false);
     }
   };
 
@@ -39,12 +46,16 @@ function SignUp() {
     setPassword(val);
     if (val.length === 0) {
       setError2("Password cannot be empty");
+      setVal2(true);
     } else if (val.length < 6) {
       setError2("Password should contain minimum 6 characters");
+      setVal2(true);
     } else if (val.length > 20) {
       setError2("Password should not exceed 20 characters");
+      setVal2(true);
     } else if (val.match(/^.{6,20}$/)) {
       setError2("");
+      setVal2(false);
     }
   };
 
@@ -145,11 +156,8 @@ function SignUp() {
                 ),
               }}
               helperText={error1}
-              error={error1 === ""}
+              error={val1}
             ></TextField>
-            <Typography variant="body2">
-              Your username must be between 5-15 characters
-            </Typography>
             <TextField
               type="password"
               label="Password"
@@ -169,11 +177,8 @@ function SignUp() {
                 ),
               }}
               helperText={error2}
-              error={error2 === ""}
+              error={val2}
             ></TextField>
-            <Typography variant="body2">
-              Your password must be between 6-20 characters
-            </Typography>
             <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography>
