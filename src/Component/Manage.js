@@ -18,7 +18,6 @@ const Manage = () => {
 
   const Expand = (id) => {
     let x = document.getElementById(id);
-
     if (x.lastElementChild.style.display === "none") {
       x.lastElementChild.style.display = "block";
       x.firstElementChild.innerHTML = "View Less";
@@ -103,8 +102,8 @@ const Manage = () => {
                 >
                   &nbsp;
                   <Typography variant="h5" align="center">
-                    User : {r.user.toUpperCase()} &nbsp; No Of Orders : {r.count} &nbsp;
-                    TotalFine : {r.fine} Rs
+                    User : {r.user.toUpperCase()} &nbsp; No Of Orders :{" "}
+                    {r.count} &nbsp; TotalFine : {r.fine} Rs
                   </Typography>
                 </Box>
                 <div id={i}>

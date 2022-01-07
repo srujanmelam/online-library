@@ -9,7 +9,6 @@ import {
   Checkbox,
   Typography,
 } from "@material-ui/core";
-
 import { AccountCircle, LockRounded } from "@material-ui/icons";
 
 function SignUp() {
@@ -17,7 +16,6 @@ function SignUp() {
   const [password1, setPassword] = useState("");
   const [isAdmin1, setisAdmin] = useState(false);
   const [message, setMessage] = useState("");
-
   const history = useNavigate();
 
   const SignUpUser = () => {
@@ -174,7 +172,7 @@ function SignUp() {
               </Grid>
             </Grid>
           </div>
-
+          <div/>
           <div />
         </Grid>
       </Grid>

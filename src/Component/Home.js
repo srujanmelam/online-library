@@ -52,7 +52,7 @@ function Home() {
   return (
     <div>
       <NavBar />
-      <div style={{ marginTop: 50 }} >
+      <div style={{ marginTop: 50 }}>
         <Box>
           <Box
             sx={{
@@ -83,7 +83,6 @@ function Home() {
                 </Select>
               </FormControl>
             </Box>
-
             <Box
               sx={{
                 width: 500,
@@ -100,7 +99,6 @@ function Home() {
                 onChange={(e) => setSearch(e.target.value)}
               ></TextField>
             </Box>
-
             <Box
               sx={{
                 marginRight: "300px",
@@ -151,7 +149,6 @@ function Home() {
                 </Select>
               </FormControl>
             </Box>
-
             <Typography variant="h6">Order:</Typography>
             <Box
               sx={{
