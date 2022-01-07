@@ -19,7 +19,7 @@ PENIKALAPATI SAI MANOJ KUMAR - S20190010138
 After cloning our project repository from github, these are the steps you have to follow to run our project
 install the following packages
 
-* npm i json-server
+* npm i -g json-server
 * npm i react-redux redux react-router-dom axios
 * npm i @material-ui/core
 * npm i @material-ui/icons
