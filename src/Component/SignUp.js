@@ -13,10 +13,40 @@ import { AccountCircle, LockRounded } from "@material-ui/icons";
 
 function SignUp() {
   const [username1, setUsername] = useState("");
+  const [error1, setError1] = useState("");
   const [password1, setPassword] = useState("");
+  const [error2, setError2] = useState("");
   const [isAdmin1, setisAdmin] = useState(false);
   const [message, setMessage] = useState("");
   const history = useNavigate();
+
+  const changeUsername = (val) => {
+    setUsername(val);
+    if (val.length === 0) {
+      setError1("Username cannot be empty");
+    } else if (!val.match(/^[a-zA-Z0-9]+$/)) {
+      setError1("Username should contain letters and numbers");
+    } else if (val.length < 5) {
+      setError1("Username should contain minimum 5 characters");
+    } else if (val.length > 15) {
+      setError1("Username should not exceed 15 characters");
+    } else if (val.match(/^[a-zA-Z0-9]{5,15}$/)) {
+      setError1("");
+    }
+  };
+
+  const changePassword = (val) => {
+    setPassword(val);
+    if (val.length === 0) {
+      setError2("Password cannot be empty");
+    } else if (val.length < 6) {
+      setError2("Password should contain minimum 6 characters");
+    } else if (val.length > 20) {
+      setError2("Password should not exceed 20 characters");
+    } else if (val.match(/^.{6,20}$/)) {
+      setError2("");
+    }
+  };
 
   const SignUpUser = () => {
     const user = {
@@ -101,7 +131,8 @@ function SignUp() {
               type="text"
               label="Username"
               margin="normal"
-              onChange={(e) => setUsername(e.target.value)}
+              onClick={(e) => changeUsername(e.target.value)}
+              onChange={(e) => changeUsername(e.target.value)}
               InputLabelProps={{
                 style: { color: "white" },
               }}
@@ -114,7 +145,10 @@ function SignUp() {
                   </InputAdornment>
                 ),
               }}
+              helperText={error1}
+              error={error1}
             ></TextField>
+            <p>Your username must be between 5-15 characters</p>
             <TextField
               type="password"
               label="Password"
@@ -122,7 +156,8 @@ function SignUp() {
               InputLabelProps={{
                 style: { color: "white" },
               }}
-              onChange={(e) => setPassword(e.target.value)}
+              onClick={(e) => changePassword(e.target.value)}
+              onChange={(e) => changePassword(e.target.value)}
               required
               InputProps={{
                 style: { color: "white" },
@@ -132,7 +167,10 @@ function SignUp() {
                   </InputAdornment>
                 ),
               }}
+              helperText={error2}
+              error={error2}
             ></TextField>
+            <p>Your password must be between 6-20 characters</p>
             <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography>
@@ -172,7 +210,7 @@ function SignUp() {
               </Grid>
             </Grid>
           </div>
-          <div/>
+          <div />
           <div />
         </Grid>
       </Grid>

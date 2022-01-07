@@ -14,11 +14,45 @@ import { AccountCircle, LockRounded } from "@material-ui/icons";
 
 function SignIn() {
   const [username1, setUsername] = useState("");
+  const [error1, setError1] = useState("");
   const [password1, setPassword] = useState("");
+  const [error2, setError2] = useState("");
   const [message, setMessage] = useState("");
   const history = useNavigate();
 
+  const changeUsername = (val) => {
+    setUsername(val);
+    if (val.length === 0) {
+      setError1("Username cannot be empty");
+    } else if (!val.match(/^[a-zA-Z0-9]+$/)) {
+      setError1("Username should contain letters and numbers");
+    } else if (val.length < 5) {
+      setError1("Username should contain minimum 5 characters");
+    } else if (val.length > 15) {
+      setError1("Username should not exceed 15 characters");
+    } else if (val.match(/^[a-zA-Z0-9]{5,15}$/)) {
+      setError1("");
+    }
+  };
+
+  const changePassword = (val) => {
+    setPassword(val);
+    if (val.length === 0) {
+      setError2("Password cannot be empty");
+    } else if (val.length < 6) {
+      setError2("Password should contain minimum 6 characters");
+    } else if (val.match(/^.{6,20}$/)) {
+      setError2("");
+    }
+  };
+
   const LoginUser = () => {
+    if (
+      !username1.match(/^[a-zA-Z0-9]{5,15}$/) | !password1.match(/^.{6,20}$/)
+    ) {
+      setMessage("Invalid Username or Password");
+      return;
+    }
     axios
       .get(
         `http://localhost:3000/users?username=${username1}&password=${password1}`
@@ -26,7 +60,7 @@ function SignIn() {
       .then((res) => {
         if (res.data.length !== 0) {
           const user = {
-            userId : res.data[0].id,
+            userId: res.data[0].id,
             username: res.data[0].username,
             isAdmin: res.data[0].isAdmin,
           };
@@ -99,8 +133,10 @@ function SignIn() {
               InputLabelProps={{
                 style: { color: "white" },
               }}
+              inputProps={{ pattern: /^[a-zA-Z0-9]{5,15}$/ }}
               margin="normal"
-              onChange={(e) => setUsername(e.target.value)}
+              onClick={(e) => changeUsername(e.target.value)}
+              onChange={(e) => changeUsername(e.target.value)}
               required
               InputProps={{
                 style: { color: "white" },
@@ -110,13 +146,17 @@ function SignIn() {
                   </InputAdornment>
                 ),
               }}
+              helperText={error1}
+              error={error1}
             ></TextField>
             <TextField
               type="password"
               label="Password"
               margin="normal"
-              onChange={(e) => setPassword(e.target.value)}
+              onClick={(e) => changePassword(e.target.value)}
+              onChange={(e) => changePassword(e.target.value)}
               required
+              inputProps={{ pattern: /^.{6,20}$/ }}
               InputLabelProps={{
                 style: { color: "white" },
               }}
@@ -128,6 +168,8 @@ function SignIn() {
                   </InputAdornment>
                 ),
               }}
+              helperText={error2}
+              error={error2}
             ></TextField>
             <Grid container justifyContent="center" spacing={2}>
               <Grid item>

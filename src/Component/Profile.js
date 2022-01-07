@@ -13,6 +13,8 @@ const Profile = ({ user }) => {
   const [books, setBooks] = useState(0);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const type = user.isAdmin ? "Admin" : "Student";
   const added = user.isAdmin ? `Books Added - ${books}` : "";
@@ -70,6 +72,28 @@ const Profile = ({ user }) => {
     } else {
       x.style.display = "none";
       y.style.height = "500px";
+    }
+  };
+
+  const checkPassword = (val) => {
+    setPassword(val);
+    if (val.length === 0) {
+      setError("Password cannot be empty");
+    } else if (val.length < 6) {
+      setError("Password should contain minimum 6 characters");
+    } else if (val.length > 20) {
+      setError("Password should not exceed 20 characters");
+    } else if (val.match(/^.{6,20}$/)) {
+      setError("");
+    }
+  };
+
+  const changeConfirm = (val) => {
+    setConfirm(val);
+    if (val !== password) {
+      setMessage("confirm password should be same as password");
+    } else {
+      setMessage("");
     }
   };
 
@@ -145,17 +169,20 @@ const Profile = ({ user }) => {
                   variant="outlined"
                   type="text"
                   label="New password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => checkPassword(e.target.value)}
                   required
+                  helperText={error}
+                  error={error}
                 ></TextField>
                 &nbsp;
                 <TextField
                   variant="outlined"
                   type="text"
                   label="Confirm new password"
-                  onChange={(e) => setConfirm(e.target.value)}
+                  onChange={(e) => changeConfirm(e.target.value)}
                   required
                 ></TextField>
+                {message}
                 &nbsp;
                 <Link
                   to="/"
