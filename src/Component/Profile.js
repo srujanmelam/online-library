@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
-import "../Component/Card.css";
+import "./css/Card.css";
 import { Button, Typography, TextField, Box } from "@material-ui/core";
 
 const Profile = ({ user }) => {
