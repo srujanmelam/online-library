@@ -73,14 +73,13 @@ function Orders({ username }) {
           display: "flex",
           alignItems: "center",
           padding: "10px 10px 10px 10px",
-          marginLeft: "250px",
-          marginRight: "50px",
+          marginLeft: "300px",
         }}
       >
         <Grid container spacing={5} alignItems="center">
           {displayItems.map((order, i) => {
             return (
-              <Grid item key={i} xs={10} md={10} lg={10}>
+              <Grid item key={i} xs={9} md={9} lg={9}>
                 <Card key={i} elevation={3}>
                   <CardContent>
                     <Box display="flex" flexDirection="row">
@@ -93,13 +92,13 @@ function Orders({ username }) {
                       >
                         <img
                           src={order.book.link}
-                          style={{ width: 250, height: 350 }}
+                          style={{ width: 200, height: 300 }}
                           alt="bookImage"
                         />
                       </Box>
                       <Box
                         sx={{
-                          marginTop: "60px",
+                          marginTop: "45px",
                           marginLeft: "100px",
                           marginRight: "60px",
                         }}

@@ -105,7 +105,6 @@ function SignUp() {
           justifyContent="space-between"
           style={{
             padding: 10,
-
             backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
@@ -146,9 +145,11 @@ function SignUp() {
                 ),
               }}
               helperText={error1}
-              error={error1}
+              error={error1 === ""}
             ></TextField>
-            <p>Your username must be between 5-15 characters</p>
+            <Typography variant="body2">
+              Your username must be between 5-15 characters
+            </Typography>
             <TextField
               type="password"
               label="Password"
@@ -168,9 +169,11 @@ function SignUp() {
                 ),
               }}
               helperText={error2}
-              error={error2}
+              error={error2 === ""}
             ></TextField>
-            <p>Your password must be between 6-20 characters</p>
+            <Typography variant="body2">
+              Your password must be between 6-20 characters
+            </Typography>
             <Grid container justifyContent="center" spacing={2}>
               <Grid item>
                 <Typography>

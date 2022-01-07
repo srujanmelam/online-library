@@ -6,21 +6,19 @@ import NavBar from "./NavBar";
 import {
   Button,
   Card,
-  CardHeader,
   CardContent,
-  IconButton,
   Typography,
   Box,
   Grid,
 } from "@material-ui/core";
-import { DeleteRounded } from "@material-ui/icons";
+import { DeleteRounded, UpdateRounded } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
 
 const ManageBooks = ({ username }) => {
   const [books, setBooks] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [name, setName] = useState("Recently Added");
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
   const pagesVisited = (pageNumber - 1) * itemsPerPage;
   const displayItems = books.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(books.length / itemsPerPage);
@@ -80,7 +78,7 @@ const ManageBooks = ({ username }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          width: "50%",
+          width: "55%",
           marginLeft: "325px",
         }}
       >
@@ -108,79 +106,84 @@ const ManageBooks = ({ username }) => {
       <div style={{ marginTop: 50 }}></div>
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          marginLeft: "180px",
-          marginRight: "50px",
+          marginLeft: "30px",
+          marginRight: "30px",
         }}
       >
         <Grid container spacing={5} alignItems="center">
           {displayItems.map((book, i) => (
-            <Grid item key={i} xs={11} md={11} lg={11}>
+            <Grid item key={i} xs={6} md={6} lg={6}>
               <Card elevation={3}>
-                <CardHeader
-                  action={
-                    <IconButton
-                      color="primary"
-                      onClick={() => deleteBook(book.id)}
-                    >
-                      <DeleteRounded fontSize="large" />
-                    </IconButton>
-                  }
-                />
                 <CardContent>
                   <Box display="flex" flexDirection="row">
                     <Box
                       sx={{
-                        marginLeft: "100px",
-                        marginBottom: "45px",
+                        marginTop: "30px",
+                        marginLeft: "50px",
+                        marginBottom: "30px",
                       }}
                     >
                       <img
                         src={book.link}
-                        style={{ width: 250, height: 350 }}
+                        style={{ width: 150, height: 250 }}
                         alt="bookImage"
                       />
                     </Box>
                     <Box
                       sx={{
-                        marginTop: "60px",
-                        marginLeft: "150px",
+                        marginTop: "30px",
+                        marginLeft: "100px",
                         marginRight: "60px",
                         marginBottom: "45px",
                       }}
                     >
                       <Typography variant="h6" align="left">
-                        Book Title - {book.title}
+                        Title - {book.title}
                       </Typography>
                       &nbsp;
                       <Typography variant="h6" align="left">
-                        Book ISBN - {book.ISBN}
+                        Author - {book.author}
                       </Typography>
                       &nbsp;
                       <Typography variant="h6" align="left">
-                        Book Publication - {book.publication}
+                        ISBN - {book.ISBN}
                       </Typography>
                       &nbsp;
                       <Typography variant="h6" align="left">
-                        Book Author - {book.author}
+                        Publication - {book.publication}
                       </Typography>
                       &nbsp;
-                      <Typography variant="h6" align="right">
-                        <Button
-                          color="primary"
-                          variant="contained"
-                          size="large"
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          marginRight: "60px",
+                        }}
+                      >
+                        <Link
+                          to="/update"
+                          style={{ textDecoration: "none", color: "white" }}
+                          state={{ book: book, username: username }}
                         >
-                          <Link
-                            to="/update"
-                            style={{ textDecoration: "none", color: "white" }}
-                            state={{ book: book, username: username }}
+                          <Button
+                            color="primary"
+                            variant="contained"
+                            startIcon={<UpdateRounded fontSize="large" />}
                           >
                             Update
-                          </Link>
-                        </Button>
-                      </Typography>
+                          </Button>
+                        </Link>
+                        <Box sx={{ marginLeft: "60px" }}>
+                          <Button
+                            color="primary"
+                            variant="contained"
+                            onClick={() => deleteBook(book.id)}
+                            endIcon={<DeleteRounded fontSize="large" />}
+                          >
+                            Delete
+                          </Button>
+                        </Box>
+                      </Box>
                     </Box>
                   </Box>
                 </CardContent>

@@ -86,26 +86,34 @@ const Status = ({ username }) => {
     <div>
       <NavBar />
       <div style={{ marginTop: 40 }}></div>
-      <Typography variant="h3" align="center">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "10%",
+          marginLeft: "675px",
+        }}
+      >
         <AssessmentRounded fontSize="large" />
-        &nbsp; Status
-      </Typography>
+        <Typography variant="h4">Status</Typography>
+      </Box>
       <div style={{ marginTop: 40 }}></div>
       <Typography variant="h4" align="center">
-        Total Fine - {totalFine}
+        Total Fine - {totalFine} Rs
       </Typography>
       <div style={{ marginTop: 40 }}></div>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          marginLeft: "175px",
-          marginRight: "50px",
+          marginLeft: "250px",
         }}
       >
         <Grid container spacing={5} alignItems="center">
           {orders.map((order, i) => (
-            <Grid item key={i} xs={11} md={11} lg={11}>
+            <Grid item key={i} xs={9} md={9} lg={9}>
               <Card key={i} elevation={3}>
                 <CardContent>
                   <Box display="flex" flexDirection="row">
@@ -123,8 +131,8 @@ const Status = ({ username }) => {
                     </Box>
                     <Box
                       sx={{
-                        marginTop: "45px",
-                        marginLeft: "200px",
+                        marginTop: "60px",
+                        marginLeft: "100px",
                         marginRight: "60px",
                         marginBottom: "45px",
                       }}

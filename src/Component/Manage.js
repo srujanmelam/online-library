@@ -103,7 +103,7 @@ const Manage = () => {
                   &nbsp;
                   <Typography variant="h5" align="center">
                     User : {r.user.toUpperCase()} &nbsp; No Of Orders :{" "}
-                    {r.count} &nbsp; TotalFine : {r.fine} Rs
+                    {r.count} &nbsp; Total Fine : {r.fine} Rs
                   </Typography>
                 </Box>
                 <div id={i}>
