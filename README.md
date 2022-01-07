@@ -4,9 +4,9 @@
 
 B MANOJ SRINIVAS - S20190010013
 
-THONTA JYOTHENDRANATH - S20190010179
-
 MELAM JAI BALA SRUJAN - S20190010119
+
+THONTA JYOTHENDRANATH - S20190010179
 
 LATCHUPATHULA KRANTHI KUSAL - S20190010107
 
@@ -19,17 +19,16 @@ PENIKALAPATI SAI MANOJ KUMAR - S20190010138
 After cloning our project repository from github, these are the steps you have to follow to run our project
 install the following packages
 
-* npx create-react-app@5.0.0 online-library
-* npm i json-server
+* npm i -g json-server
 * npm i react-redux redux react-router-dom axios
-* npm install @material-ui/core
-* npm install @material-ui/icons
+* npm i @material-ui/core
+* npm i @material-ui/icons
 * npm i @material-ui/lab
 
 Run the following commands
 
 * Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
-* json-server --watch db.json to run json server
-* new terminal-> npm start to run react app 
+* terminal -> json-server --watch db.json - to run json server. json server runs at 3000 port
+* new terminal -> npm start - to run react app. since json runs on port 3000. It asks whether to change the port.press Y. App runs at 3001 port.
 
-change the port of react since our json server runs on port 3000
+http://localhost:3001/ - copy and paste this in browser to view the app.
