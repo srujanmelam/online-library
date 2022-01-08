@@ -18,7 +18,14 @@ const Profile = ({ user }) => {
   const [message, setMessage] = useState("");
 
   const type = user.isAdmin ? "Admin" : "Student";
-  const added = user.isAdmin ? `${books}` : "";
+  const added = user.isAdmin ? (
+    <tr>
+      <td>Books Added</td>
+      <td className="p">{books}</td>
+    </tr>
+  ) : (
+    <></>
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -162,11 +169,7 @@ const Profile = ({ user }) => {
                 <td>Pending Orders </td>
                 <td className="p">{pending}</td>
               </tr>
-              <tr>
-                {" "}
-                <td>Books Added</td>
-                <td className="p">{added}</td>
-              </tr>
+              {added}
             </table>
             <br />
             <Button
