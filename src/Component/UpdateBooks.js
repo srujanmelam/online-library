@@ -29,33 +29,37 @@ const UpdateBooks = () => {
   const [publication, setPublication] = useState(book.publication);
   const history = useNavigate();
 
-  const validate = ()=>{
-    if(!title.match(/^[a-zA-Z0-9\s]+$/)){
+  const validate = () => {
+    if (!title.match(/^[a-zA-Z0-9\s]+$/)) {
       setMessage("Title should contain only numbers and letters");
       return false;
     }
-    if(!author.match(/^[a-zA-Z\s]+$/)){
+    if (!author.match(/^[a-zA-Z\s]+$/)) {
       setMessage("Author should contain only letters");
       return false;
     }
-    if(!isbn.match(/^[0-9]{3}-[0-9]-[0-9]{2}-[0-9]{6}-[0-9]$/)){
+    if (!isbn.match(/^[0-9]{3}-[0-9]-[0-9]{2}-[0-9]{6}-[0-9]$/)) {
       setMessage("ISBN should contain 11 digits. Ex: 123-4-56-789012-3");
       return false;
     }
-    if(!publication.match(/^[0-9]{4}$/)){
-      setMessage("Publication should contain 4 digit number(i.e year) Ex: 2000")
+    if (!publication.match(/^[0-9]{4}$/)) {
+      setMessage(
+        "Publication should contain 4 digit number(i.e year) Ex: 2000"
+      );
       return false;
     }
-    if(!link.match(/^https?:\/\/.*/)){
-      setMessage("Link should start with http://(or)https://")
+    if (!link.match(/^https?:\/\/.*/)) {
+      setMessage("Link should start with http://(or)https://");
       return false;
     }
     setMessage("");
     return true;
-  }
+  };
 
   const updateBook = (id) => {
-    if(!validate){return}
+    if (!validate()) {
+      return;
+    }
     const book = {
       title: title,
       author: author,
@@ -217,8 +221,7 @@ const UpdateBooks = () => {
               ),
             }}
           ></TextField>
-          <Typography>{message}</Typography>
-          <div style={{ marginTop: 25 }}></div>
+          <Typography variant="caption">{message}</Typography>
           <Button
             type="submit"
             onClick={() => updateBook(book.id)}
@@ -227,7 +230,6 @@ const UpdateBooks = () => {
           >
             Update
           </Button>
-          <div />
           <div />
           <div />
         </Grid>
@@ -241,6 +243,7 @@ const UpdateBooks = () => {
           }}
         ></Grid>
       </Grid>
+      <br></br>
     </div>
   );
 };

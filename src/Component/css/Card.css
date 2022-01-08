@@ -3,9 +3,7 @@
   height: 600px;
   background: white;
   border-radius: 10px;
-
   box-shadow: 0px 1px 10px 1px black;
-  
 }
 
 .upper-container {
@@ -62,8 +60,7 @@ p {
   text-align: justify;
 }
 th{
-  border-collapse: collapse;
-  
+  border-collapse: collapse; 
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: 10;
   font-size: xx-large;
@@ -86,7 +83,6 @@ th, td {
   padding: 3px;
   text-align: left;
 }
-
 
 caption {
   transform: translate(455px, -60px);
