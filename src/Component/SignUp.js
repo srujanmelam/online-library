@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { AccountCircle, LockRounded } from "@material-ui/icons";
+import SignUpImg from "../Component/images/SignUp.jpg";
 
 function SignUp() {
   const [username1, setUsername] = useState("");
@@ -92,6 +93,7 @@ function SignUp() {
     <div>
       <Grid
         container
+        minwidth="100vh"
         style={{
           border: "solid",
           minwidth: "100%",
@@ -100,7 +102,7 @@ function SignUp() {
       >
         <Grid item xs={12} md={7} lg={7}>
           <img
-            src="https://media.istockphoto.com/vectors/library-vector-id165640961?b=1&k=20&m=165640961&s=612x612&w=0&h=ZWMF08lRmY3cdOS0VNL-8qh17XOCcKL7mAeAZXwEC2A="
+            src={SignUpImg}
             style={{ width: "100%", height: "100%", objectfits: "cover" }}
             alt="brand"
           />
@@ -119,6 +121,7 @@ function SignUp() {
             backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
           }}
         >
+          <div />
           <div />
           <div
             style={{
@@ -218,7 +221,6 @@ function SignUp() {
               </Grid>
             </Grid>
           </div>
-          <div />
           <div />
         </Grid>
       </Grid>
