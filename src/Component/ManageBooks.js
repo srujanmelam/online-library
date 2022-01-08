@@ -116,7 +116,7 @@ const ManageBooks = ({ username }) => {
           ) : (
             displayItems.map((book, i) => (
               <Grid item key={i} xs={6} md={6} lg={6}>
-                <Card elevation={3}>
+                <Card elevation={3} style={{ border: "solid", borderColor: "blue", borderWidth: "2px"}}>
                   <CardContent>
                     <Box display="flex" flexDirection="row">
                       <Box

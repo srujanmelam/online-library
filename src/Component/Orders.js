@@ -85,7 +85,7 @@ function Orders({ username }) {
             displayItems.map((order, i) => {
               return (
                 <Grid item key={i} xs={9} md={9} lg={9}>
-                  <Card key={i} elevation={3}>
+                  <Card key={i} elevation={3} style={{ border: "solid", borderColor: "blue",}}>
                     <CardContent>
                       <Box display="flex" flexDirection="row">
                         <Box

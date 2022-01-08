@@ -12,7 +12,7 @@ function Product(props) {
 
   return (
     <div>
-      <Card elevation={4}>
+      <Card elevation={4} style={{ border: "solid", borderColor: "blue", borderWidth: "2px"}}>
         <CardContent>
           <Box display="flex" flexDirection="row">
             <Box

@@ -94,7 +94,7 @@ const Manage = () => {
           ) : (
             returns.map((r, i) => (
               <Grid item key={i} xs={12} md={12} lg={12}>
-                <Paper elevation={3}>
+                <Paper elevation={3} style={{ border: "solid", borderColor: "blue",}}>
                   &nbsp;
                   <Box
                     sx={{
@@ -132,7 +132,7 @@ const Manage = () => {
                         <Grid container spacing={3} key={i}>
                           {r.books.map((book, i) => (
                             <Grid item key={i} xs={4} md={4} lg={4}>
-                              <Card elevation={3}>
+                              <Card elevation={3} style={{ border: "solid", borderColor: "red", borderWidth: "2px"}}>
                                 <CardHeader
                                   title={book.title}
                                   subheader={" - " + book.author}
