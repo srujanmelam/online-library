@@ -77,60 +77,66 @@ function Orders({ username }) {
         }}
       >
         <Grid container spacing={5} alignItems="center">
-          {displayItems.map((order, i) => {
-            return (
-              <Grid item key={i} xs={9} md={9} lg={9}>
-                <Card key={i} elevation={3}>
-                  <CardContent>
-                    <Box display="flex" flexDirection="row">
-                      <Box
-                        sx={{
-                          marginTop: "50px",
-                          marginLeft: "75px",
-                          marginBottom: "45px",
-                        }}
-                      >
-                        <img
-                          src={order.book.link}
-                          style={{ width: 200, height: 300 }}
-                          alt="bookImage"
-                        />
+          {displayItems.length === 0 ? (
+            <Typography variant="h5">
+              You have made no Orders till now
+            </Typography>
+          ) : (
+            displayItems.map((order, i) => {
+              return (
+                <Grid item key={i} xs={9} md={9} lg={9}>
+                  <Card key={i} elevation={3}>
+                    <CardContent>
+                      <Box display="flex" flexDirection="row">
+                        <Box
+                          sx={{
+                            marginTop: "50px",
+                            marginLeft: "75px",
+                            marginBottom: "45px",
+                          }}
+                        >
+                          <img
+                            src={order.book.link}
+                            style={{ width: 200, height: 300 }}
+                            alt="bookImage"
+                          />
+                        </Box>
+                        <Box
+                          sx={{
+                            marginTop: "45px",
+                            marginLeft: "100px",
+                            marginRight: "60px",
+                          }}
+                        >
+                          &nbsp;
+                          <Typography variant="h6" align="left">
+                            Order Date - {order.date}
+                          </Typography>
+                          &nbsp;
+                          <Typography variant="h6" align="left">
+                            Book Title - {order.book.title}
+                          </Typography>
+                          &nbsp;
+                          <Typography variant="h6" align="left">
+                            Book ISBN - {order.book.ISBN}
+                          </Typography>
+                          &nbsp;
+                          <Typography variant="h6" align="left">
+                            Book Publication - {order.book.publication}
+                          </Typography>
+                          &nbsp;
+                          <Typography variant="h6" align="left">
+                            Book Author - {order.book.author}
+                          </Typography>
+                          &nbsp;
+                        </Box>
                       </Box>
-                      <Box
-                        sx={{
-                          marginTop: "45px",
-                          marginLeft: "100px",
-                          marginRight: "60px",
-                        }}
-                      >
-                        &nbsp;
-                        <Typography variant="h6" align="left">
-                          Order Date - {order.date}
-                        </Typography>
-                        &nbsp;
-                        <Typography variant="h6" align="left">
-                          Book Title - {order.book.title}
-                        </Typography>
-                        &nbsp;
-                        <Typography variant="h6" align="left">
-                          Book ISBN - {order.book.ISBN}
-                        </Typography>
-                        &nbsp;
-                        <Typography variant="h6" align="left">
-                          Book Publication - {order.book.publication}
-                        </Typography>
-                        &nbsp;
-                        <Typography variant="h6" align="left">
-                          Book Author - {order.book.author}
-                        </Typography>
-                        &nbsp;
-                      </Box>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
-            );
-          })}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })
+          )}
         </Grid>
       </Box>
       <Box

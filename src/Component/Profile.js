@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./css/Card.css";
-import { Grid,Button, Typography, TextField, Box } from "@material-ui/core";
+import { Button, TextField, Box } from "@material-ui/core";
 
 const Profile = ({ user }) => {
   const [orders, setOrders] = useState(0);
@@ -126,50 +126,54 @@ const Profile = ({ user }) => {
       <NavBar />
       <br />
       <Box
-      sx={{
-        marginLeft:"15%",
-      }}>
-      <div className="Cards">
-       
-
-       
-        <div className="upper-container">
-     
-          <div className="image-container">
-            <img
-              className="q"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsw40RqD54BYg7g04mBOm0f2k24h2hhn8-gg&usqp=CAU"
-              alt=""
-              height="100px"
-              width="100px"
-            />
+        sx={{
+          marginLeft: "15%",
+        }}
+      >
+        <div className="Cards">
+          <div className="upper-container">
+            <div className="image-container">
+              <img
+                className="q"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsw40RqD54BYg7g04mBOm0f2k24h2hhn8-gg&usqp=CAU"
+                alt=""
+                height="100px"
+                width="100px"
+              />
+            </div>
           </div>
-        </div>
-        <div className="lower-container">
-          <br />
-        <caption>PROFILE</caption>
-          <table>
-           
-            <tr>
-              <td>username</td>
-              <td className="p">{user.username.toUpperCase()}</td>
-            </tr>
-            <tr>
-              <td>Type</td>
-              <td className="p">{type}</td>
-            </tr>
-            <tr>
-              <td>Total Orders</td>
-              <td className="p">{orders}</td>
-            </tr>
-            <tr>
-              <td>Pending Orders </td>
-              <td className="p">{pending}</td>
-            </tr>
-            <tr> <td>Books Added</td>
-            <td className="p">{added}</td></tr>
-          </table><br />
-          <Button color="primary" style={{marginLeft:"14%"}}onClick={() => expand()}>
+          <div className="lower-container">
+            <br />
+            <caption>PROFILE</caption>
+            <table>
+              <tr>
+                <td>username</td>
+                <td className="p">{user.username.toUpperCase()}</td>
+              </tr>
+              <tr>
+                <td>Type</td>
+                <td className="p">{type}</td>
+              </tr>
+              <tr>
+                <td>Total Orders</td>
+                <td className="p">{orders}</td>
+              </tr>
+              <tr>
+                <td>Pending Orders </td>
+                <td className="p">{pending}</td>
+              </tr>
+              <tr>
+                {" "}
+                <td>Books Added</td>
+                <td className="p">{added}</td>
+              </tr>
+            </table>
+            <br />
+            <Button
+              color="primary"
+              style={{ marginLeft: "14%" }}
+              onClick={() => expand()}
+            >
               Change Password
             </Button>
             <div style={{ marginTop: 20 }}></div>
@@ -217,8 +221,9 @@ const Profile = ({ user }) => {
               </Box>
               <div style={{ marginTop: 30 }}></div>
             </div>
+          </div>
         </div>
-      </div></Box>
+      </Box>
       <div style={{ marginTop: 30 }}></div>
     </div>
   );

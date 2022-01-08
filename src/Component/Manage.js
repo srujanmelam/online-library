@@ -51,7 +51,7 @@ const Manage = () => {
         const date = new Date(order.date).getDate();
         const currentDate = new Date().getDate();
         if (currentDate - date >= 7) {
-          fine = (currentDate - date) * 10;
+          fine = (currentDate - 7 - date) * 10;
         }
         const pre = records.find((i) => i.user === order.username);
         records =
@@ -87,84 +87,90 @@ const Manage = () => {
         }}
       >
         <Grid container spacing={5}>
-          {returns.map((r, i) => (
-            <Grid item key={i} xs={12} md={12} lg={12}>
-              <Paper elevation={3}>
-                &nbsp;
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "15px",
-                  }}
-                >
+          {returns.length === 0 ? (
+            <Typography variant="h5">
+              There are no Pending Book Returns from Users
+            </Typography>
+          ) : (
+            returns.map((r, i) => (
+              <Grid item key={i} xs={12} md={12} lg={12}>
+                <Paper elevation={3}>
                   &nbsp;
-                  <Typography variant="h5" align="center">
-                    User : {r.user.toUpperCase()} &nbsp; No Of Orders :{" "}
-                    {r.count} &nbsp; Total Fine : {r.fine} Rs
-                  </Typography>
-                </Box>
-                <div id={i}>
-                  <Button
-                    color="primary"
-                    variant="contained"
-                    size="small"
-                    onClick={() => Expand(i)}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "15px",
+                    }}
                   >
-                    View More
-                  </Button>
-                  <div style={{ marginTop: 10 }}></div>
-                  <div style={{ display: "none" }}>
-                    <Box
-                      sx={{
-                        marginLeft: "30px",
-                        marginRight: "30px",
-                        marginTop: "30px",
-                      }}
+                    &nbsp;
+                    <Typography variant="h5" align="center">
+                      User : {r.user.toUpperCase()} &nbsp; No Of Orders :{" "}
+                      {r.count} &nbsp; Total Fine : {r.fine} Rs
+                    </Typography>
+                  </Box>
+                  <div id={i}>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      size="small"
+                      onClick={() => Expand(i)}
                     >
-                      <Grid container spacing={3} key={i}>
-                        {r.books.map((book, i) => (
-                          <Grid item key={i} xs={4} md={4} lg={4}>
-                            <Card elevation={3}>
-                              <CardHeader
-                                title={book.title}
-                                subheader={" - " + book.author}
-                              />
-                              <CardContent>
-                                <img
-                                  src={book.link}
-                                  style={{ width: 160, height: 200 }}
-                                  alt="bookImage"
+                      View More
+                    </Button>
+                    <div style={{ marginTop: 10 }}></div>
+                    <div style={{ display: "none" }}>
+                      <Box
+                        sx={{
+                          marginLeft: "30px",
+                          marginRight: "30px",
+                          marginTop: "30px",
+                        }}
+                      >
+                        <Grid container spacing={3} key={i}>
+                          {r.books.map((book, i) => (
+                            <Grid item key={i} xs={4} md={4} lg={4}>
+                              <Card elevation={3}>
+                                <CardHeader
+                                  title={book.title}
+                                  subheader={" - " + book.author}
                                 />
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    marginTop: "30px",
-                                  }}
-                                >
-                                  <Typography variant="h6" align="center">
-                                    PUBLICATION - {book.publication}
-                                  </Typography>
-                                  &nbsp;
-                                  <Typography variant="h6" align="center">
-                                    ISBN - {book.ISBN}
-                                  </Typography>
-                                </Box>
-                              </CardContent>
-                            </Card>
-                          </Grid>
-                        ))}
-                      </Grid>
-                    </Box>
+                                <CardContent>
+                                  <img
+                                    src={book.link}
+                                    style={{ width: 160, height: 200 }}
+                                    alt="bookImage"
+                                  />
+                                  <Box
+                                    sx={{
+                                      display: "flex",
+                                      flexDirection: "column",
+                                      marginTop: "30px",
+                                    }}
+                                  >
+                                    <Typography variant="h6" align="center">
+                                      PUBLICATION - {book.publication}
+                                    </Typography>
+                                    &nbsp;
+                                    <Typography variant="h6" align="center">
+                                      ISBN - {book.ISBN}
+                                    </Typography>
+                                  </Box>
+                                </CardContent>
+                              </Card>
+                            </Grid>
+                          ))}
+                        </Grid>
+                      </Box>
+                    </div>
+                    &nbsp;
                   </div>
-                  &nbsp;
-                </div>
-              </Paper>
-            </Grid>
-          ))}
+                </Paper>
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
       <div style={{ marginTop: 40 }}></div>

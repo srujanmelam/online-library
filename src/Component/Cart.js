@@ -45,9 +45,14 @@ function Cart({ cart, user }) {
         <ShoppingCartRounded fontSize="large" />
         &nbsp; Cart
       </Typography>
-      {cart.map((item, id) => {
-        return <CartProduct item={item} key={id} />;
-      })}
+      &nbsp;
+      {cart.length === 0 ? (
+        <Typography variant="h5">Cart is empty</Typography>
+      ) : (
+        cart.map((item, id) => {
+          return <CartProduct item={item} key={id} />;
+        })
+      )}
       <div style={{ marginTop: 30 }}></div>
       <Button color="secondary" variant="contained" onClick={placeOrder}>
         Check Out

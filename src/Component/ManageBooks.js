@@ -111,85 +111,89 @@ const ManageBooks = ({ username }) => {
         }}
       >
         <Grid container spacing={5} alignItems="center">
-          {displayItems.map((book, i) => (
-            <Grid item key={i} xs={6} md={6} lg={6}>
-              <Card elevation={3}>
-                <CardContent>
-                  <Box display="flex" flexDirection="row">
-                    <Box
-                      sx={{
-                        marginTop: "30px",
-                        marginLeft: "50px",
-                        marginBottom: "30px",
-                      }}
-                    >
-                      <img
-                        src={book.link}
-                        style={{ width: 150, height: 250 }}
-                        alt="bookImage"
-                      />
-                    </Box>
-                    <Box
-                      sx={{
-                        marginTop: "30px",
-                        marginLeft: "100px",
-                        marginRight: "60px",
-                        marginBottom: "45px",
-                      }}
-                    >
-                      <Typography variant="h6" align="left">
-                        Title - {book.title}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Author - {book.author}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        ISBN - {book.ISBN}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Publication - {book.publication}
-                      </Typography>
-                      &nbsp;
+          {displayItems.length === 0 ? (
+            <Typography variant="h5">No Added Books</Typography>
+          ) : (
+            displayItems.map((book, i) => (
+              <Grid item key={i} xs={6} md={6} lg={6}>
+                <Card elevation={3}>
+                  <CardContent>
+                    <Box display="flex" flexDirection="row">
                       <Box
                         sx={{
-                          display: "flex",
-                          flexDirection: "row",
-                          marginRight: "60px",
+                          marginTop: "30px",
+                          marginLeft: "50px",
+                          marginBottom: "30px",
                         }}
                       >
-                        <Link
-                          to="/update"
-                          style={{ textDecoration: "none", color: "white" }}
-                          state={{ book: book, username: username }}
+                        <img
+                          src={book.link}
+                          style={{ width: 150, height: 250 }}
+                          alt="bookImage"
+                        />
+                      </Box>
+                      <Box
+                        sx={{
+                          marginTop: "30px",
+                          marginLeft: "100px",
+                          marginRight: "60px",
+                          marginBottom: "45px",
+                        }}
+                      >
+                        <Typography variant="h6" align="left">
+                          Title - {book.title}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Author - {book.author}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          ISBN - {book.ISBN}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Publication - {book.publication}
+                        </Typography>
+                        &nbsp;
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "row",
+                            marginRight: "60px",
+                          }}
                         >
-                          <Button
-                            color="primary"
-                            variant="contained"
-                            startIcon={<UpdateRounded fontSize="large" />}
+                          <Link
+                            to="/update"
+                            style={{ textDecoration: "none", color: "white" }}
+                            state={{ book: book, username: username }}
                           >
-                            Update
-                          </Button>
-                        </Link>
-                        <Box sx={{ marginLeft: "60px" }}>
-                          <Button
-                            color="primary"
-                            variant="contained"
-                            onClick={() => deleteBook(book.id)}
-                            endIcon={<DeleteRounded fontSize="large" />}
-                          >
-                            Delete
-                          </Button>
+                            <Button
+                              color="primary"
+                              variant="contained"
+                              startIcon={<UpdateRounded fontSize="large" />}
+                            >
+                              Update
+                            </Button>
+                          </Link>
+                          <Box sx={{ marginLeft: "60px" }}>
+                            <Button
+                              color="primary"
+                              variant="contained"
+                              onClick={() => deleteBook(book.id)}
+                              endIcon={<DeleteRounded fontSize="large" />}
+                            >
+                              Delete
+                            </Button>
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
       <Box

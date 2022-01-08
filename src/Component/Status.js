@@ -52,8 +52,8 @@ const Status = ({ username }) => {
     orders.forEach((order) => {
       const date = new Date(order.date).getDate();
       const currentDate = new Date().getDate();
-      if (currentDate - date >= 7) {
-        const f = (currentDate - date) * 10;
+      if (currentDate - date > 7) {
+        const f = (currentDate - 7 - date) * 10;
         fine.push(f);
         total += f;
       } else {
@@ -112,71 +112,77 @@ const Status = ({ username }) => {
         }}
       >
         <Grid container spacing={5} alignItems="center">
-          {orders.map((order, i) => (
-            <Grid item key={i} xs={9} md={9} lg={9}>
-              <Card key={i} elevation={3}>
-                <CardContent>
-                  <Box display="flex" flexDirection="row">
-                    <Box
-                      sx={{
-                        marginTop: "50px",
-                        marginLeft: "100px",
-                      }}
-                    >
-                      <img
-                        src={order.book.link}
-                        style={{ width: 250, height: 350 }}
-                        alt="bookImage"
-                      />
+          {orders.length === 0 ? (
+            <Typography variant="h5">
+              You have no Pending Book Returns
+            </Typography>
+          ) : (
+            orders.map((order, i) => (
+              <Grid item key={i} xs={9} md={9} lg={9}>
+                <Card key={i} elevation={3}>
+                  <CardContent>
+                    <Box display="flex" flexDirection="row">
+                      <Box
+                        sx={{
+                          marginTop: "50px",
+                          marginLeft: "100px",
+                        }}
+                      >
+                        <img
+                          src={order.book.link}
+                          style={{ width: 250, height: 350 }}
+                          alt="bookImage"
+                        />
+                      </Box>
+                      <Box
+                        sx={{
+                          marginTop: "60px",
+                          marginLeft: "100px",
+                          marginRight: "60px",
+                          marginBottom: "45px",
+                        }}
+                      >
+                        <Typography variant="h6" align="left">
+                          Book Title - {order.book.title}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book ISBN - {order.book.ISBN}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book Publication - {order.book.publication}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Book Author - {order.book.author}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Due Date: {dueDates[i]}
+                        </Typography>
+                        &nbsp;
+                        <Typography variant="h6" align="left">
+                          Fine: {fines[i]} Rupees
+                        </Typography>
+                        &nbsp;
+                        <Typography align="right">
+                          <Button
+                            color="secondary"
+                            variant="contained"
+                            onClick={() => returnBooks(order)}
+                            endIcon={<LibraryBooksRounded fontSize="large" />}
+                          >
+                            Return Book
+                          </Button>
+                        </Typography>
+                      </Box>
                     </Box>
-                    <Box
-                      sx={{
-                        marginTop: "60px",
-                        marginLeft: "100px",
-                        marginRight: "60px",
-                        marginBottom: "45px",
-                      }}
-                    >
-                      <Typography variant="h6" align="left">
-                        Book Title - {order.book.title}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Book ISBN - {order.book.ISBN}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Book Publication - {order.book.publication}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Book Author - {order.book.author}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Due Date: {dueDates[i]}
-                      </Typography>
-                      &nbsp;
-                      <Typography variant="h6" align="left">
-                        Fine: {fines[i]} Rupees
-                      </Typography>
-                      &nbsp;
-                      <Typography align="right">
-                        <Button
-                          color="secondary"
-                          variant="contained"
-                          onClick={() => returnBooks(order)}
-                          endIcon={<LibraryBooksRounded fontSize="large" />}
-                        >
-                          Return Book
-                        </Button>
-                      </Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
       <div style={{ marginTop: 40 }}></div>
