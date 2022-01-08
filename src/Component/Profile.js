@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import "./css/Card.css";
-import { Button, Typography, TextField, Box } from "@material-ui/core";
+import { Grid,Button, Typography, TextField, Box } from "@material-ui/core";
 
 const Profile = ({ user }) => {
   const [orders, setOrders] = useState(0);
@@ -18,7 +18,7 @@ const Profile = ({ user }) => {
   const [message, setMessage] = useState("");
 
   const type = user.isAdmin ? "Admin" : "Student";
-  const added = user.isAdmin ? `Books Added - ${books}` : "";
+  const added = user.isAdmin ? `${books}` : "";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,10 +69,10 @@ const Profile = ({ user }) => {
     let y = document.getElementsByClassName("Cards")[0];
     if (x.style.display === "none") {
       x.style.display = "block";
-      y.style.height = "650px";
+      y.style.height = "800px";
     } else {
       x.style.display = "none";
-      y.style.height = "500px";
+      y.style.height = "600px";
     }
   };
 
@@ -124,9 +124,17 @@ const Profile = ({ user }) => {
   return (
     <div>
       <NavBar />
-      <br></br>
+      <br />
+      <Box
+      sx={{
+        marginLeft:"15%",
+      }}>
       <div className="Cards">
+       
+
+       
         <div className="upper-container">
+     
           <div className="image-container">
             <img
               className="q"
@@ -138,25 +146,30 @@ const Profile = ({ user }) => {
           </div>
         </div>
         <div className="lower-container">
-          <h5>&nbsp;{type}</h5>
-          <h4>
-            <b>{user.username.toUpperCase()}</b>
-          </h4>
-          <br></br>
-          <div>
-            <Typography variant="h3" align="center">
-              Total Orders - {orders}
-            </Typography>
-            <br />
-            <Typography variant="h3" align="center">
-              Pending Orders - {pending}
-            </Typography>
-            <br />
-            <Typography variant="h3" align="center">
-              {added}
-            </Typography>
-            <div style={{ marginTop: 20 }}></div>
-            <Button color="primary" onClick={() => expand()}>
+          <br />
+        <caption>PROFILE</caption>
+          <table>
+           
+            <tr>
+              <td>username</td>
+              <td className="p">{user.username.toUpperCase()}</td>
+            </tr>
+            <tr>
+              <td>Type</td>
+              <td className="p">{type}</td>
+            </tr>
+            <tr>
+              <td>Total Orders</td>
+              <td className="p">{orders}</td>
+            </tr>
+            <tr>
+              <td>Pending Orders </td>
+              <td className="p">{pending}</td>
+            </tr>
+            <tr> <td>Books Added</td>
+            <td className="p">{added}</td></tr>
+          </table><br />
+          <Button color="primary" style={{marginLeft:"14%"}}onClick={() => expand()}>
               Change Password
             </Button>
             <div style={{ marginTop: 20 }}></div>
@@ -166,8 +179,8 @@ const Profile = ({ user }) => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  marginLeft: "75px",
-                  marginRight: "75px",
+                  marginLeft: "350px",
+                  marginRight: "330px",
                 }}
               >
                 <TextField
@@ -204,9 +217,8 @@ const Profile = ({ user }) => {
               </Box>
               <div style={{ marginTop: 30 }}></div>
             </div>
-          </div>
         </div>
-      </div>
+      </div></Box>
       <div style={{ marginTop: 30 }}></div>
     </div>
   );
