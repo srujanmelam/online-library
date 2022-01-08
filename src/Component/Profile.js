@@ -154,7 +154,7 @@ const Profile = ({ user }) => {
             <caption>PROFILE</caption>
             <table>
               <tr>
-                <td>username</td>
+                <td>Username</td>
                 <td className="p">{user.username.toUpperCase()}</td>
               </tr>
               <tr>
