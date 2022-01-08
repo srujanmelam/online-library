@@ -180,7 +180,7 @@ const Profile = ({ user }) => {
                   flexDirection: "column",
                   justifyContent: "center",
                   marginLeft: "350px",
-                  marginRight: "330px",
+                  marginRight: "230px",
                 }}
               >
                 <TextField

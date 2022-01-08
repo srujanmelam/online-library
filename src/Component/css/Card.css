@@ -10,7 +10,7 @@
 
 .upper-container {
   height: 125px;
-  background: linear-gradient(to left, #0275d8, black);
+  background: linear-gradient(to left, #0275d8, #ff029f);
 }
 
 .image-container .q {
