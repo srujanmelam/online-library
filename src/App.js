@@ -5,7 +5,7 @@ import Cart from './Component/Cart';
 import SignUp from './Component/SignUp';
 import SignIn from './Component/SignIn';
 import Orders from "./Component/Orders";
-import Manage from "./Component/Manage";
+import ManageBooks from "./Component/ManageBooks";
 import Profile from './Component/Profile';
 import AddBooks from './Component/AddBooks';
 import LazyBooks from './Component/LazyBooks';
@@ -26,8 +26,8 @@ function App() {
           <Route exact path='/orders' element={< Orders />}></Route>
           <Route exact path='/cart' element={< Cart />}></Route>
           <Route exact path='/status' element={< LazyOrders />}></Route>
-          <Route exact path='/manage' element={< Manage />}></Route>
-          <Route exact path='/books' element={< LazyBooks />}></Route>
+          <Route exact path='/books' element={< ManageBooks />}></Route>
+          <Route exact path='/manage' element={< LazyBooks />}></Route>
           <Route exact path='/update' element={< UpdateBooks />}></Route>
         </Routes>
       </Router>
