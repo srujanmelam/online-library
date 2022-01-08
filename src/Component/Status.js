@@ -15,6 +15,7 @@ import {
 const Status = ({ username }) => {
   const [orders, setOrders] = useState([]);
   const [fines, setFines] = useState([]);
+  const [colors, setColors] = useState([]);
   const [dueDates, setDueDates] = useState([]);
   const [totalFine, setTotalFine] = useState(0);
 
@@ -48,6 +49,7 @@ const Status = ({ username }) => {
 
   useEffect(() => {
     let fine = [];
+    let color = [];
     let total = 0;
     orders.forEach((order) => {
       const date = new Date(order.date).getDate();
@@ -59,8 +61,17 @@ const Status = ({ username }) => {
       } else {
         fine.push(0);
       }
+
+      if (currentDate - date === 7) {
+        color.push("yellow");
+      } else if (currentDate - date < 7) {
+        color.push("green");
+      } else {
+        color.push("red");
+      }
     });
     setFines(fine);
+    setColors(color);
     setTotalFine(total);
   }, [orders]);
 
@@ -119,7 +130,11 @@ const Status = ({ username }) => {
           ) : (
             orders.map((order, i) => (
               <Grid item key={i} xs={9} md={9} lg={9}>
-                <Card key={i} elevation={3} style={{ border: "solid", borderColor: "blue",}}>
+                <Card
+                  key={i}
+                  elevation={3}
+                  style={{ border: "solid", borderColor: colors[i] }}
+                >
                   <CardContent>
                     <Box display="flex" flexDirection="row">
                       <Box

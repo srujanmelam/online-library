@@ -47,11 +47,19 @@ const Manage = () => {
       let records = [];
       orders.forEach((order) => {
         let fine = 0;
+        let color = "";
         const book = order.book;
         const date = new Date(order.date).getDate();
         const currentDate = new Date().getDate();
         if (currentDate - date >= 7) {
           fine = (currentDate - 7 - date) * 10;
+        }
+        if (currentDate - date === 7) {
+          color = "yellow";
+        } else if (currentDate - date < 7) {
+          color = "green";
+        } else {
+          color = "red";
         }
         const pre = records.find((i) => i.user === order.username);
         records =
@@ -62,13 +70,20 @@ const Manage = () => {
                       ...record,
                       fine: record.fine + fine,
                       count: record.count + 1,
+                      color: [...record.color, color],
                       books: [...record.books, book],
                     }
                   : record
               )
             : [
                 ...records,
-                { user: order.username, fine: fine, count: 1, books: [book] },
+                {
+                  user: order.username,
+                  fine: fine,
+                  count: 1,
+                  books: [book],
+                  color: [color],
+                },
               ];
       });
       setReturns(records);
@@ -94,7 +109,10 @@ const Manage = () => {
           ) : (
             returns.map((r, i) => (
               <Grid item key={i} xs={12} md={12} lg={12}>
-                <Paper elevation={3} style={{ border: "solid", borderColor: "blue",}}>
+                <Paper
+                  elevation={3}
+                  style={{ border: "solid", borderColor: "blue" }}
+                >
                   &nbsp;
                   <Box
                     sx={{
@@ -132,7 +150,14 @@ const Manage = () => {
                         <Grid container spacing={3} key={i}>
                           {r.books.map((book, i) => (
                             <Grid item key={i} xs={4} md={4} lg={4}>
-                              <Card elevation={3} style={{ border: "solid", borderColor: "red", borderWidth: "2px"}}>
+                              <Card
+                                elevation={3}
+                                style={{
+                                  border: "solid",
+                                  borderColor: r.color[i],
+                                  borderWidth: "2px",
+                                }}
+                              >
                                 <CardHeader
                                   title={book.title}
                                   subheader={" - " + book.author}
