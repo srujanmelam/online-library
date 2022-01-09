@@ -27,8 +27,6 @@ function Cart({ cart, user }) {
         .catch((err) => {
           console.log(err);
         });
-      order["book"] = item;
-      store.dispatch({ type: "ADD_ORDERS", payload: { order: order } });
     });
     setTimeout(() => {
       store.dispatch({ type: actionTypes.RESET_CART });
