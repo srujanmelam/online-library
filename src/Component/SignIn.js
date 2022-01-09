@@ -18,7 +18,7 @@ function SignIn() {
   const [val1, setVal1] = useState(false);
   const [password1, setPassword] = useState("");
   const [error2, setError2] = useState("");
-  const [val2, setVal2] = useState(true);
+  const [val2, setVal2] = useState(false);
   const [message, setMessage] = useState("");
   const history = useNavigate();
 
