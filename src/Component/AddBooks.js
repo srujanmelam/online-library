@@ -27,6 +27,7 @@ function AddBooks({ username }) {
   const [message, setMessage] = useState("");
   const history = useNavigate();
 
+  // Code to validate form inputs : Title, Author, Publication, ISBN, Link
   const validate = () => {
     if (!title.match(/^[a-zA-Z0-9\s]+$/)) {
       setMessage("Title should contain only numbers and letters");
@@ -54,6 +55,7 @@ function AddBooks({ username }) {
     return true;
   };
 
+  //  Function to  Add a Book in Database
   const addBook = () => {
     if (!validate()) {
       return;
@@ -66,6 +68,7 @@ function AddBooks({ username }) {
       link: link,
       addedBy: username,
     };
+    // Hitting the server with post method to add the book
     axios
       .post(`http://localhost:3000/books`, book)
       .then((res) => {
@@ -245,6 +248,7 @@ function AddBooks({ username }) {
   );
 }
 
+// Mapping username from state Component
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,
