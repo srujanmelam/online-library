@@ -29,6 +29,7 @@ const UpdateBooks = () => {
   const [publication, setPublication] = useState(book.publication);
   const history = useNavigate();
 
+  //Code to validate the form
   const validate = () => {
     if (!title.match(/^[a-zA-Z0-9\s]+$/)) {
       setMessage("Title should contain only numbers and letters");
@@ -55,7 +56,7 @@ const UpdateBooks = () => {
     setMessage("");
     return true;
   };
-
+  
   const updateBook = (id) => {
     if (!validate()) {
       return;
@@ -68,6 +69,7 @@ const UpdateBooks = () => {
       link: link,
       addedBy: username,
     };
+    // Hitting the url with put method to update the book
     axios
       .put(`http://localhost:3000/books/${id}`, book)
       .then((res) => {

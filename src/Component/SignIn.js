@@ -22,6 +22,7 @@ function SignIn() {
   const [message, setMessage] = useState("");
   const history = useNavigate();
 
+  // Code to set and validate username
   const changeUsername = (val) => {
     setUsername(val);
     if (val.length === 0) {
@@ -42,6 +43,7 @@ function SignIn() {
     }
   };
 
+  // Code to set and validate password
   const changePassword = (val) => {
     setPassword(val);
     if (val.length === 0) {
@@ -63,6 +65,7 @@ function SignIn() {
       setMessage("Invalid Username or Password");
       return;
     }
+    // Hitting the url(query) with get method to get user with given credentials
     axios
       .get(
         `http://localhost:3000/users?username=${username1}&password=${password1}`
@@ -76,6 +79,7 @@ function SignIn() {
           };
           store.dispatch({ type: "loginSuccess", payload: user });
           console.log("Login Success");
+          // Redirecting to home page
           history("/home");
         } else {
           store.dispatch({ type: "loginFail" });

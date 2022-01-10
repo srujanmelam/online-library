@@ -12,11 +12,13 @@ import {
 import { MenuBookRounded } from "@material-ui/icons";
 
 function NavBar({ user }) {
+  // Code for logout
   const logOut = () => {
     store.dispatch({ type: "logOut" });
     console.log("Successfully logged out");
   };
 
+  // special features only for admin
   let manage = <></>;
   let update = <></>;
   if (user.isAdmin) {
@@ -175,6 +177,7 @@ function NavBar({ user }) {
   );
 }
 
+// Mapping username from state to Component  
 const mapStateToProps = (state) => {
   return {
     user: state.loginReducer.user,

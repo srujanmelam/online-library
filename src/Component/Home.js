@@ -24,6 +24,7 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
+      //Hitting the url with get method to get books from db
       await axios
         .get(`http://localhost:3000/books`)
         .then((res) => {
@@ -38,6 +39,7 @@ function Home() {
   }, []);
 
   const searchData = async () => {
+    //Hitting the url(along with query) with get method
     await axios
       .get(`http://localhost:3000/books?${attribute}_like=${search}`)
       .then((res) => {
@@ -172,6 +174,7 @@ function Home() {
         </Box>
         <Paginate
           items={books.sort((a, b) => {
+            //Code to sort in all possible ways
             const ord = order === "asc" ? 1 : -1;
             if (a[sortBy] > b[sortBy]) {
               return 1 * ord;

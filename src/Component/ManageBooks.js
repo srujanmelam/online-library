@@ -29,6 +29,7 @@ const ManageBooks = ({ username }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      //Hitting the url with get method to get all books added by the Admin
       await axios
         .get(`http://localhost:3000/books?addedBy=${username}`)
         .then((res) => {
@@ -42,6 +43,7 @@ const ManageBooks = ({ username }) => {
     fetchData();
   }, [username]);
 
+  // switch Button to view recently added books and Long ago added books
   const changeOrder = () => {
     setBooks(books.reverse());
     if (name === "Recently Added") {
@@ -52,17 +54,19 @@ const ManageBooks = ({ username }) => {
   };
 
   const deleteBook = (id) => {
-    let records = books;
+    //Hitting the url with delete method to delete a book from db
     axios
       .delete(`http://localhost:3000/books/${id}/`)
       .then((res) => {
         console.log("Deleted Book " + id + "successfully");
+        //Variable to store books
+        let records = books;
+        records = records.filter((book) => book.id !== id);
+        setBooks(records);
       })
       .catch((err) => {
         console.log(err);
       });
-    records = records.filter((book) => book.id !== id);
-    setBooks(records);
   };
 
   return (
@@ -116,7 +120,14 @@ const ManageBooks = ({ username }) => {
           ) : (
             displayItems.map((book, i) => (
               <Grid item key={i} xs={6} md={6} lg={6}>
-                <Card elevation={3} style={{ border: "solid", borderColor: "blue", borderWidth: "2px"}}>
+                <Card
+                  elevation={3}
+                  style={{
+                    border: "solid",
+                    borderColor: "blue",
+                    borderWidth: "2px",
+                  }}
+                >
                   <CardContent>
                     <Box display="flex" flexDirection="row">
                       <Box
@@ -216,6 +227,7 @@ const ManageBooks = ({ username }) => {
   );
 };
 
+// Mapping username from state to Component
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,

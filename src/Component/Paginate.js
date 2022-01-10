@@ -9,6 +9,7 @@ const Paginate = ({ items, Component }) => {
   const displayItems = items.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
+  // Code to change pageNumber
   const changePage = (event, val) => {
     setPageNumber(val);
   };

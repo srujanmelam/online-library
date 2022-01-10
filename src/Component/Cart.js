@@ -11,6 +11,8 @@ import { Typography, Button } from "@material-ui/core";
 function Cart({ cart, user }) {
   const history = useNavigate();
 
+  // Code to checkout from cart
+  // Date is class which returns the current date in milliseconds. toUTCString() returns the readable string format of the date and time(GMT)
   const placeOrder = () => {
     cart.forEach((item) => {
       let order = {
@@ -19,20 +21,22 @@ function Cart({ cart, user }) {
         bookId: item.id,
         return: false,
       };
+      //Hitting the url with  post method to add an order in json
       axios
         .post(`http://localhost:3000/orders`, order)
         .then((res) => {
           console.log("book" + item.id + " added to orders table");
+          setTimeout(() => {
+            // Resetting the cart after checkout
+            store.dispatch({ type: actionTypes.RESET_CART });
+            console.log("Cart Reset");
+            history("/orders");
+          }, 1000);
         })
         .catch((err) => {
           console.log(err);
         });
     });
-    setTimeout(() => {
-      store.dispatch({ type: actionTypes.RESET_CART });
-      console.log("Cart Reset");
-      history("/orders");
-    }, 1000);
   };
 
   return (
@@ -60,6 +64,7 @@ function Cart({ cart, user }) {
   );
 }
 
+// Mapping username, cart from state to Component
 const mapStateToProps = (state) => {
   return {
     cart: state.cartReducer.cart,

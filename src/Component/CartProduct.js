@@ -12,6 +12,7 @@ import {
 import { DeleteRounded } from "@material-ui/icons";
 
 const CartProduct = ({ item }) => {
+  // Code to delete an item from cart
   const deleteFromCart = () => {
     const action = {
       type: actionTypes.DELETE_FROM_CART,
@@ -19,6 +20,7 @@ const CartProduct = ({ item }) => {
         item: item,
       },
     };
+    // Deleting an item from cart in state
     store.dispatch(action);
     console.log("deleted a book in cart");
   };

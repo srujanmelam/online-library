@@ -21,6 +21,7 @@ const Status = ({ username }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Hitting the url(query) with get method to get all the pending book returns of the user
       await axios
         .get(
           `http://localhost:3000/orders?username=${username}&return=false&_expand=book`
@@ -36,6 +37,7 @@ const Status = ({ username }) => {
     fetchData();
   }, [username]);
 
+  // Code to Calculate the due date for each order
   useEffect(() => {
     let due = [];
     orders.forEach((order) => {
@@ -47,6 +49,7 @@ const Status = ({ username }) => {
     setDueDates(due);
   }, [orders]);
 
+  //Code to calculate the fine and setting the status color
   useEffect(() => {
     let fine = [];
     let color = [];
@@ -75,6 +78,7 @@ const Status = ({ username }) => {
     setTotalFine(total);
   }, [orders]);
 
+  // Code to return the book
   const returnBooks = (item) => {
     const order = {
       date: item.date,
@@ -82,6 +86,7 @@ const Status = ({ username }) => {
       return: true,
       bookId: item.bookId,
     };
+    // Hitting the url with put method to update the return status of the order
     axios
       .put(`http://localhost:3000/orders/${item.id}`, order)
       .then((res) => {
@@ -205,6 +210,7 @@ const Status = ({ username }) => {
   );
 };
 
+// Mapping username from state to Component
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,

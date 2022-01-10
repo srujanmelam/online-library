@@ -23,6 +23,7 @@ function SignUp() {
   const [message, setMessage] = useState("");
   const history = useNavigate();
 
+  // Code to set and validate username
   const changeUsername = (val) => {
     setUsername(val);
     if (val.length === 0) {
@@ -43,6 +44,7 @@ function SignUp() {
     }
   };
 
+  // Code to set and validate password
   const changePassword = (val) => {
     setPassword(val);
     if (val.length === 0) {
@@ -67,6 +69,7 @@ function SignUp() {
       isAdmin: isAdmin1,
     };
     if ((username1.length > 0) & (password1.length > 0)) {
+      // Hitting the url with post method to add a new user
       axios
         .post(`http://localhost:3000/users`, user)
         .then((res) => {

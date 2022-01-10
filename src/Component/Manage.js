@@ -16,6 +16,7 @@ const Manage = () => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
 
+  // Code to view status of individual user
   const Expand = (id) => {
     let x = document.getElementById(id);
     if (x.lastElementChild.style.display === "none") {
@@ -29,6 +30,7 @@ const Manage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Hitting the url(query) with get method to get all pending Book returns
       await axios
         .get(`http://localhost:3000/orders?return=false&_expand=book`)
         .then((res) => {
@@ -44,16 +46,21 @@ const Manage = () => {
 
   useEffect(() => {
     const Return = () => {
+      // Variable to store users along with their pending book returns
       let records = [];
       orders.forEach((order) => {
         let fine = 0;
         let color = "";
         const book = order.book;
+        //Variable to store order date of book
         const date = new Date(order.date).getDate();
+        // Variable to store the current data
         const currentDate = new Date().getDate();
+        // Calculating fine : For every day after due date will be fined as 10 Rupees 
         if (currentDate - date >= 7) {
           fine = (currentDate - 7 - date) * 10;
         }
+        // Assigning color based on students status of returning a book
         if (currentDate - date === 7) {
           color = "yellow";
         } else if (currentDate - date < 7) {

@@ -2,11 +2,14 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ShoppingCartIconRounded from "@material-ui/icons/ShoppingCart";
+
 function CartCounter({ cart }) {
   const [cartCount, setCartCount] = useState(0);
+  
+  //Code to calculate cart count 
   useEffect(() => {
     setCartCount(cart.length);
-  }, [cart, cartCount]);
+  }, [cart]);
 
   return (
     <div>
@@ -34,6 +37,7 @@ function CartCounter({ cart }) {
   );
 }
 
+// Mapping  cart from state to component
 const mapStateToProps = (state) => {
   return {
     cart: state.cartReducer.cart,

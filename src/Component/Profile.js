@@ -17,7 +17,9 @@ const Profile = ({ user }) => {
   const [val, setVal] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Variable to check whether a user is student or admin
   const type = user.isAdmin ? "Admin" : "Student";
+  // Variable to show books added by admin
   const added = user.isAdmin ? (
     <tr>
       <td>Books Added</td>
@@ -29,6 +31,7 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Hitting the url with get method to get all the orders of the user
       await axios
         .get(`http://localhost:3000/orders?username=${user.username}`)
         .then((res) => {
@@ -43,6 +46,7 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Hitting the url with get method to get all the pending book returns of the user
       await axios
         .get(
           `http://localhost:3000/orders?username=${user.username}&return=false`
@@ -59,6 +63,7 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Hitting the url with get method to get all the books added by the admin 
       await axios
         .get(`http://localhost:3000/books?addedBy=${user.username}`)
         .then((res) => {
@@ -71,6 +76,7 @@ const Profile = ({ user }) => {
     fetchData();
   }, [user.username]);
 
+  // Function is called when user clicks on change password
   const expand = () => {
     let x = document.getElementById("change");
     let y = document.getElementsByClassName("Cards")[0];
@@ -83,6 +89,7 @@ const Profile = ({ user }) => {
     }
   };
 
+  // Code to set and validate the password
   const checkPassword = (val) => {
     setPassword(val);
     if (val.length === 0) {
@@ -100,6 +107,7 @@ const Profile = ({ user }) => {
     }
   };
 
+  // Code to validate whether confirm password is same as password
   const changeConfirm = (val) => {
     setConfirm(val);
     if (val !== password) {
@@ -109,6 +117,7 @@ const Profile = ({ user }) => {
     }
   };
 
+  // Code to change password
   const changePassword = () => {
     if ((password !== "") & (password === confirm)) {
       const update = {
@@ -116,10 +125,12 @@ const Profile = ({ user }) => {
         password: password,
         isAdmin: user.isAdmin,
       };
+      // Hitting the url with put method to change password of the user
       axios
         .put(`http://localhost:3000/users/${user.userId}`, update)
         .then((res) => {
           console.log("changed password successfully");
+          // Redirecting the user to signin page
           store.dispatch({ type: "logOut" });
         })
         .catch((err) => {
@@ -232,6 +243,7 @@ const Profile = ({ user }) => {
   );
 };
 
+// Mapping the user object from state to Component
 const mapStateToProps = (state) => {
   return {
     user: state.loginReducer.user,

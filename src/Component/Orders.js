@@ -28,6 +28,7 @@ function Orders({ username }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      //Hitting the url(query) with get method to get all the pending returns of the user
       await axios
         .get(`http://localhost:3000/orders?username=${username}&_expand=book`)
         .then((res) => {
@@ -41,6 +42,7 @@ function Orders({ username }) {
     fetchData();
   }, [username]);
 
+  // Button to view the recent and earlier orders
   const changeOrders = () => {
     setOrders(orders.reverse());
     if (name === "Recent Orders") {
@@ -85,7 +87,11 @@ function Orders({ username }) {
             displayItems.map((order, i) => {
               return (
                 <Grid item key={i} xs={9} md={9} lg={9}>
-                  <Card key={i} elevation={3} style={{ border: "solid", borderColor: "blue",}}>
+                  <Card
+                    key={i}
+                    elevation={3}
+                    style={{ border: "solid", borderColor: "blue" }}
+                  >
                     <CardContent>
                       <Box display="flex" flexDirection="row">
                         <Box
@@ -160,6 +166,7 @@ function Orders({ username }) {
   );
 }
 
+// Mapping username from state to Component
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,

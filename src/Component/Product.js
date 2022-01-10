@@ -5,6 +5,7 @@ import { AddOutlined } from "@material-ui/icons";
 function Product(props) {
   const book = props.book;
 
+  // Code to add a book to the cart
   const addToCart = (item) => {
     store.dispatch({ type: "ADD_TO_CART", payload: { item: item } });
     console.log("book id :" + item.id + " is added to cart");
