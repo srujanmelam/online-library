@@ -117,6 +117,7 @@ const Profile = ({ user }) => {
     }
   };
 
+
   // Code to change password
   const changePassword = () => {
     if ((password !== "") & (password === confirm)) {
@@ -162,8 +163,9 @@ const Profile = ({ user }) => {
           </div>
           <div className="lower-container">
             <br />
-            <caption>PROFILE</caption>
+            <h2 className="pen">PROFILE</h2>
             <table>
+              <tbody>
               <tr>
                 <td>Username</td>
                 <td className="p">{user.username.toUpperCase()}</td>
@@ -181,6 +183,9 @@ const Profile = ({ user }) => {
                 <td className="p">{pending}</td>
               </tr>
               {added}
+
+              </tbody>
+            
             </table>
             <br />
             <Button
