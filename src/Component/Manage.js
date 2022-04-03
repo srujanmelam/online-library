@@ -9,10 +9,11 @@ import {
   Button,
 } from "@material-ui/core";
 import axios from "axios";
+import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 
-const Manage = () => {
+const Manage = ({ token }) => {
   const [orders, setOrders] = useState([]);
   const [returns, setReturns] = useState([]);
 
@@ -32,7 +33,11 @@ const Manage = () => {
     const fetchData = async () => {
       // Hitting the url(query) with get method to get all pending Book returns
       await axios
-        .get(`http://localhost:3000/orders?return=false&_expand=book`)
+        .get(`http://localhost:5000/search/orders?return=false`, {
+          headers: {
+            "x-access-token": token,
+          },
+        })
         .then((res) => {
           setOrders(res.data);
           console.log("Pending returns retrieved successfully");
@@ -51,12 +56,12 @@ const Manage = () => {
       orders.forEach((order) => {
         let fine = 0;
         let color = "";
-        const book = order.book;
+        const book = order.bookId;
         //Variable to store order date of book
         const date = new Date(order.date).getDate();
         // Variable to store the current data
         const currentDate = new Date().getDate();
-        // Calculating fine : For every day after due date will be fined as 10 Rupees 
+        // Calculating fine : For every day after due date will be fined as 10 Rupees
         if (currentDate - date >= 7) {
           fine = (currentDate - 7 - date) * 10;
         }
@@ -210,4 +215,10 @@ const Manage = () => {
   );
 };
 
-export default Manage;
+const mapStateToProps = (state) => {
+  return {
+    token: state.loginReducer.user.token,
+  };
+};
+
+export default connect(mapStateToProps)(Manage);

@@ -65,17 +65,17 @@ function SignIn() {
       setMessage("Invalid Username or Password");
       return;
     }
-    // Hitting the url(query) with get method to get user with given credentials
+    // Hitting the url(query) with post method to login with given credentials
+    const credentials = { username: username1, password: password1 };
     axios
-      .get(
-        `http://localhost:3000/users?username=${username1}&password=${password1}`
-      )
+      .post(`http://localhost:5000/login`, credentials)
       .then((res) => {
         if (res.data.length !== 0) {
           const user = {
-            userId: res.data[0].id,
-            username: res.data[0].username,
-            isAdmin: res.data[0].isAdmin,
+            userId: res.data.user._id,
+            username: res.data.user.username,
+            isAdmin: res.data.user.isAdmin,
+            token: res.data.token,
           };
           store.dispatch({ type: "loginSuccess", payload: user });
           console.log("Login Success");

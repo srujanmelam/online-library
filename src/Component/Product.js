@@ -8,12 +8,15 @@ function Product(props) {
   // Code to add a book to the cart
   const addToCart = (item) => {
     store.dispatch({ type: "ADD_TO_CART", payload: { item: item } });
-    console.log("book id :" + item.id + " is added to cart");
+    console.log("book id :" + item._id + " is added to cart");
   };
 
   return (
     <div>
-      <Card elevation={4} style={{ border: "solid", borderColor: "blue", borderWidth: "2px"}}>
+      <Card
+        elevation={4}
+        style={{ border: "solid", borderColor: "blue", borderWidth: "2px" }}
+      >
         <CardContent>
           <Box display="flex" flexDirection="row">
             <Box

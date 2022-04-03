@@ -13,7 +13,7 @@ import {
 import { ShoppingBasketRounded } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
 
-function Orders({ username }) {
+function Orders({ username, token }) {
   const [orders, setOrders] = useState([]);
   const [name, setName] = useState("Recent Orders");
   const [pageNumber, setPageNumber] = useState(1);
@@ -30,7 +30,11 @@ function Orders({ username }) {
     const fetchData = async () => {
       //Hitting the url(query) with get method to get all the pending returns of the user
       await axios
-        .get(`http://localhost:3000/orders?username=${username}&_expand=book`)
+        .get(`http://localhost:5000/search/orders?username=${username}`, {
+          headers: {
+            "x-access-token": token,
+          },
+        })
         .then((res) => {
           setOrders(res.data);
           console.log("Your orders retrieved successfully");
@@ -102,7 +106,7 @@ function Orders({ username }) {
                           }}
                         >
                           <img
-                            src={order.book.link}
+                            src={order.bookId.link}
                             style={{ width: 200, height: 300 }}
                             alt="bookImage"
                           />
@@ -120,19 +124,19 @@ function Orders({ username }) {
                           </Typography>
                           &nbsp;
                           <Typography variant="h6" align="left">
-                            Book Title - {order.book.title}
+                            Book Title - {order.bookId.title}
                           </Typography>
                           &nbsp;
                           <Typography variant="h6" align="left">
-                            Book ISBN - {order.book.ISBN}
+                            Book ISBN - {order.bookId.ISBN}
                           </Typography>
                           &nbsp;
                           <Typography variant="h6" align="left">
-                            Book Publication - {order.book.publication}
+                            Book Publication - {order.bookId.publication}
                           </Typography>
                           &nbsp;
                           <Typography variant="h6" align="left">
-                            Book Author - {order.book.author}
+                            Book Author - {order.bookId.author}
                           </Typography>
                           &nbsp;
                         </Box>
@@ -170,6 +174,7 @@ function Orders({ username }) {
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,
+    token: state.loginReducer.user.token,
   };
 };
 

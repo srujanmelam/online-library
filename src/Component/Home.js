@@ -1,4 +1,5 @@
 import axios from "axios";
+import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import Product from "./Product";
 import NavBar from "./NavBar";
@@ -15,7 +16,7 @@ import {
 import { SearchRounded } from "@material-ui/icons";
 import Paginate from "./Paginate";
 
-function Home() {
+function Home({ token }) {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [attribute, setAttribute] = useState("title");
@@ -26,7 +27,7 @@ function Home() {
     const fetchData = async () => {
       //Hitting the url with get method to get books from db
       await axios
-        .get(`http://localhost:3000/books`)
+        .get(`http://localhost:5000/books`)
         .then((res) => {
           setBooks(res.data);
           console.log("books data retrieved successfully");
@@ -41,7 +42,11 @@ function Home() {
   const searchData = async () => {
     //Hitting the url(along with query) with get method
     await axios
-      .get(`http://localhost:3000/books?${attribute}_like=${search}`)
+      .get(`http://localhost:5000/search/books?${attribute}=${search}`, {
+        headers: {
+          "x-access-token": token,
+        },
+      })
       .then((res) => {
         setBooks(res.data);
         console.log("search");
@@ -144,7 +149,7 @@ function Home() {
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
-                  <MenuItem value="id">id</MenuItem>
+                  <MenuItem value="_id">id</MenuItem>
                   <MenuItem value="title">title</MenuItem>
                   <MenuItem value="author">author</MenuItem>
                   <MenuItem value="publication">publication</MenuItem>
@@ -190,4 +195,10 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    token: state.loginReducer.user.token,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

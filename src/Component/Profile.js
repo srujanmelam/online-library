@@ -33,7 +33,11 @@ const Profile = ({ user }) => {
     const fetchData = async () => {
       // Hitting the url with get method to get all the orders of the user
       await axios
-        .get(`http://localhost:3000/orders?username=${user.username}`)
+        .get(`http://localhost:5000/search/orders?username=${user.username}`, {
+          headers: {
+            "x-access-token": user.token,
+          },
+        })
         .then((res) => {
           setOrders(res.data.length);
         })
@@ -49,7 +53,12 @@ const Profile = ({ user }) => {
       // Hitting the url with get method to get all the pending book returns of the user
       await axios
         .get(
-          `http://localhost:3000/orders?username=${user.username}&return=false`
+          `http://localhost:5000/search/orders?username=${user.username}&return=false`,
+          {
+            headers: {
+              "x-access-token": user.token,
+            },
+          }
         )
         .then((res) => {
           setPending(res.data.length);
@@ -63,9 +72,13 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Hitting the url with get method to get all the books added by the admin 
+      // Hitting the url with get method to get all the books added by the admin
       await axios
-        .get(`http://localhost:3000/books?addedBy=${user.username}`)
+        .get(`http://localhost:5000/search/books?addedBy=${user.username}`, {
+          headers: {
+            "x-access-token": user.token,
+          },
+        })
         .then((res) => {
           setBooks(res.data.length);
         })
@@ -125,9 +138,9 @@ const Profile = ({ user }) => {
         password: password,
         isAdmin: user.isAdmin,
       };
-      // Hitting the url with put method to change password of the user
+      // Hitting the url with patch method to change password of the user
       axios
-        .put(`http://localhost:3000/users/${user.userId}`, update)
+        .patch(`http://localhost:5000/users/${user.userId}`, update)
         .then((res) => {
           console.log("changed password successfully");
           // Redirecting the user to signin page

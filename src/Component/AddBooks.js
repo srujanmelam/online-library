@@ -70,7 +70,7 @@ function AddBooks({ username }) {
     };
     // Hitting the server with post method to add the book
     axios
-      .post(`http://localhost:3000/books`, book)
+      .post(`http://localhost:5000/books`, book)
       .then((res) => {
         console.log("added a book successfully");
         history("/home");
