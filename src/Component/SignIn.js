@@ -28,7 +28,7 @@ function SignIn() {
     if (val.length === 0) {
       setError1("Username cannot be empty");
       setVal1(true);
-    } else if (!val.match(/^[a-zA-Z0-9]+$/)) {
+    } else if (!val.match(/^[a-zA-Z0-9\s]+$/)) {
       setError1("Username should contain letters and numbers");
       setVal1(true);
     } else if (val.length < 5) {
@@ -37,7 +37,7 @@ function SignIn() {
     } else if (val.length > 15) {
       setError1("Username should not exceed 15 characters");
       setVal1(true);
-    } else if (val.match(/^[a-zA-Z0-9]{5,15}$/)) {
+    } else if (val.match(/^[a-zA-Z0-9\s]{5,15}$/)) {
       setError1("");
       setVal1(false);
     }
@@ -60,7 +60,7 @@ function SignIn() {
 
   const LoginUser = () => {
     if (
-      !username1.match(/^[a-zA-Z0-9]{5,15}$/) | !password1.match(/^.{6,20}$/)
+      !username1.match(/^[a-zA-Z0-9\s]{5,15}$/) | !password1.match(/^.{6,20}$/)
     ) {
       setMessage("Invalid Username or Password");
       return;
@@ -70,7 +70,7 @@ function SignIn() {
     axios
       .post(`http://localhost:5000/login`, credentials)
       .then((res) => {
-        if (res.data.length !== 0) {
+        if (res.data) {
           const user = {
             userId: res.data.user._id,
             username: res.data.user.username,

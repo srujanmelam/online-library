@@ -47,7 +47,7 @@ const Manage = ({ token }) => {
         });
     };
     fetchData();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const Return = () => {

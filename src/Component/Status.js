@@ -40,7 +40,7 @@ const Status = ({ username, token }) => {
         });
     };
     fetchData();
-  }, [username]);
+  }, [username,token]);
 
   // Code to Calculate the due date for each order
   useEffect(() => {

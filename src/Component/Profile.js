@@ -46,7 +46,7 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +68,7 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,7 +87,7 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   // Function is called when user clicks on change password
   const expand = () => {

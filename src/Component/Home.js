@@ -20,7 +20,7 @@ function Home({ token }) {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [attribute, setAttribute] = useState("title");
-  const [sortBy, setSortBy] = useState("id");
+  const [sortBy, setSortBy] = useState("_id");
   const [order, setOrder] = useState("asc");
 
   useEffect(() => {

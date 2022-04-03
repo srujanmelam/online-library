@@ -31,7 +31,7 @@ const ManageBooks = ({ username, token }) => {
     const fetchData = async () => {
       //Hitting the url with get method to get all books added by the Admin
       await axios
-        .get(`http://localhost:3000/search/books?addedBy=${username}`, {
+        .get(`http://localhost:5000/search/books?addedBy=${username}`, {
           headers: {
             "x-access-token": token,
           },
@@ -45,7 +45,7 @@ const ManageBooks = ({ username, token }) => {
         });
     };
     fetchData();
-  }, [username]);
+  }, [username,token]);
 
   // switch Button to view recently added books and Long ago added books
   const changeOrder = () => {

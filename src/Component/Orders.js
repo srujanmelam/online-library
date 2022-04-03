@@ -44,7 +44,7 @@ function Orders({ username, token }) {
         });
     };
     fetchData();
-  }, [username]);
+  }, [username,token]);
 
   // Button to view the recent and earlier orders
   const changeOrders = () => {
