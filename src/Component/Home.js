@@ -1,4 +1,5 @@
 import axios from "axios";
+import React from "react"
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import Product from "./Product";
@@ -149,7 +150,7 @@ function Home({ token }) {
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
-                  <MenuItem value="_id">id</MenuItem>
+                  <MenuItem value="_id">_id</MenuItem>
                   <MenuItem value="title">title</MenuItem>
                   <MenuItem value="author">author</MenuItem>
                   <MenuItem value="publication">publication</MenuItem>
