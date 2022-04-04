@@ -33,7 +33,7 @@ function Orders({ username, token }) {
         .get(`http://localhost:5000/search/orders?username=${username}`, {
           headers: {
             "x-access-token": token,
-          },
+          }
         })
         .then((res) => {
           setOrders(res.data);

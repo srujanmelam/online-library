@@ -25,7 +25,7 @@ function Cart({ cart, user }) {
       axios
         .post(`http://localhost:5000/orders`, order)
         .then((res) => {
-          console.log("book" + item._id + " added to orders table");
+          console.log("book " + item._id + " added to orders table");
           setTimeout(() => {
             // Resetting the cart after checkout
             store.dispatch({ type: actionTypes.RESET_CART });
