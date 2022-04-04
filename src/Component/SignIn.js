@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import store from "./store";
+import "./css/Captcha.css";
+import "./CaptchaGen.js";
 import {
   Grid,
   TextField,
@@ -197,6 +199,20 @@ function SignIn() {
                   ></Checkbox>
                 </Typography>
               </Grid>
+              <div class="center">
+                <div id="captchaBackground">
+                  <span id="captcha">captcha text</span>
+                  <input id="textBox" type="text" name="text" />
+                  <div id="buttons">
+                    <input id="submit" type="submit" />
+                    <button id="refresh" type="submit">
+                      Refresh
+                    </button>
+                  </div>
+                  <span id="output"></span>
+                </div>
+              </div>
+
               <Grid item> </Grid>
             </Grid>
             <Typography> {message} </Typography> <div style={{ height: 20 }} />
