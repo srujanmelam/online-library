@@ -71,7 +71,7 @@ const UpdateBooks = () => {
     };
     // Hitting the url with put method to update the book
     axios
-      .put(`http://localhost:3000/books/${id}`, book)
+      .patch(`http://localhost:5000/books/${id}`, book)
       .then((res) => {
         console.log("Updated Book " + id + " successfully");
         history("/books");
@@ -89,7 +89,7 @@ const UpdateBooks = () => {
     >
       <NavBar />
       <br></br>
-      <Typography>Update Book {book.id}</Typography>
+      <Typography>Update Book {book._id}</Typography>
       <Grid
         container
         minwidth="100vh"
@@ -226,7 +226,7 @@ const UpdateBooks = () => {
           <Typography variant="caption">{message}</Typography>
           <Button
             type="submit"
-            onClick={() => updateBook(book.id)}
+            onClick={() => updateBook(book._id)}
             color="default"
             variant="contained"
           >
