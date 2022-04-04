@@ -14,7 +14,7 @@ import {
 import { DeleteRounded, UpdateRounded } from "@material-ui/icons";
 import Pagination from "@material-ui/lab/Pagination";
 
-const ManageBooks = ({ username }) => {
+const ManageBooks = ({ username, token }) => {
   const [books, setBooks] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [name, setName] = useState("Recently Added");
@@ -31,7 +31,11 @@ const ManageBooks = ({ username }) => {
     const fetchData = async () => {
       //Hitting the url with get method to get all books added by the Admin
       await axios
-        .get(`http://localhost:3000/books?addedBy=${username}`)
+        .get(`http://localhost:5000/search/books?addedBy=${username}`, {
+          headers: {
+            "x-access-token": token,
+          },
+        })
         .then((res) => {
           setBooks(res.data);
           console.log("Added Books retrieved successfully");
@@ -41,7 +45,7 @@ const ManageBooks = ({ username }) => {
         });
     };
     fetchData();
-  }, [username]);
+  }, [username,token]);
 
   // switch Button to view recently added books and Long ago added books
   const changeOrder = () => {
@@ -56,12 +60,12 @@ const ManageBooks = ({ username }) => {
   const deleteBook = (id) => {
     //Hitting the url with delete method to delete a book from db
     axios
-      .delete(`http://localhost:3000/books/${id}/`)
+      .delete(`http://localhost:5000/books/${id}`)
       .then((res) => {
         console.log("Deleted Book " + id + "successfully");
         //Variable to store books
         let records = books;
-        records = records.filter((book) => book.id !== id);
+        records = records.filter((book) => book._id !== id);
         setBooks(records);
       })
       .catch((err) => {
@@ -191,7 +195,7 @@ const ManageBooks = ({ username }) => {
                             <Button
                               color="primary"
                               variant="contained"
-                              onClick={() => deleteBook(book.id)}
+                              onClick={() => deleteBook(book._id)}
                               endIcon={<DeleteRounded fontSize="large" />}
                             >
                               Delete
@@ -231,6 +235,7 @@ const ManageBooks = ({ username }) => {
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,
+    token: state.loginReducer.user.token,
   };
 };
 

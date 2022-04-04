@@ -18,14 +18,14 @@ function Cart({ cart, user }) {
       let order = {
         date: new Date().toUTCString(),
         username: user,
-        bookId: item.id,
+        bookId: item._id,
         return: false,
       };
       //Hitting the url with  post method to add an order in json
       axios
-        .post(`http://localhost:3000/orders`, order)
+        .post(`http://localhost:5000/orders`, order)
         .then((res) => {
-          console.log("book" + item.id + " added to orders table");
+          console.log("book" + item._id + " added to orders table");
           setTimeout(() => {
             // Resetting the cart after checkout
             store.dispatch({ type: actionTypes.RESET_CART });

@@ -5,8 +5,8 @@ import ShoppingCartIconRounded from "@material-ui/icons/ShoppingCart";
 
 function CartCounter({ cart }) {
   const [cartCount, setCartCount] = useState(0);
-  
-  //Code to calculate cart count 
+
+  //Code to calculate cart count
   useEffect(() => {
     setCartCount(cart.length);
   }, [cart]);

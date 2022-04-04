@@ -12,7 +12,7 @@ import {
   Button,
 } from "@material-ui/core";
 
-const Status = ({ username }) => {
+const Status = ({ username, token }) => {
   const [orders, setOrders] = useState([]);
   const [fines, setFines] = useState([]);
   const [colors, setColors] = useState([]);
@@ -24,7 +24,12 @@ const Status = ({ username }) => {
       // Hitting the url(query) with get method to get all the pending book returns of the user
       await axios
         .get(
-          `http://localhost:3000/orders?username=${username}&return=false&_expand=book`
+          `http://localhost:5000/search/orders?username=${username}&return=false`,
+          {
+            headers: {
+              "x-access-token": token,
+            },
+          }
         )
         .then((res) => {
           setOrders(res.data);
@@ -35,7 +40,7 @@ const Status = ({ username }) => {
         });
     };
     fetchData();
-  }, [username]);
+  }, [username,token]);
 
   // Code to Calculate the due date for each order
   useEffect(() => {
@@ -88,10 +93,10 @@ const Status = ({ username }) => {
     };
     // Hitting the url with put method to update the return status of the order
     axios
-      .put(`http://localhost:3000/orders/${item.id}`, order)
+      .patch(`http://localhost:5000/orders/${item._id}`, order)
       .then((res) => {
-        setOrders(orders.filter((i) => i.id !== item.id));
-        console.log("Book " + item.bookId + " returned successfully");
+        setOrders(orders.filter((i) => i._id !== item._id));
+        console.log("Book " + item.bookId._id + " returned successfully");
       })
       .catch((err) => {
         console.log(err);
@@ -149,7 +154,7 @@ const Status = ({ username }) => {
                         }}
                       >
                         <img
-                          src={order.book.link}
+                          src={order.bookId.link}
                           style={{ width: 250, height: 350 }}
                           alt="bookImage"
                         />
@@ -163,19 +168,19 @@ const Status = ({ username }) => {
                         }}
                       >
                         <Typography variant="h6" align="left">
-                          Book Title - {order.book.title}
+                          Book Title - {order.bookId.title}
                         </Typography>
                         &nbsp;
                         <Typography variant="h6" align="left">
-                          Book ISBN - {order.book.ISBN}
+                          Book ISBN - {order.bookId.ISBN}
                         </Typography>
                         &nbsp;
                         <Typography variant="h6" align="left">
-                          Book Publication - {order.book.publication}
+                          Book Publication - {order.bookId.publication}
                         </Typography>
                         &nbsp;
                         <Typography variant="h6" align="left">
-                          Book Author - {order.book.author}
+                          Book Author - {order.bookId.author}
                         </Typography>
                         &nbsp;
                         <Typography variant="h6" align="left">
@@ -214,6 +219,7 @@ const Status = ({ username }) => {
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.user.username,
+    token: state.loginReducer.user.token,
   };
 };
 

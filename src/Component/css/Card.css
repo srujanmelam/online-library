@@ -84,8 +84,8 @@ th, td {
   text-align: left;
 }
 
-caption {
-  transform: translate(455px, -60px);
+.pen {
+  transform: translate(20px, -100px);
   margin-left: 8%;
   font-size: xxx-large;
 }

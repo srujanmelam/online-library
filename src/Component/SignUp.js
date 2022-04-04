@@ -71,7 +71,7 @@ function SignUp() {
     if ((username1.length > 0) & (password1.length > 0)) {
       // Hitting the url with post method to add a new user
       axios
-        .post(`http://localhost:3000/users`, user)
+        .post(`http://localhost:5000/users`, user)
         .then((res) => {
           console.log("user created successfully");
           history("/");

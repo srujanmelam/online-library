@@ -177,7 +177,7 @@ function NavBar({ user }) {
   );
 }
 
-// Mapping username from state to Component  
+// Mapping username from state to Component
 const mapStateToProps = (state) => {
   return {
     user: state.loginReducer.user,

@@ -33,7 +33,11 @@ const Profile = ({ user }) => {
     const fetchData = async () => {
       // Hitting the url with get method to get all the orders of the user
       await axios
-        .get(`http://localhost:3000/orders?username=${user.username}`)
+        .get(`http://localhost:5000/search/orders?username=${user.username}`, {
+          headers: {
+            "x-access-token": user.token,
+          },
+        })
         .then((res) => {
           setOrders(res.data.length);
         })
@@ -42,14 +46,19 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   useEffect(() => {
     const fetchData = async () => {
       // Hitting the url with get method to get all the pending book returns of the user
       await axios
         .get(
-          `http://localhost:3000/orders?username=${user.username}&return=false`
+          `http://localhost:5000/search/orders?username=${user.username}&return=false`,
+          {
+            headers: {
+              "x-access-token": user.token,
+            },
+          }
         )
         .then((res) => {
           setPending(res.data.length);
@@ -59,13 +68,17 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // Hitting the url with get method to get all the books added by the admin 
+      // Hitting the url with get method to get all the books added by the admin
       await axios
-        .get(`http://localhost:3000/books?addedBy=${user.username}`)
+        .get(`http://localhost:5000/search/books?addedBy=${user.username}`, {
+          headers: {
+            "x-access-token": user.token,
+          },
+        })
         .then((res) => {
           setBooks(res.data.length);
         })
@@ -74,7 +87,7 @@ const Profile = ({ user }) => {
         });
     };
     fetchData();
-  }, [user.username]);
+  }, [user.username,user.token]);
 
   // Function is called when user clicks on change password
   const expand = () => {
@@ -117,6 +130,7 @@ const Profile = ({ user }) => {
     }
   };
 
+
   // Code to change password
   const changePassword = () => {
     if ((password !== "") & (password === confirm)) {
@@ -125,9 +139,9 @@ const Profile = ({ user }) => {
         password: password,
         isAdmin: user.isAdmin,
       };
-      // Hitting the url with put method to change password of the user
+      // Hitting the url with patch method to change password of the user
       axios
-        .put(`http://localhost:3000/users/${user.userId}`, update)
+        .patch(`http://localhost:5000/users/${user.userId}`, update)
         .then((res) => {
           console.log("changed password successfully");
           // Redirecting the user to signin page
@@ -162,8 +176,9 @@ const Profile = ({ user }) => {
           </div>
           <div className="lower-container">
             <br />
-            <caption>PROFILE</caption>
+            <h2 className="pen">PROFILE</h2>
             <table>
+              <tbody>
               <tr>
                 <td>Username</td>
                 <td className="p">{user.username.toUpperCase()}</td>
@@ -181,6 +196,9 @@ const Profile = ({ user }) => {
                 <td className="p">{pending}</td>
               </tr>
               {added}
+
+              </tbody>
+            
             </table>
             <br />
             <Button
