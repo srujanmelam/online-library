@@ -9,8 +9,13 @@ import {
   InputAdornment,
   Checkbox,
   Typography,
+  Box,
 } from "@material-ui/core";
-import { AccountCircle, LockRounded } from "@material-ui/icons";
+import {
+  AccountCircle,
+  LockRounded,
+  ShoppingCartRounded,
+} from "@material-ui/icons";
 
 function SignIn() {
   const [username1, setUsername] = useState("");
@@ -101,29 +106,101 @@ function SignIn() {
         minwidth="100vh"
         style={{ border: "solid", minwidth: "100%", height: "100vh" }}
       >
-        <Grid item xs={12} md={7} lg={7}>
-          <img
-            src="https://images.squarespace-cdn.com/content/v1/5475f6eae4b0821160f6ac3e/1570638927688-1XI0VGYD2404X06L0MC4/bigstock-Library-Background-Bookshelve-314188303.jpg"
-            style={{ width: "100%", height: "100%", objectfits: "cover" }}
-            alt="brand"
-          />
+        <Grid item xs={12} md={8} lg={8}>
+          <Box
+            sx={{
+              marginRight: "850px",
+            }}
+          >
+            <Typography variant="h6">Online Library</Typography>
+          </Box>
+          <div style={{ marginTop: "145px" }} />
+          <Typography variant="h2"> Login To Your Account </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginLeft: "250px",
+              marginRight: "250px",
+              marginTop: "20px",
+            }}
+          >
+            <TextField
+              variant="outlined"
+              type="text"
+              label="Username"
+              inputProps={{ pattern: /^[a-zA-Z0-9]{5,15}$/ }}
+              margin="normal"
+              onClick={(e) => changeUsername(e.target.value)}
+              onChange={(e) => changeUsername(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+              helperText={error1}
+              error={val1}
+            ></TextField>
+            <TextField
+              variant="outlined"
+              type="password"
+              label="Password"
+              margin="normal"
+              onClick={(e) => changePassword(e.target.value)}
+              onChange={(e) => changePassword(e.target.value)}
+              required
+              inputProps={{ pattern: /^.{6,20}$/ }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <LockRounded />
+                  </InputAdornment>
+                ),
+              }}
+              helperText={error2}
+              error={val2}
+            ></TextField>
+            <div style={{ marginTop: "20px" }} />
+            <Typography variant="h5" htmlFor="rememberMe">
+              remember me
+              <Checkbox
+                type="checkbox"
+                defaultChecked
+                color="primary"
+                value="lsRememberMe"
+              ></Checkbox>
+            </Typography>
+            <div style={{ marginTop: "20px" }} />
+
+            <Button
+              type="submit"
+              onClick={LoginUser}
+              color="primary"
+              size="large"
+              variant="contained"
+            >
+              Sign In
+            </Button>
+          </Box>
         </Grid>
         <Grid
           container
           item
           xs={12}
-          md={5}
-          lg={5}
+          md={4}
+          lg={4}
           alignItems="center"
           direction="column"
           justifyContent="space-between"
           style={{
             color: "white",
             padding: 10,
-            backgroundImage: `url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80')`,
+            backgroundImage: `url('https://i.pinimg.com/736x/87/8c/7d/878c7d859694d9fabf7669e003bdead3.jpg')`,
           }}
         >
-          <div />
           <div />
           <div
             style={{
@@ -133,95 +210,20 @@ function SignIn() {
               minwidth: 300,
             }}
           >
-            <Grid container justifyContent="center">
-              <img
-                src="https://cdn5.vectorstock.com/i/thumb-large/75/49/panda-book-read-newspaper-negative-space-logo-icon-vector-39827549.jpg"
-                width={200}
-                alt="logo"
-                style={{ borderRadius: "50%" }}
-              />
-            </Grid>
-            <TextField
-              type="text"
-              label="Username"
-              InputLabelProps={{
-                style: { color: "white" },
-              }}
-              inputProps={{ pattern: /^[a-zA-Z0-9]{5,15}$/ }}
-              margin="normal"
-              onClick={(e) => changeUsername(e.target.value)}
-              onChange={(e) => changeUsername(e.target.value)}
-              required
-              InputProps={{
-                style: { color: "white" },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-              helperText={error1}
-              error={val1}
-            ></TextField>
-            <TextField
-              type="password"
-              label="Password"
-              margin="normal"
-              onClick={(e) => changePassword(e.target.value)}
-              onChange={(e) => changePassword(e.target.value)}
-              required
-              inputProps={{ pattern: /^.{6,20}$/ }}
-              InputLabelProps={{
-                style: { color: "white" },
-              }}
-              InputProps={{
-                style: { color: "white" },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <LockRounded />
-                  </InputAdornment>
-                ),
-              }}
-              helperText={error2}
-              error={val2}
-            ></TextField>
-            <Grid container justifyContent="center" spacing={2}>
-              <Grid item>
-                <Typography htmlFor="rememberMe">
-                  Remember me
-                  <Checkbox
-                    type="checkbox"
-                    defaultChecked
-                    color="primary"
-                    value="lsRememberMe"
-                  ></Checkbox>
-                </Typography>
-              </Grid>
-              <Grid item> </Grid>
-            </Grid>
-            <Typography> {message} </Typography> <div style={{ height: 20 }} />
-            <Button
-              type="submit"
-              onClick={LoginUser}
-              color="default"
-              variant="contained"
+            <Typography variant="h2"> New Here?</Typography>
+            <div style={{ marginTop: "20px" }} />
+            <Typography variant="h6">
+              Sign Up and discover different kinds of New Books!
+            </Typography>
+            <div style={{ marginTop: "20px" }} />
+            <Link
+              to="/signup"
+              style={{ textDecoration: "none", color: "yellow" }}
             >
-              Sign In
-            </Button>
-            <div style={{ height: 20 }} />
-            <Grid container justifyContent="center" spacing={2}>
-              <Grid item>
-                <Typography> Don 't have an account?</Typography>
-              </Grid>
-              <Grid item>
-                <Link
-                  to="/signup"
-                  style={{ textDecoration: "none", color: "yellow" }}
-                >
-                  Sign Up
-                </Link>
-              </Grid>
-            </Grid>
+              <Button variant="contained" color="default" size="large">
+                Sign Up
+              </Button>
+            </Link>
           </div>
           <div />
         </Grid>
